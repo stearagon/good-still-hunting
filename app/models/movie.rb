@@ -16,4 +16,5 @@ class Movie < ActiveRecord::Base
 
   validates :title, uniqueness: { scope: [:director, :year] }
 
+  has_many :stills
 end
