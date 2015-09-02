@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150902175039) do
+ActiveRecord::Schema.define(version: 20150902182317) do
 
   create_table "movies", force: :cascade do |t|
     t.string   "title",      null: false
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20150902175039) do
 
   add_index "movies", ["director"], name: "index_movies_on_director"
   add_index "movies", ["genre"], name: "index_movies_on_genre"
+  add_index "movies", ["title", "director", "year"], name: "index_movies_on_title_and_director_and_year", unique: true
   add_index "movies", ["title"], name: "index_movies_on_title"
   add_index "movies", ["year"], name: "index_movies_on_year"
 

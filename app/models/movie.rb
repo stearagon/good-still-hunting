@@ -12,6 +12,8 @@
 #
 
 class Movie < ActiveRecord::Base
-  
+  validates :title, :director, :year, :genre, presence: true
+
+  validates :title, uniqueness: { scope: [:director, :year] }
 
 end
