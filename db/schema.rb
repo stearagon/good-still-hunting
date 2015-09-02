@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150902182317) do
+ActiveRecord::Schema.define(version: 20150902182739) do
 
   create_table "movies", force: :cascade do |t|
     t.string   "title",      null: false
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20150902182317) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
+
+  add_index "stills", ["name"], name: "index_stills_on_name", unique: true
 
   create_table "tags", force: :cascade do |t|
     t.string   "tag",        null: false
