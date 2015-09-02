@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150902182739) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "movies", force: :cascade do |t|
     t.string   "title",      null: false
     t.string   "director",   null: false
@@ -22,11 +25,11 @@ ActiveRecord::Schema.define(version: 20150902182739) do
     t.datetime "updated_at"
   end
 
-  add_index "movies", ["director"], name: "index_movies_on_director"
-  add_index "movies", ["genre"], name: "index_movies_on_genre"
-  add_index "movies", ["title", "director", "year"], name: "index_movies_on_title_and_director_and_year", unique: true
-  add_index "movies", ["title"], name: "index_movies_on_title"
-  add_index "movies", ["year"], name: "index_movies_on_year"
+  add_index "movies", ["director"], name: "index_movies_on_director", using: :btree
+  add_index "movies", ["genre"], name: "index_movies_on_genre", using: :btree
+  add_index "movies", ["title", "director", "year"], name: "index_movies_on_title_and_director_and_year", unique: true, using: :btree
+  add_index "movies", ["title"], name: "index_movies_on_title", using: :btree
+  add_index "movies", ["year"], name: "index_movies_on_year", using: :btree
 
   create_table "stills", force: :cascade do |t|
     t.string   "name",               null: false
@@ -38,7 +41,7 @@ ActiveRecord::Schema.define(version: 20150902182739) do
     t.datetime "image_updated_at"
   end
 
-  add_index "stills", ["name"], name: "index_stills_on_name", unique: true
+  add_index "stills", ["name"], name: "index_stills_on_name", unique: true, using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "tag",        null: false
