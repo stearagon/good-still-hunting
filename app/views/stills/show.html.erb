@@ -1,16 +1,10 @@
 <h1><%= @still.name %></h1>
-<%= link_to "Edit Still", edit_still_url %>
-<%= image_tag @still.image.url, class: "show-image compact" %>
 
+<%= image_tag @still.image.url, class: "show-image" %>
+<br>
+<%= link_to "Edit Still", edit_still_url %>
 <ul>
   <% @still.list_tags.each do |tag| %>
     <li><%= tag %></li>
   <% end %>
 </ul>
-
-<script type="text/javascript">
-  $('img').on("click", function(){
-
-    $(this).toggleClass("compact")
-  })
-</script>
