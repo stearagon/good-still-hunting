@@ -1,3 +1,5 @@
+<h1><%= @movie.title + " (#{@movie.year}) directed by #{@movie.director}" %></h1>
+<h2><%= "Genre: #{@movie.genre}" %></h2>
 <% @movie.stills.each do |still| %>
   <li><a href="<%= still_url(still) %>"><img src="<%= still.image.url(:medium)%>"/></a></li>
 <% end %>
