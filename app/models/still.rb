@@ -14,6 +14,10 @@
 #
 
 class Still < ActiveRecord::Base
+  include PgSearch
+
+  multisearchable :against => :tags_tags
+
   attr_accessor :image
   validates :name, presence: true, uniqueness: true
 
@@ -63,5 +67,13 @@ class Still < ActiveRecord::Base
     end
 
     answer
+  end
+
+  def tags_tags
+    result = []
+    tags.each do |tag|
+      result << tag.tag
+    end
+    return result
   end
 end

@@ -3,6 +3,12 @@
 <%= link_to "Add Still", new_still_url %>
 <%= link_to "Add Movie", new_movie_url %>
 
+<form action="<%= search_url %>" method="get">
+  <label for="search">Search</label>
+  <input type="text" name="query" id="search" value="">
+  <button>Submit</button>
+</form>
+
 <ul>
   <% @stills.each do |still| %>
   <li><a href="<%= still_url(still) %>"><img src="<%= still.image.url(:medium)%>"/></a></li>

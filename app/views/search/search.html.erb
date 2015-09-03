@@ -1,0 +1,12 @@
+<h1>Search Results</h1>
+<ul>
+  <% if @search_results.empty? %>
+    <li>No Search Results</li>
+  <% end %>
+  <% @search_results.each do |result| %>
+    <li>
+        <% @still = Still.find_by_id(result.searchable_id) %>
+        <%= image_tag @still.image.url(:medium) %> 
+    </li>
+  <% end %>
+</ul>
