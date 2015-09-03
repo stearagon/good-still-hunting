@@ -31,6 +31,8 @@ gem 'aws-sdk', '~> 1.61.0'
 
 gem 'figaro'
 
+gem 'newrelic_rpm'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -51,4 +53,6 @@ group :development, :test do
   gem 'spring'
 
   gem 'annotate'
+
+  gem 'better_errors'
 end

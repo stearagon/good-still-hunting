@@ -1,2 +1,8 @@
 <%= link_to "Add Still", new_still_url %>
 <%= link_to "Add Movie", new_movie_url %>
+
+<ul>
+  <% @stills.each do |still| %>
+  <li><a href="<%= still_url(still) %>"><img src="<%= still.image.url(:medium)%>"/></a></li>
+  <% end %>
+</ul>

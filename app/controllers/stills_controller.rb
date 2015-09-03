@@ -5,10 +5,32 @@ class StillsController < ApplicationController
     @still = Still.new
   end
 
+  def edit
+    @still = Still.find(params[:id])
+  end
+
   def create
     @still = Still.new(still_params)
-    if @still.save!
-      render :show
+
+
+
+    if @still.save
+      @still.update_tags(params[:tags])
+      redirect_to root_url
+    else
+      flash.now[:errors] = @still.errors.full_messages
+      render :new
+    end
+  end
+
+  def update
+    @still = Still.find(params[:id])
+
+
+
+    if @still.update(still_params)
+      @still.update_tags(params[:tags])
+      redirect_to root_url
     else
       flash.now[:errors] = @still.errors.full_messages
       render :new

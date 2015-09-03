@@ -11,5 +11,6 @@
 class Tag < ActiveRecord::Base
   validates :tag, presence: true, uniqueness: true
 
-  belongs_to :still
+  has_many :stills_tags
+  has_many :stills, through: :stills_tags
 end

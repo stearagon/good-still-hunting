@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150902234014) do
+ActiveRecord::Schema.define(version: 20150903020601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 20150902234014) do
   end
 
   add_index "stills", ["name"], name: "index_stills_on_name", unique: true, using: :btree
+
+  create_table "stills_tags", id: false, force: :cascade do |t|
+    t.integer  "still_id",   null: false
+    t.integer  "tag_id",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "stills_tags", ["still_id"], name: "index_stills_tags_on_still_id", using: :btree
+  add_index "stills_tags", ["tag_id"], name: "index_stills_tags_on_tag_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "tag",        null: false

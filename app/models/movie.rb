@@ -12,6 +12,8 @@
 #
 
 class Movie < ActiveRecord::Base
+  GENRES = %w(Action Comedy Drama Mystery Thriller Documentary Horror)
+
   validates :title, :director, :year, :genre, presence: true
 
   validates :title, uniqueness: { scope: [:director, :year] }

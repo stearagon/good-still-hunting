@@ -1,5 +1,4 @@
 class MoviesController < ApplicationController
-  GENRES = %w("Action", "Comedy", "Drama", "Mystery", "Thriller", "Documentary", "Horror")
 
   def new
     @movie = Movie.new
@@ -7,6 +6,17 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new(movie_params)
+
+    if @movie.save
+      redirect_to movies_url
+    else
+      flash.now[:errors] = @movie.errors.full_messages
+      render :new
+    end
+  end
+
+  def index
+    @movies = Movie.all
   end
 
   private

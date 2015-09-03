@@ -1,3 +1,5 @@
+<h1>Edit Still</h1>
+
 <%= form_for(@still, multipart: true) do |f| %>
 
   <div class="field">
@@ -9,12 +11,15 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
+
   <div class="field" id="image">
-    <%= f.label :image %>
+    <%= f.label :upload_different_image %>
     <%= f.file_field :image %>
   </div>
 
-  <div id="target"></div>
+  <div id="target">
+    <img src="<%= @still.image.url(:medium) %>" alt="" />
+  </div>
 
   <div class="field">
     <label for="still-tags">Tags</label>
@@ -28,7 +33,7 @@
 
 
   <div class="actions">
-    <%= f.submit 'Add still' %>
+    <%= f.submit 'Submit Changes' %>
     <%= link_to 'Cancel', root_url, class: 'button' %>
   </div>
 <% end %>
@@ -36,6 +41,7 @@
 <%= link_to "Return to homepage", root_url %>
 
 <script type="text/javascript">
+
 $(function() {
   $('#image').on('change', function(event) {
     var files = event.target.files;

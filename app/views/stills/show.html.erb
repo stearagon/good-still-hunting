@@ -1,1 +1,9 @@
-<h1>Still Test Show</h1>
+<h1><%= @still.name %></h1>
+<%= link_to "Edit Still", edit_still_url %>
+<%= image_tag @still.image.url(:medium) %>
+
+<ul>
+  <% @still.list_tags.each do |tag| %>
+    <li><%= tag %></li>
+  <% end %>
+</ul>
