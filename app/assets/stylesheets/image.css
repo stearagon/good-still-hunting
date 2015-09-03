@@ -1,3 +1,18 @@
 .show-image {
   max-width: 90vw;
 }
+
+group:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.still-list li {
+  float: left;
+  margin: 10px;
+}
+
+.still-list {
+  max-width: 950px;
+}

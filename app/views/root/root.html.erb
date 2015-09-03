@@ -9,7 +9,7 @@
   <button>Submit</button>
 </form>
 
-<ul>
+<ul class="group still-list">
   <% @stills.each do |still| %>
   <li><a href="<%= still_url(still) %>"><img src="<%= still.image.url(:medium)%>"/></a></li>
   <% end %>
