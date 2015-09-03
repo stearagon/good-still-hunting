@@ -1,3 +1,7 @@
+ul {
+  list-style: none;
+}
+
 .show-image {
   max-width: 90vw;
 }
