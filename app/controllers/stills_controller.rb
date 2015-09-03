@@ -21,6 +21,6 @@ class StillsController < ApplicationController
 
   private
   def still_params
-    params.require(:still).permit(:name, :image)
+    params.require(:still).permit(:name, :image, :movie_id)
   end
 end

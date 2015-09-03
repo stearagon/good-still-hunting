@@ -15,6 +15,7 @@
 class Still < ActiveRecord::Base
   attr_accessor :image
   validates :name, presence: true, uniqueness: true
+  validates :movie_id, presence: true
   has_attached_file :image, styles: {
     thumb: '100x100>',
     square: '200x200#',
