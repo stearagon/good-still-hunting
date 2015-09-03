@@ -1,0 +1,3 @@
+<% @movie.stills.each do |still| %>
+  <li><a href="<%= still_url(still) %>"><img src="<%= still.image.url(:medium)%>"/></a></li>
+<% end %>

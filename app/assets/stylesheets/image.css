@@ -1,0 +1,8 @@
+.show-image.compact {
+  max-width: 300px;
+  height: auto;
+}
+
+.show-image {
+  max-width: 90vw;
+}
