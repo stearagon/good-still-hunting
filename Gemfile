@@ -35,6 +35,8 @@ gem 'newrelic_rpm'
 
 gem 'pg_search'
 
+gem 'kaminari'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

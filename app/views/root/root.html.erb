@@ -9,6 +9,8 @@
   <button>Submit</button>
 </form>
 
+<%= paginate @stills %>
+
 <ul class="group still-list">
   <% i = 0 %>
   <% @stills.each do |still| %>

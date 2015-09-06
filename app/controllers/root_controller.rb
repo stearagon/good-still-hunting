@@ -1,7 +1,7 @@
 class RootController < ApplicationController
 
   def root
-    @stills = Still.all
+    @stills = Still.order(:name).page params[:page]
   end
 
 end

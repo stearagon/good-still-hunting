@@ -15,6 +15,7 @@
 
 class Still < ActiveRecord::Base
   include PgSearch
+  paginates_per 25
 
   multisearchable :against => :tags_tags
 
