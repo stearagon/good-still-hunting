@@ -7,6 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= link_to "Homepage", root_url %>
+  <%= link_to "Movies Index", movies_url %>
+
+  <%= link_to "Add Still", new_still_url %>
+  <%= link_to "Add Movie", new_movie_url %>
+
+  <form action="<%= search_url %>" method="get">
+    <label for="search">Search</label>
+    <input type="text" name="query" id="search" value="">
+    <button>Submit</button>
+  </form>
+
   <% if !flash[:errors].nil? %>
     <% flash[:errors].each do |error| %>
       <%= error %>
