@@ -58,6 +58,8 @@ class Still < ActiveRecord::Base
 
     end
 
+    PgSearch::Multisearch.rebuild(Still)
+
   end
 
   def list_tags

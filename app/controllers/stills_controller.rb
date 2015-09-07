@@ -12,8 +12,6 @@ class StillsController < ApplicationController
   def create
     @still = Still.new(still_params)
 
-
-
     if @still.save
       @still.update_tags(params[:tags])
       redirect_to root_url
