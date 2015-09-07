@@ -21,7 +21,7 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-    @stills = @movie.stills.shuffle.page params[:page]
+    @stills = @movie.stills.order(:name).page params[:page]
   end
 
   private
