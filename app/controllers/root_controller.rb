@@ -1,7 +1,7 @@
 class RootController < ApplicationController
 
   def root
-    @stills = Still.order(:name).page params[:page]
+    @stills = Still.shuffle.page params[:page]
   end
 
 end
