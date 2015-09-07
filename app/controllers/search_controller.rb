@@ -4,7 +4,6 @@ class SearchController < ApplicationController
       PgSearch
       .multisearch(params[:query])
       .includes(:searchable)
-      .shuffle
     ).page(params[:page]).per(9)
       render :search
   end
