@@ -5,7 +5,7 @@ class SearchController < ApplicationController
       .multisearch(params[:query])
       .includes(:searchable)
       .shuffle
-    ).page params[:page]
+    ).page(params[:page]).per(9)
       render :search
   end
 end
