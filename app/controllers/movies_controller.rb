@@ -21,7 +21,7 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-    @stills = Kaminari.paginate_array(Still.all)..page(params[:page]).per(9)
+    @stills = Kaminari.paginate_array(Still.all).page(params[:page]).per(9)
   end
 
   private

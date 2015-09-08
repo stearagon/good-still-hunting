@@ -18,7 +18,6 @@
     <input type="text" name="query" id="search" value="">
     <button>Submit</button>
   </form>
-
   <% if !flash[:errors].nil? %>
     <% flash[:errors].each do |error| %>
       <%= error %>
@@ -26,5 +25,7 @@
   <% end %>
 <%= yield %>
 
+
+</script>
 </body>
 </html>
