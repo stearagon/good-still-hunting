@@ -12,6 +12,8 @@
 #
 
 class Movie < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search_by_title, against: :title
   GENRES = %w(Action Comedy Drama Mystery Thriller Documentary Horror)
 
   validates :title, :director, :year, :genre, presence: true

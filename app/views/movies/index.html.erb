@@ -1,3 +1,9 @@
+<form action="<%= movie_search_url %>" method="get">
+  <label for="search">Search Movies</label>
+  <input type="text" name="query" id="search" value="">
+  <button>Submit</button>
+</form>
+
 <ul>
   <% @movies.each do |movie| %>
     <li><%= link_to movie.title, movie_url(movie) %></li>

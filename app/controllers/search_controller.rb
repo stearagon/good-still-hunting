@@ -8,4 +8,10 @@ class SearchController < ApplicationController
       render :search
   end
 
+  def movie_search
+    @search_results = Movie.search_by_title(params[:query])
+    render :movie_search
+  end
+
+
 end
