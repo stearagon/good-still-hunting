@@ -7,4 +7,5 @@ class SearchController < ApplicationController
     ).page(params[:page]).per(9)
       render :search
   end
+
 end

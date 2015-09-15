@@ -1,0 +1,13 @@
+<h1><%= @tag.tag %></h1>
+
+<%= paginate @stills %>
+<ul class="group still-list">
+  <% if @stills.empty? %>
+    <li>No Search Results</li>
+  <% end %>
+  <% @stills.each do |still| %>
+    <li>
+        <a href="<%= still_url(still)%>"><%= image_tag still.image.url(:medium) %></a>
+    </li>
+  <% end %>
+</ul>
