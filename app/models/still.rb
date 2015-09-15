@@ -66,7 +66,7 @@ class Still < ActiveRecord::Base
     answer = []
 
     self.tags.each do |tag|
-      answer << "#" + tag.tag
+      answer << tag.tag
     end
 
     answer

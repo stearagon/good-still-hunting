@@ -5,9 +5,6 @@
 <%= link_to "Edit Still", edit_still_url %>
 <p>
   <% @still.list_tags.each do |tag| %>
-  <form action="<%= search_url %>" method="get">
-    <input type="hidden" name="query" id="search" value="<%= tag %>">
-    <button><%= tag %></button>
-  </form>
+    <%= link_to tag, search_url(params.merge({:query => tag})) %> &nbsp
   <% end %>
 </p>
