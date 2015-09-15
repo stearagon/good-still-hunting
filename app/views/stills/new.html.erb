@@ -18,12 +18,8 @@
 
   <div class="field">
     <label for="still-tags">Tags</label>
-    <textarea id="still-tags" name="tags" rows="8" cols="40">
-      <% @still.tags.each do |tag| %>
-        <%= "#" + tag.tag %>
-      <% end %>
-
-    </textarea>
+    <textarea id="still-tags" name="tags" rows="8" cols="40"><% @still.tags.each { |tag| %> <%= "#" + tag.tag %> <% } %>
+</textarea>
   </div>
 
 
