@@ -4,5 +4,10 @@
 <br>
 <%= link_to "Edit Still", edit_still_url %>
 <p>
-  <% @still.list_tags.each { |tag| puts "#" + tag + " " }%></textarea>
+  <% @still.list_tags.each do |tag| %>
+  <form action="<%= search_url %>" method="get">
+    <input type="hidden" name="query" id="search" value="<%= tag %>">
+    <button><%= tag %></button>
+  </form>
+  <% end %>
 </p>
