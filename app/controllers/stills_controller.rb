@@ -37,6 +37,16 @@ class StillsController < ApplicationController
     @still = Still.find(params[:id])
   end
 
+  def destroy
+    @still = Still.find(params[:id])
+
+    @still.destroy
+
+    redirect_to root_url
+
+  end
+
+
   private
   def still_params
     params.require(:still).permit(:name, :image, :movie_id)
