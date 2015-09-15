@@ -24,8 +24,6 @@ class StillsController < ApplicationController
   def update
     @still = Still.find(params[:id])
 
-
-
     if @still.update(still_params)
       @still.update_tags(params[:tags])
       redirect_to root_url
