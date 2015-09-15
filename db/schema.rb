@@ -70,4 +70,6 @@ ActiveRecord::Schema.define(version: 20150903191356) do
     t.datetime "updated_at"
   end
 
+  add_index "tags", ["tag"], name: "index_tags_on_tag", unique: true, using: :btree
+
 end
