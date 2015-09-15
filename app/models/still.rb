@@ -36,26 +36,29 @@ class Still < ActiveRecord::Base
   has_many :tags, through: :stills_tags
 
   def update_tags(tags)
-    tags = tags.split
+    tags = tags.split("#").map { |tag| tag.strip }
 
     self.tags.each_with_index do |tag, idx|
-      if !tags.include?("#" + tag.tag)
-        self.tags.delete(tag)
-      else
-        tags.delete("#" + tag.tag)
+      unless tag == ""
+        if !tags.include?("#" + tag.tag)
+          self.tags.delete(tag)
+        else
+          tags.delete("#" + tag.tag)
+        end
       end
     end
 
     tags.each do |tag|
-      tag.slice!(0)
-      new_tag = Tag.new(tag: tag)
+      unless tag == ""
 
-      if new_tag.save
-        self.tags << new_tag
-      else
-        self.tags << Tag.find_by_tag(tag)
+        new_tag = Tag.new(tag: tag)
+
+        if new_tag.save
+          self.tags << new_tag
+        else
+          self.tags << Tag.find_by_tag(tag)
+        end
       end
-
     end
 
     PgSearch::Multisearch.rebuild(Still)
