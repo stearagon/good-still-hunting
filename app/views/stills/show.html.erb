@@ -3,4 +3,4 @@
 <%= image_tag @still.image.url, class: "show-image" %>
 <br>
 <%= link_to "Edit Still", edit_still_url %>
-<textarea name="name" rows="8" cols="40"><% @still.list_tags.each { |tag| "#" tag }%></textarea>
+<textarea name="name" rows="8" cols="40"><% @still.list_tags.each { |tag| "#" + tag + " " }%></textarea>
