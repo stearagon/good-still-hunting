@@ -66,6 +66,9 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     debug_inspector (0.0.2)
+    ember-cli-rails (0.3.5)
+      railties (>= 3.1, < 5)
+      sprockets (>= 2.0)
     erubis (2.7.0)
     execjs (2.6.0)
     figaro (1.1.1)
@@ -179,6 +182,7 @@ DEPENDENCIES
   better_errors
   byebug
   coffee-rails (~> 4.1.0)
+  ember-cli-rails
   figaro
   jbuilder (~> 2.0)
   jquery-rails
@@ -194,3 +198,6 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
+
+BUNDLED WITH
+   1.10.6
