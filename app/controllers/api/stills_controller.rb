@@ -1,12 +1,12 @@
-
-
-class StillsController < ApplicationController
-  def new
-    @still = Still.new
-  end
-
+class Api::StillsController < ApplicationController
   def edit
     @still = Still.find(params[:id])
+    render json: @still
+  end
+
+  def index
+    @stills = Still.all
+    render json: @stills
   end
 
   def create
@@ -14,10 +14,9 @@ class StillsController < ApplicationController
 
     if @still.save
       @still.update_tags(params[:tags])
-      redirect_to root_url
+      render json: @still
     else
-      flash.now[:errors] = @still.errors.full_messages
-      render :new
+      render json: @still.errors.full_messages
     end
   end
 
@@ -26,15 +25,15 @@ class StillsController < ApplicationController
 
     if @still.update(still_params)
       @still.update_tags(params[:tags])
-      redirect_to root_url
+      render json: @still
     else
-      flash.now[:errors] = @still.errors.full_messages
-      render :new
+      render json: @still.errors.full_messages
     end
   end
 
   def show
     @still = Still.find(params[:id])
+    render json: @still
   end
 
   def destroy
@@ -42,8 +41,7 @@ class StillsController < ApplicationController
 
     @still.destroy
 
-    redirect_to root_url
-
+    render json: { message: 'still destoryed'}
   end
 
 

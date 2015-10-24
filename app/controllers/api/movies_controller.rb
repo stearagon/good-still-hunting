@@ -1,27 +1,22 @@
-class MoviesController < ApplicationController
-
-  def new
-    @movie = Movie.new
-  end
-
+class Api::MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
 
     if @movie.save
-      redirect_to movies_url
+      render json: @movie
     else
-      flash.now[:errors] = @movie.errors.full_messages
-      render :new
+      render json: @movie.errors.full_messages
     end
   end
 
   def index
     @movies = Movie.all
+    render json: @movies
   end
 
   def show
     @movie = Movie.find(params[:id])
-    @stills = Kaminari.paginate_array(@movie.stills).page(params[:page]).per(9)
+    render json: @movie
   end
 
   private

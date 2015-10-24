@@ -7,20 +7,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= link_to "Home", root_url %>
-  <%= link_to "Films", movies_url %>
 
-  <%= link_to "Add Still", new_still_url %>
-  <%= link_to "Add Film", new_movie_url %>
-
-  <% if !flash[:errors].nil? %>
-    <% flash[:errors].each do |error| %>
-      <%= error %>
-    <% end %>
-  <% end %>
-<%= yield %>
-
-
-</script>
 </body>
 </html>

@@ -1,19 +1,1 @@
-<form action="<%= search_url %>" method="get">
-  <label for="search">Search Stills</label>
-  <input type="text" name="query" id="search" value="">
-  <button>Submit</button>
-</form>
 
-<%= paginate @stills %>
-
-<ul class="group still-list">
-  <% i = 0 %>
-  <% @stills.each do |still| %>
-    <% i+=1 %>
-  <li><a href="<%= still_url(still) %>"><img src="<%= still.image.url(:medium)%>"/></a></li>
-  <% if i == 3 %>
-    <br>
-    <% i = 0 %>
-  <% end %>
-  <% end %>
-</ul>
