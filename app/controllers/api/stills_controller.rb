@@ -1,9 +1,4 @@
 class Api::StillsController < ApplicationController
-  def edit
-    @still = Still.find(params[:id])
-    render json: @still
-  end
-
   def index
     @stills = Still.all
     render json: @stills, each_serializer: Api::StillSerializer
