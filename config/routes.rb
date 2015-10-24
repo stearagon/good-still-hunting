@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root 'root#root'
-  get '/*path' => 'root#root'
   namespace :api do
     resources :stills
     resources :movies
@@ -8,4 +7,5 @@ Rails.application.routes.draw do
     get 'movie_search', to: 'search#movie_search'
     resources :tags, only: [:show]
   end
+  get '/*path' => 'root#root'
 end
