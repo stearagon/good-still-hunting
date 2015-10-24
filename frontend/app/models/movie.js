@@ -4,5 +4,7 @@ export default DS.Model.extend({
     title: DS.attr('string'),
     director: DS.attr('string'),
     year: DS.attr('number'),
-    genre: DS.attr('string')
+    genre: DS.attr('string'),
+
+    stills: DS.hasMany('still')
 });
