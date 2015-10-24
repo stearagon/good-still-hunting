@@ -6,7 +6,7 @@ class Api::StillsController < ApplicationController
 
   def index
     @stills = Still.all
-    render json: @stills
+    render json: @stills, each_serializer: Api::StillSerializer
   end
 
   def create
