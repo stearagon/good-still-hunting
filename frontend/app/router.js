@@ -7,6 +7,7 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('movies', function(){});
+  this.route('stills', function(){});
 });
 
 export default Router;
