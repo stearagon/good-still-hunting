@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'root#root'
+  get '/*path' => 'root#root'
   namespace :api do
     resources :stills
     resources :movies
