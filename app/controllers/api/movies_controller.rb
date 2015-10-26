@@ -10,7 +10,7 @@ class Api::MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
+    @movies = Movie.all.includes(:stills)
     render json: @movies
   end
 

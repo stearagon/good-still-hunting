@@ -1,0 +1,29 @@
+<form>
+  {{errorMessage}}
+
+  {{view 'select'
+    content=movies
+    optionValuePath='content'
+    optionLabelPath='content.title'
+    value=model.movie
+    prompt="Please select a movie"
+  }}
+
+  {{input
+    type="text"
+    placeholder="name..."
+    value=model.name
+  }}
+
+  <input type="file" {{action  'fileInputChange' on='change'}}>
+  <img src="">
+
+  <!-- {{input
+    type='textarea'
+    placeholder='add tags...'
+    value=model.tags
+  }} -->
+
+  <button {{action 'create'}}>Submit</button>
+  <button {{action 'cancel'}}>Cancel</button>
+</form>

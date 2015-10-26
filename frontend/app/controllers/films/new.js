@@ -23,7 +23,7 @@ isValid: Ember.computed(
 actions: {
   create: function(){
     if(this.get('isValid')) {
-      this.get('model').save().then(function(movie) {
+      this.get('model').save().then(function() {
         this.transitionToRoute('films.index');
       }.bind(this));
     } else {

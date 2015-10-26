@@ -7,10 +7,11 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('films', function(){
-    this.route('new',function(){})
+    this.route('new',function(){});
   });
   this.route('stills', function(){
     this.route('still', { path: '/:still_id' }, function(){});
+    this.route('new',function(){});
   });
 });
 

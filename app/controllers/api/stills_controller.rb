@@ -8,7 +8,7 @@ class Api::StillsController < ApplicationController
     @still = Still.new(still_params)
 
     if @still.save
-      @still.update_tags(params[:tags])
+      # @still.update_tags(params[:tags])
       render json: @still
     else
       render json: @still.errors.full_messages
@@ -19,7 +19,7 @@ class Api::StillsController < ApplicationController
     @still = Still.find(params[:id])
 
     if @still.update(still_params)
-      @still.update_tags(params[:tags])
+      # @still.update_tags(params[:tags])
       render json: @still
     else
       render json: @still.errors.full_messages
