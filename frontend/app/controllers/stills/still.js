@@ -5,9 +5,9 @@ export default Ember.Controller.extend({
     const tags = this.get('model.tags');
     let text = [];
     tags.forEach(function(tag){
-      text.push('#' + tag.get('tag'));
+      text.push(tag.get('tag'));
     });
-
-    return text.join(' ');
+    
+    return text;
   })
 });

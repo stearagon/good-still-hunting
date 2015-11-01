@@ -3,4 +3,6 @@
 
 <img src="{{model.still.large_image_url}}"/>
 
-<textarea>{{textTags}}</textarea>
+  {{#each textTags as |tag|}}
+    <a href="#">{{tag}}</a>&nbsp;
+  {{/each}}

@@ -15,7 +15,7 @@ export default Ember.Component.extend({
     var splitTags = this.get('textTags').split('#');
     Array.prototype.forEach.call(splitTags, function(tag){
       if(tag.length > 0){
-        this.tags.push(tag);
+        this.tags.push(tag.trim());
       };
     }.bind(this));
   },

@@ -18,7 +18,7 @@ export default Ember.Controller.extend({
           });
 
           tagPromises.push(newTag.save());
-          debugger;
+          
           Ember.RSVP.all(tagPromises).then(function(tags){
               var stillsTag = that.store.createRecord('stillsTag', {
                 tag: tags[tags.length - 1],
