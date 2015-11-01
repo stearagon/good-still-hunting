@@ -9,10 +9,9 @@ Router.map(function() {
   this.route('films', function(){
     this.route('new',function(){});
   });
-  this.route('stills', function(){
-    this.route('still', { path: '/:still_id' }, function(){});
-    this.route('new',function(){});
-  });
+
+  this.route('stills.still', { path: 'stills/:still_id' }, function(){});
+  this.route('stills.new', { path: 'stills/new' }, function(){});
 });
 
 export default Router;

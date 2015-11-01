@@ -36,7 +36,7 @@ class Api::StillsController < ApplicationController
 
     @still.destroy
 
-    render json: { message: 'still destoryed'}
+    render json: { message: 'still destroyed'}
   end
 
 
