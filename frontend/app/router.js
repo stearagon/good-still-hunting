@@ -14,7 +14,6 @@ Router.map(function() {
     this.route('still', { path: '/:still_id' }, function(){});
     this.route('new', { path: '/new' }, function(){});
   })
-
 });
 
 export default Router;

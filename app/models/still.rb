@@ -15,7 +15,7 @@
 
 class Still < ActiveRecord::Base
   include PgSearch
-  paginates_per 9
+  after_save { PgSearch::Multisearch.rebuild(Still) }
 
   multisearchable :against => :tags_tags
 
@@ -32,46 +32,6 @@ class Still < ActiveRecord::Base
   belongs_to :movie
   has_many :stills_tags
   has_many :tags, through: :stills_tags
-
-  def update_tags(tags)
-    tags = tags.split("#").map { |tag| tag.strip }
-
-    self.tags.each_with_index do |tag, idx|
-      unless tag == ""
-        if !tags.include?("#" + tag.tag)
-          self.tags.delete(tag)
-        else
-          tags.delete("#" + tag.tag)
-        end
-      end
-    end
-
-    tags.each do |tag|
-      unless tag == ""
-
-        new_tag = Tag.new(tag: tag)
-
-        if new_tag.save
-          self.tags << new_tag
-        else
-          self.tags << Tag.find_by_tag(tag)
-        end
-      end
-    end
-
-    PgSearch::Multisearch.rebuild(Still)
-
-  end
-
-  def list_tags
-    answer = []
-
-    self.tags.each do |tag|
-      answer << tag.tag
-    end
-
-    answer
-  end
 
   def tags_tags
     result = []

@@ -1,6 +1,14 @@
 class Api::StillsController < ApplicationController
   def index
-    @stills = Still.all
+    if(params[:search_input])
+      @tags = Tag.tag_search(params[:search_input])
+      @stills = []
+
+      @tags.to_a.each {|tag| @stills.concat(tag.stills) }
+    else
+      @stills = Still.all
+    end
+    
     render json: @stills, each_serializer: Api::StillSerializer
   end
 

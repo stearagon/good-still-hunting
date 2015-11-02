@@ -5,8 +5,7 @@
   {{#link-to 'films.new'}}Add Film{{/link-to}}
   {{#link-to 'stills.new'}}Add Still{{/link-to}}
 
-  <input type="text" value="">
-  <button>Search</button>
+  {{search-form searchStills=(action 'searchStills')}}
 
 </header>
 

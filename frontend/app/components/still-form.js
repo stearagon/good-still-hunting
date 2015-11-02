@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   tags: [],
   textTags: '',
+  errorMessage: '',
 
   isValid: Ember.computed( 'model.movie', 'model.name', 'model.image', function() {
       return !Ember.isEmpty(this.get('model.movie')) &&
