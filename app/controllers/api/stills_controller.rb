@@ -1,6 +1,8 @@
 class Api::StillsController < ApplicationController
   def index
-    if(params[:search_input] == '')
+    if(params[:film_id])
+      @stills = Movie.find(params[:film_id]).stills
+    elsif(params[:search_input] == '')
       @stills = Still.all
     else
       @tags = Tag.tag_search(params[:search_input])

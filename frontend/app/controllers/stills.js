@@ -6,4 +6,8 @@ export default Ember.Controller.extend({
   ],
 
   searchInput: '',
+
+  resetData: function() {
+    this.set('searchInput', '');
+  }
 });

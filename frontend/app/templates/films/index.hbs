@@ -1,5 +1,9 @@
 <h2>All Films</h2>
 
 {{#each movie in model}}
-  <li><a href='#'>{{movie.title}}</a></li>
+  <li>
+    {{#link-to 'films.film' movie.id}}
+      {{movie.title}}
+    {{/link-to}}
+  </li>
 {{/each}}
