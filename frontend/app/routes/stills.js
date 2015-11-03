@@ -11,7 +11,7 @@ export default Ember.Route.extend({
 
   resetController: function(controller, isExiting, transition) {
       this._super.apply(this, arguments);
-      debugger;
+
       if (isExiting) {
           controller.resetData();
       }
