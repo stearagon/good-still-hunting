@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import _ from 'lodash/lodash';
 
 export default Ember.Route.extend({
   queryParams: {
@@ -10,7 +11,8 @@ export default Ember.Route.extend({
   perPage: 25,
 
   model: function(queryParams, transition){
-    return this.store.query('still', queryParams)
+    const params = this.buildQueryParams(queryParams);
+    return this.store.query('still', params)
   },
 
   resetController: function(controller, isExiting, transition) {
@@ -19,5 +21,23 @@ export default Ember.Route.extend({
       if (isExiting) {
           controller.resetData();
       }
-  }
+  },
+
+  buildQueryParams: function(queryParams) {
+    var params = {};
+
+    if (queryParams.searchInput.length > 0) {
+      _.extend(params, { search_input: queryParams.searchInput });
+    }
+
+    if (queryParams.page) {
+      _.extend(params, { page: queryParams.page });
+    }
+
+    if (queryParams.termsTypes) {
+      _.extend(params, { per_page: queryParams.perPage });
+    }
+
+    return params;
+  },
 });

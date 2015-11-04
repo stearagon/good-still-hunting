@@ -2,9 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   queryParams: [
-    {searchInput: 'search_input'},
+    { searchInput: 'search_input' },
+    { perPage: 'per_page' },
     'page',
-    'perPage'
   ],
 
   page: 1,

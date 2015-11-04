@@ -11,6 +11,12 @@
     "ember-resolver": "~0.1.18",
     "jquery": "^1.11.3",
     "loader.js": "ember-cli/loader.js#3.2.1",
-    "qunit": "~1.18.0"
+    "qunit": "~1.18.0",
+    "lodash": "~3.10.1",
+    "underscore": "~1.8.3"
+  },
+  "devDependencies": {
+    "lodash": "~3.10.1",
+    "underscore": "~1.8.3"
   }
 }
