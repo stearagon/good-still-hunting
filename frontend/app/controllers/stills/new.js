@@ -6,8 +6,6 @@ export default Ember.Controller.extend({
 
   actions: {
     create: function(tags){
-      var tagPromises = new Array();
-      var stillsTagPromises = new Array();
       var that = this;
 
       that.get('still').save().then(function(still){
@@ -17,19 +15,18 @@ export default Ember.Controller.extend({
             tag: tag
           });
 
-          tagPromises.push(newTag.save());
-          
-          Ember.RSVP.all(tagPromises).then(function(tags){
-              var stillsTag = that.store.createRecord('stillsTag', {
-                tag: tags[tags.length - 1],
-                still: that.get('still')
-              });
+          newTag.save().then(function(tag){
+            var stillsTag = that.store.createRecord('stillsTag', {
+              tag: tag,
+              still: that.get('still')
+            });
 
-              stillsTagPromises.push(stillsTag.save());
+            var stillsTagPromises = new Array();
+            stillsTagPromises.push(stillsTag.save());
 
-              Ember.RSVP.all(stillsTagPromises).then(function() {
-                that.transitionTo('stills.still', that.get('still.id'));
-              });
+            Ember.RSVP.all(stillsTagPromises).then(function() {
+              that.transitionTo('stills.still', that.get('still.id'));
+            });
           })
         });
       });
