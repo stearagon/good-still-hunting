@@ -19,7 +19,7 @@ export default Ember.Route.extend({
       this._super.apply(this, arguments);
 
       if (isExiting) {
-          controller.resetData();
+        controller.resetData();
       }
   },
 
@@ -34,7 +34,7 @@ export default Ember.Route.extend({
       _.extend(params, { page: queryParams.page });
     }
 
-    if (queryParams.termsTypes) {
+    if (queryParams.perPage) {
       _.extend(params, { per_page: queryParams.perPage });
     }
 

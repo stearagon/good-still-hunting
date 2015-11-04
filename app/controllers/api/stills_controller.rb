@@ -9,7 +9,10 @@ class Api::StillsController < ApplicationController
       @stills = []
 
       @tags.to_a.each {|tag| @stills.concat(tag.stills) }
+      @stills = Kaminari.paginate_array(@stills)
     end
+
+    @stills = @stills.page(params[:page]).per(params[:per_page])
 
     render json: @stills, each_serializer: Api::StillSerializer
   end
