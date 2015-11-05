@@ -7,16 +7,14 @@
       optionValuePath='content'
       optionLabelPath='content.title'
       value=model.movie
-      prompt="Please select a movie"
-    }}
+      prompt="Please select a movie"}}
   </label>
 
   <label>Name:
     {{input
       type="text"
       placeholder="name..."
-      value=model.name
-    }}
+      value=model.name}}
   </label>
 
   <label>Image:<input type="file" {{action  'fileInputChange' on='change'}}></label>
@@ -25,8 +23,7 @@
   <label>Tags:
     {{input
       type='textarea'
-      value=textTags
-    }}
+      value=textTags}}
   </label>
 
   <button {{action 'onCreate'}}>Submit</button>

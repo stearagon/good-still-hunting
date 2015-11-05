@@ -5,7 +5,9 @@ class Api::TagsController < ApplicationController
   end
 
   def create
-    @tag = Tag.new(tag_params)
+    @tag = Tag.find_by(tag_params)
+
+    @tag ||= Tag.new(tag_params)
 
     if @tag.save
       render json: @tag

@@ -15,7 +15,6 @@
 
 class Still < ActiveRecord::Base
   include PgSearch
-  after_save { PgSearch::Multisearch.rebuild(Still) }
 
   multisearchable :against => :tags_tags
 

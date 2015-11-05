@@ -14,11 +14,14 @@ export default Ember.Component.extend({
 
   unformatTags: function(){
     var splitTags = this.get('textTags').split('#');
+    var newTags = [];
     Array.prototype.forEach.call(splitTags, function(tag){
       if(tag.length > 0){
-        this.tags.push(tag.trim());
+        newTags.push(tag.trim());
       };
     }.bind(this));
+
+    this.set('tags', newTags);
   },
 
   updatePreview: function(src, el){
@@ -40,7 +43,6 @@ export default Ember.Component.extend({
     },
 
     onCancel: function(){
-
       this.sendAction('cancel');
     },
 
