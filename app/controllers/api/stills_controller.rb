@@ -2,7 +2,7 @@ class Api::StillsController < ApplicationController
   def index
     if(params[:film_id])
       @stills = Movie.find(params[:film_id]).stills
-    elsif(params[:search_input].nil?)
+    elsif(params[:search_input].nil? || params[:search_input] == '')
       @stills = Still.all
     else
       @tags = Tag.tag_search(params[:search_input])
@@ -14,7 +14,7 @@ class Api::StillsController < ApplicationController
 
     @stills = @stills.page(params[:page]).per(params[:per_page])
 
-    render json: @stills, each_serializer: Api::StillSerializer
+    render json: @stills, meta: { total_pages: @stills.total_pages, page: params[:page], per_page: params[:per_page] }, each_serializer: Api::StillSerializer
   end
 
   def create
