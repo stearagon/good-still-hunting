@@ -4,4 +4,12 @@
   {{/link-to}}
 {{/each}}
 
-<button {{action 'loadNext'}}>Load More</button>
+<span {{action 'loadNext'}} class='load-button'></span>
+
+<script type="text/javascript">
+  $(window).scroll(function() {
+   if($(window).scrollTop() + $(window).height() == $(document).height()) {
+    $('.load-button').click();
+   }
+  });
+</script>
