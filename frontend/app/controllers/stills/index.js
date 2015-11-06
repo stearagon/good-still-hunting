@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import pagedArray from 'ember-cli-pagination/computed/paged-array';
 
 export default Ember.Controller.extend({
   queryParams: [
@@ -9,9 +8,13 @@ export default Ember.Controller.extend({
   ],
 
   page: 1,
-  perPage: 5,
+  perPage: 20,
 
   searchInput: '',
+
+  resetData: function() {
+    this.set('searchInput', '');
+  },
 
   actions: {
     loadNext: function() {

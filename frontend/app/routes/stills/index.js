@@ -1,8 +1,7 @@
 import Ember from 'ember';
 import _ from 'lodash/lodash';
-import RouteMixin from 'ember-cli-pagination/remote/route-mixin';
 
-export default Ember.Route.extend(RouteMixin, {
+export default Ember.Route.extend({
   queryParams: {
     searchInput: { refreshModel: true },
     page: { refreshModel: false },

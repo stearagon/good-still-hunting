@@ -3,3 +3,11 @@
     <img src="{{still.medium_image_url}}"/>
   {{/link-to}}
 {{/each}}
+<span {{action 'loadNext'}} class='load-button'></span>
+<script type="text/javascript">
+  $(window).scroll(function() {
+   if($(window).scrollTop() + $(window).height() == $(document).height()) {
+    $('.load-button').click();
+   }
+  });
+</script>

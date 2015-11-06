@@ -14,7 +14,7 @@ class Api::StillsController < ApplicationController
 
     @stills = @stills.page(params[:page]).per(params[:per_page])
 
-    render json: @stills, meta: { total_pages: @stills.total_pages, page: params[:page], per_page: params[:per_page] }, each_serializer: Api::StillSerializer
+    render json: @stills, meta: { total_pages: @stills.total_pages, page: params[:page], per_page: params[:per_page], search_input: params[:search_input] }, each_serializer: Api::StillSerializer
   end
 
   def create
