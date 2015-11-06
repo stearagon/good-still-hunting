@@ -4,6 +4,7 @@ export default Ember.Controller.extend({
   queryParams: [
     { searchInput: 'search_input' },
     { perPage: 'per_page' },
+    { tagId: 'tag_id' },
     'page',
   ],
 
