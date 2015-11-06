@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
   ],
 
   page: 1,
-  perPage: 20,
+  perPage: 9,
 
   searchInput: '',
 
