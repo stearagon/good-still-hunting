@@ -4,6 +4,7 @@ import _ from 'lodash/lodash';
 export default Ember.Route.extend({
   queryParams: {
     searchInput: { refreshModel: true },
+    tagId: { refreshModel: true },
     page: { refreshModel: false },
     perPage: { refreshModel: false }
   },
@@ -28,6 +29,10 @@ export default Ember.Route.extend({
 
     if (queryParams.searchInput.length > 0) {
       _.extend(params, { search_input: queryParams.searchInput });
+    }
+
+    if (queryParams.tagId) {
+      _.extend(params, { tag_id: queryParams.tagId });
     }
 
     if (queryParams.page) {

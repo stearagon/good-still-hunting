@@ -18,7 +18,7 @@ export default Ember.Route.extend({
 
   buildQueryParams: function(queryParams) {
     var params = {};
-
+    
     if (queryParams.searchInput) {
       _.extend(params, { search_input: queryParams.searchInput });
     }

@@ -15,6 +15,7 @@ export default Ember.Controller.extend({
 
   resetData: function() {
     this.set('searchInput', '');
+    // this.set('tagId', '');
   },
 
   actions: {

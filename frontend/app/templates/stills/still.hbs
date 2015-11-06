@@ -4,5 +4,5 @@
 <img src="{{model.still.large_image_url}}"/>
 
   {{#each textTags as |tag|}}
-    <a href="#">{{tag}}</a>&nbsp;
+    {{#link-to 'stills.index' (query-params tagId=tag)}}{{tag}}{{/link-to}}
   {{/each}}
