@@ -6,7 +6,7 @@ class Api::StillsController < ApplicationController
     elsif (params[:search_input].nil? || params[:search_input] == '') && params[:tag_id].nil?
       @stills = Still.all
 
-    elsif params[:tag_id]
+    elsif !params[:tag_id].nil?
       @stills = Tag.find_by(tag: params[:tag_id]).stills
 
     else
@@ -19,7 +19,7 @@ class Api::StillsController < ApplicationController
 
     @stills = @stills.page(params[:page]).per(params[:per_page])
 
-    render json: @stills, meta: { total_pages: @stills.total_pages, page: params[:page], per_page: params[:per_page], search_input: params[:search_input] }, each_serializer: Api::StillSerializer
+    render json: @stills, meta: { total_pages: @stills.total_pages, page: params[:page], per_page: params[:per_page], search_input: params[:search_input], tag_id: params[:tag_id] }, each_serializer: Api::StillSerializer
   end
 
   def create

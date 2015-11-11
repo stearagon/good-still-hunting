@@ -12,9 +12,14 @@ Router.map(function() {
   });
 
   this.route('stills', function(){
+    this.route('search', { path: '/search' }, function(){});
     this.route('still', { path: '/:still_id' }, function(){});
     this.route('new', { path: '/new' }, function(){});
-  })
+  });
+
+  this.route('tags', function() {
+    this.route('tag');
+  });
 });
 
 export default Router;

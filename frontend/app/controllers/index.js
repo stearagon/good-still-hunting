@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import _ from 'lodash/lodash';
 
 export default Ember.Controller.extend({
   queryParams: [
@@ -7,17 +8,36 @@ export default Ember.Controller.extend({
   ],
 
   page: 1,
-  perPage: 20,
+  perPage: 9,
 
+  resetData: function() {
+    this.set('page', 1);
+  },
+  
   actions: {
-    loadNext: function() {
+    loadNext() {
       var that = this;
-      var metaData = this.store.metadataFor('still');
-      var params = { page: parseInt(metaData.page) + 1, per_page: metaData.per_page };
+      var metaData = this.get('model.meta');
 
-      this.store.findQuery('still', params).then(function(stills) {
-        that.set('model', that.get('model').toArray().addObjects(stills.toArray()));
-      });
+      var params = {};
+
+      if (metaData.total_pages > this.get('page')) {
+        this.set('page', parseInt(this.get('page')) + 1);
+
+        if (this.get('page')) {
+          _.extend(params, { page: this.get('page')});
+        }
+
+        if (this.get('perPage')) {
+          _.extend(params, { per_page: this.get('perPage') });
+        }
+
+        this.store.findQuery('still', params).then(function(stills) {
+          let meta = that.get('model.meta');
+          that.set('model', that.get('model').toArray().addObjects(stills.toArray()));
+          that.set('model.meta', meta);
+        });
+      }
     }
   }
 });

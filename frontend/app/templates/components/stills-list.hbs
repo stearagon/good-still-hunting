@@ -4,11 +4,15 @@
   {{/link-to}}
 {{/each}}
 
-<span {{action 'loadNext'}} class='load-button'></span>
+<span {{action 'onLoadNext'}} class='load-button'></span>
+
 <script type="text/javascript">
-  $(window).scroll(function() {
-   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-    $('.load-button').click();
-   }
+  $(document).ready(function(){
+    $('body').height($(document).height() + 1);
+    $(window).scroll(function() {
+      if($(window).height() + $(window).scrollTop() === $(document).height()) {
+        $('.load-button').click();
+      }
+    });
   });
 </script>
