@@ -6,6 +6,8 @@ gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 
+gem 'rubygems-update', '~> 2.1', '>= 2.1.0.rc.1'
+
 gem 'active_model_serializers'
 
 gem 'pg'
