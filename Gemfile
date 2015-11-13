@@ -68,3 +68,5 @@ group :development, :test do
 
   gem 'better_errors'
 end
+
+gem 'rails_12factor', group: [:staging, :production]
