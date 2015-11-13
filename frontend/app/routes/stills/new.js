@@ -5,7 +5,7 @@ export default Ember.Route.extend({
     return Ember.RSVP.hash({
       still: this.store.createRecord('still'),
       movies: this.store.findAll('movie')
-    })
+    });
   },
 
   setupController: function(controller, models){

@@ -1,8 +1,7 @@
-
 <h2 class='still-title'>{{model.name}}</h2>
 
 <img src="{{model.still.large_image_url}}"/>
 
-  {{#each textTags as |tag|}}
-    {{#link-to 'tags.tag' tag}}{{tag}}{{/link-to}}
+  {{#each model.tags as |tag|}}
+    {{#link-to 'tags.tag' tag.id}}{{tag.tag}}{{/link-to}}
   {{/each}}

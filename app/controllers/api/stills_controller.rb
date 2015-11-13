@@ -2,6 +2,8 @@ class Api::StillsController < ApplicationController
   def index
     if (params[:search_input].nil? || params[:search_input] == '') && params[:tag_id].nil?
       @stills = Still.all
+    elsif (params[:search_input].nil? || params[:search_input] == '')
+      @stills = Tag.find(params[:tag_id]).stills
     else
       @tags = Tag.tag_search(params[:search_input])
       @stills = []

@@ -18,7 +18,7 @@ export default Ember.Component.extend({
     Array.prototype.forEach.call(splitTags, function(tag){
       if(tag.length > 0){
         newTags.push(tag.trim());
-      };
+      }
     }.bind(this));
 
     this.set('tags', newTags);
@@ -34,7 +34,7 @@ export default Ember.Component.extend({
       if(this.get('isValid')){
         if(this.get('textTags').length > 0){
           this.unformatTags();
-        };
+        }
 
         this.sendAction('create', this.tags);
       } else {
@@ -53,7 +53,7 @@ export default Ember.Component.extend({
 
       reader.onloadend = function(){
         this.updatePreview(reader.result, previewWindow);
-      }.bind(this)
+      }.bind(this);
 
       if (file) {
         reader.readAsDataURL(file);

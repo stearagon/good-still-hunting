@@ -10,12 +10,12 @@ export default Ember.Route.extend({
 
   perPage: 25,
 
-  model: function(queryParams, transition){
+  model: function(queryParams){
     const params = this.buildQueryParams(queryParams);
     return this.store.query('still', params);
   },
 
-  resetController: function(controller, isExiting, transition) {
+  resetController: function(controller, isExiting) {
       this._super.apply(this, arguments);
 
       if (isExiting) {

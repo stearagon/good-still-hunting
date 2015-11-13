@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
     create: function(tags){
       var that = this;
 
-      that.get('still').save().then(function(still){
+      that.get('still').save().then(function(){
 
         tags.forEach(function(tag){
           var newTag = that.store.createRecord('tag', {
@@ -21,13 +21,13 @@ export default Ember.Controller.extend({
               still: that.get('still')
             });
 
-            var stillsTagPromises = new Array();
+            var stillsTagPromises = [];
             stillsTagPromises.push(stillsTag.save());
 
             Ember.RSVP.all(stillsTagPromises).then(function() {
               that.transitionTo('stills.still', that.get('still.id'));
             });
-          })
+          });
         });
       });
 

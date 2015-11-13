@@ -1,5 +1,1 @@
-{{#each stills as |still|}}
-  {{#link-to 'stills.still' still.id}}
-    <img src="{{still.medium_image_url}}"/>
-  {{/link-to}}
-{{/each}}
+{{stills-list model=stills store=store loadNext=(action 'loadNext')}}

@@ -18,7 +18,7 @@ Router.map(function() {
   });
 
   this.route('tags', function() {
-    this.route('tag');
+    this.route('tag', { path: '/:tag_id' }, function(){});
   });
 });
 
