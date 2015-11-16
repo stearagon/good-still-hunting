@@ -12,6 +12,7 @@ export default Ember.Route.extend({
 
   model: function(queryParams){
     const params = this.buildQueryParams(queryParams);
+    _.extend(params, { seed: Math.random() * (1000000 - 1) + 1 });
     return this.store.query('still', params);
   },
 

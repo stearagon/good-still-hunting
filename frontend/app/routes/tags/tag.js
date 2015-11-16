@@ -12,6 +12,7 @@ export default Ember.Route.extend({
 
   model(queryParams) {
     const params = this.buildQueryParams(queryParams);
+    _.extend(params, { seed: Math.random() * (1000000 - 1) + 1 });
 
     return Ember.RSVP.hash({
       tag: this.store.findRecord('tag', params.tag_id),

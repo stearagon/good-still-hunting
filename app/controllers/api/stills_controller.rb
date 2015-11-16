@@ -1,5 +1,4 @@
 class Api::StillsController < ApplicationController
-
   def index
     if (params[:search_input].nil? || params[:search_input] == '') && params[:tag_id].nil?
       @stills = Still.all
@@ -12,9 +11,9 @@ class Api::StillsController < ApplicationController
       @tags.to_a.each {|tag| @stills.concat(tag.stills) }
       @stills = Kaminari.paginate_array(@stills)
     end
-
-    session[:seed] = Random.new_seed
-    srand params[:seed].to_i
+    
+    session[:seed] = params[:seed] if !params[:seed].nil?
+    srand session[:seed].to_i
 
     @stills = Kaminari.paginate_array(@stills.shuffle).page(params[:page]).per(params[:per_page])
 
