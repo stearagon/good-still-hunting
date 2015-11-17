@@ -15,7 +15,7 @@ class Api::MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.includes(:stills).find(params[:id])
+    @movie = Movie.find(params[:id])
     render json: @movie
   end
 

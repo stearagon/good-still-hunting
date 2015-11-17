@@ -10,12 +10,20 @@ export default Ember.Route.extend({
 
   perPage: 25,
 
-  model: function(params){
-    return this.store.findRecord('movie', params.film_id);
+  model: function(queryParams){
+    const params = this.buildQueryParams(queryParams);
+
+    return Ember.RSVP.hash({
+      movie: this.store.findRecord('movie', params.movie_id),
+      stills: this.store.query('still', params)
+    });
   },
 
-  setupController(controller, model) {
-    controller.set('stills', model.get('stills'));
+  setupController(controller,model) {
+    controller.set('filmId', model.movie.id);
+    controller.set('meta', model.stills.meta);
+    controller.set('stills', model.stills);
+    controller.set('movie', model.movie);
   },
 
   resetController: function(controller, isExiting) {
@@ -35,6 +43,10 @@ export default Ember.Route.extend({
 
     if (queryParams.perPage) {
       _.extend(params, { per_page: queryParams.perPage });
+    }
+
+    if (queryParams.film_id) {
+      _.extend(params, { movie_id: queryParams.film_id });
     }
 
     return params;

@@ -9,6 +9,7 @@ export default Ember.Controller.extend({
 
   page: 1,
   perPage: 12,
+  filmId: null,
 
   resetData: function() {
     this.set('page', 1);
@@ -17,7 +18,7 @@ export default Ember.Controller.extend({
   actions: {
     loadNext() {
       var that = this;
-      var metaData = this.get('stills.meta');
+      var metaData = this.get('meta');
       var params = {};
 
       if (metaData.total_pages > this.get('page')) {
@@ -30,11 +31,14 @@ export default Ember.Controller.extend({
         if (this.get('perPage')) {
           _.extend(params, { per_page: this.get('perPage') });
         }
+        if (this.get('filmId')) {
+          _.extend(params, { movie_id: this.get('filmId') });
+        }
 
         this.store.findQuery('still', params).then(function(stills) {
-          let meta = that.get('stills.meta');
+          let meta = stills.meta;
           that.set('stills', that.get('stills').toArray().addObjects(stills.toArray()));
-          that.set('stills.meta', meta);
+          that.set('meta', meta);
         });
       }
     }

@@ -6,5 +6,5 @@ export default DS.Model.extend({
     year: DS.attr('number'),
     genre: DS.attr('string'),
 
-    stills: DS.hasMany('still', {async:true})
+    stills: DS.hasMany('still', { async:true })
 });

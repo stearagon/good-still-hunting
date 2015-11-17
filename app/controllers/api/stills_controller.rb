@@ -1,9 +1,11 @@
 class Api::StillsController < ApplicationController
   def index
-    if (params[:search_input].nil? || params[:search_input] == '') && params[:tag_id].nil?
+    if (params[:search_input].nil? || params[:search_input] == '') && params[:tag_id].nil? && params[:movie_id].nil?
       @stills = Still.all
-    elsif (params[:search_input].nil? || params[:search_input] == '')
+    elsif (params[:search_input].nil? || params[:search_input] == '') && params[:movie_id].nil?
       @stills = Tag.find(params[:tag_id]).stills
+    elsif (params[:search_input].nil? || params[:search_input] == '')
+      @stills = Movie.find(params[:movie_id]).stills
     else
       @tags = Tag.tag_search(params[:search_input])
       @stills = []
