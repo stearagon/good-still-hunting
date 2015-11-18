@@ -5,14 +5,3 @@
 {{/each}}
 
 <span {{action 'onLoadNext'}} class='load-button'></span>
-
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('body').height($(document).height() + 1);
-    $(window).scroll(function() {
-      if($(window).height() + $(window).scrollTop() === $(document).height()) {
-        $('.load-button').click();
-      }
-    });
-  });
-</script>
