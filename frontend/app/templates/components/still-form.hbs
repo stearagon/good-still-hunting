@@ -21,9 +21,10 @@
   <img src="">
 
   <label>Tags:
-    {{input
-      type='textarea'
-      value=textTags}}
+    {{textarea
+      value=textTags
+      cols="50"
+      rows="10"}}
   </label>
 
   <button {{action 'onCreate'}}>Submit</button>

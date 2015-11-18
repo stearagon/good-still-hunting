@@ -32,9 +32,7 @@ export default Ember.Controller.extend({
           _.extend(params, { per_page: this.get('perPage') });
         }
 
-        if (this.get('tagId')) {
-          _.extend(params, { tag_id: this.get('tagId') });
-        }
+        _.extend(params, { tag_id: this.get('model.tag.id') });
 
         this.store.findQuery('still', params).then(function(stills) {
           let meta = that.get('model.stills.meta');
