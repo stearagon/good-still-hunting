@@ -38,7 +38,9 @@ export default Ember.Controller.extend({
           let meta = that.get('model.meta');
           that.set('model', that.get('model').toArray().addObjects(stills.toArray()));
           that.set('model.meta', meta);
-          that.set('isLoading', false);
+          Ember.run.later(function(){
+              that.set('isLoading', false);
+          }, 1000);
         });
       }
     }

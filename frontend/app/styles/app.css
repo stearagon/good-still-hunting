@@ -2,3 +2,7 @@
   height: auto;
   width: 100%;
 }
+
+.ember-application {
+  position: relative;
+}
