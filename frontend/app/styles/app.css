@@ -3,11 +3,15 @@
   width: 100%;
 }
 
-.stills {
-  position: relative;
+.modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
 }
 
-.spinner {
-  position: absolute;
-  bottom: 20px;
+.modal .spinner {
+    left: 50%;
+    transform: translateX(-50%);
+    position: fixed;
 }

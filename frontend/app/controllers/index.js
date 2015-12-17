@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
 
   page: 1,
   perPage: 12,
-  isLoading: false,
+  isLoading: 0,
 
   resetData: function() {
     this.set('page', 1);
@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
 
   actions: {
     loadNext() {
-      this.set('isLoading', true);
+      this.set('isLoading', this.get('isLoading') + 1);
       var that = this;
       var metaData = this.get('model.meta');
 
@@ -39,7 +39,7 @@ export default Ember.Controller.extend({
           that.set('model', that.get('model').toArray().addObjects(stills.toArray()));
           that.set('model.meta', meta);
           Ember.run.later(function(){
-              that.set('isLoading', false);
+              that.set('isLoading', that.get('isLoading') - 1);
           }, 1000);
         });
       }
