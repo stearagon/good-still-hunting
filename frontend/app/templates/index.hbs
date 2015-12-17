@@ -1,4 +1,6 @@
-{{stills-list model=model store=store loadNext=(action 'loadNext')}}
-{{#if isLoading}}
-  {{ember-spinner}}
-{{/if}}
+<div class="stills">
+  {{stills-list model=model store=store loadNext=(action 'loadNext')}}
+  {{#if isLoading}}
+    {{ember-spinner lines=12 radius=10 width=5 rotate=0 speed='3.4' zIndex='5000' color='orange'}}
+  {{/if}}
+</div>

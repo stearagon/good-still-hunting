@@ -3,6 +3,11 @@
   width: 100%;
 }
 
-.ember-application {
+.stills {
   position: relative;
+}
+
+.spinner {
+  position: absolute;
+  bottom: 20px;
 }
