@@ -45,6 +45,7 @@
     "ember-export-application-global": "^1.0.3",
     "ember-lodash": "git+https://github.com/mike-north/ember-lodash.git",
     "ember-power-select": "0.7.1",
+    "ember-validations": "~ 2.0.0-alpha.1",
     "underscore": "1.8.3"
   }
 }

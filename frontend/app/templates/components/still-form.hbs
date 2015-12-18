@@ -2,10 +2,10 @@
   {{errorMessage}}
 
   <label>Movie:
-
     {{#power-select
       options=movies
       onchange=(action (mut title))
+      searchPlaceholder="Type Movie Name"
       as |movie|
     }}
       {{movie.title}}

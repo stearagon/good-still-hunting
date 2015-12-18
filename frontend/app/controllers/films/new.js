@@ -1,34 +1,42 @@
 import Ember from 'ember';
+import EmberValidations from "ember-validations";
 
-export default Ember.Controller.extend({
-  genres: [
-            'Action',
-            'Comedy',
-            'Drama',
-            'Mystery',
-            'Thriller',
-            'Documentary',
-            'Horror'
-          ],
+export default Ember.Controller.extend(EmberValidations, {
+  title: null,
+  director: null,
+  year: null,
+  genre: null,
 
-  isValid: Ember.computed(
-    'model.title', 'model.director', 'model.year', 'model.genre', function() {
-      return !Ember.isEmpty(this.get('model.title')) &&
-      !Ember.isEmpty(this.get('model.director')) &&
-      !Ember.isEmpty(this.get('model.year')) &&
-      !Ember.isEmpty(this.get('model.genre'));
+  validations: {
+    'title': {
+      presence: true
+    },
+
+    'director': {
+      presence: true
+    },
+
+    'year': {
+      presence: true,
+      numericality: true
+    },
+
+    'genre': {
+      presence: true
     }
-  ),
+  },
 
   actions: {
     create: function(){
-      if(this.get('isValid')) {
-        this.get('model').save().then(function() {
+      this.validate().then(() => {
+        let props = this.getProperties('genre', 'title', 'year', 'director');
+        let movie = this.store.createRecord('movie', props);
+        movie.save().then(()=> {
           this.transitionToRoute('films.index');
-        }.bind(this));
-      } else {
-        this.set('errorMessage', 'You have to fill all the fields');
-      }
+        });
+      }).catch(() => {
+        this.set('errorMessage', 'Please check inputs again.');
+      });
 
       return false;
     },
@@ -37,6 +45,15 @@ export default Ember.Controller.extend({
       this.transitionToRoute('films');
       return false;
     }
-  }
+  },
 
+  genres: [
+    'Action',
+    'Comedy',
+    'Drama',
+    'Mystery',
+    'Thriller',
+    'Documentary',
+    'Horror'
+  ]
 });

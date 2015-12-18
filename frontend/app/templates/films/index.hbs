@@ -1,6 +1,6 @@
 <h2>All Films</h2>
 
-{{#each movie in model}}
+{{#each model as |movie|}}
   <li>
     {{#link-to 'films.film' movie.id}}
       {{movie.title}}
