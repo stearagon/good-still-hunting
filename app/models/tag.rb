@@ -18,6 +18,6 @@ class Tag < ActiveRecord::Base
                     :tsearch => {:prefix => true}
                   }
 
-  has_many :stills_tags
+  has_many :stills_tags, dependent: :destroy
   has_many :stills, through: :stills_tags
 end
