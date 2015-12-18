@@ -1,4 +1,6 @@
-{{stills-list model=model store=store loadNext=(action 'loadNext')}}
+<div class="stills-list">
+  {{stills-list model=model store=store loadNext=(action 'loadNext')}}
+</div>
 
 {{#if isLoading}}
   <div class="modal">

@@ -2,12 +2,14 @@
   {{errorMessage}}
 
   <label>Movie:
-    {{view 'select'
-      content=movies
-      optionValuePath='content'
-      optionLabelPath='content.title'
-      value=model.movie
-      prompt="Please select a movie"}}
+
+    {{#power-select
+      options=movies
+      onchange=(action (mut title))
+      as |movie|
+    }}
+      {{movie.title}}
+    {{/power-select}}
   </label>
 
   <label>Name:
