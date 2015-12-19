@@ -1,5 +1,5 @@
 class Api::StillSerializer < ActiveModel::Serializer
-  attributes :id, :name, :medium_image_url, :large_image_url, :movie_id
+  attributes :id, :name, :medium_image_url, :large_image_url, :movie_id, :tag_ids
 
   def medium_image_url
     object.image(:medium)

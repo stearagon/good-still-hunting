@@ -1,49 +1,83 @@
 import Ember from 'ember';
+import EmberValidations from "ember-validations";
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(EmberValidations, {
+  createdTags: null,
+
+  errorMessage: null,
+  image: null,
+  movie: null,
+  name: null,
   tags: [],
-  textTags: '',
-  errorMessage: '',
 
-  isValid: Ember.computed( 'model.movie', 'model.name', 'model.image', function() {
-      return !Ember.isEmpty(this.get('model.movie')) &&
-      !Ember.isEmpty(this.get('model.name')) &&
-      !Ember.isEmpty(this.get('model.image'));
-    }
-  ),
+  tagsQuery: null,
 
-  unformatTags: function(){
-    var splitTags = this.get('textTags').split('#');
-    var newTags = [];
-    Array.prototype.forEach.call(splitTags, function(tag){
-      if(tag.length > 0){
-        newTags.push(tag.trim());
+  validations: {
+    image: {
+      presence: true
+    },
+
+    name: {
+      presence: true
+    },
+
+    movie: {
+      presence: true
+    },
+
+    tags: {
+      length: {
+        minimum: 1
       }
-    }.bind(this));
-
-    this.set('tags', newTags);
+    }
   },
+
+  // unformatTags: function(){
+  //   var splitTags = this.get('textTags').split('#');
+  //   var newTags = [];
+  //   Array.prototype.forEach.call(splitTags, function(tag){
+  //     if(tag.length > 0){
+  //       newTags.push(tag.trim());
+  //     }
+  //   }.bind(this));
+  //
+  //   this.set('tags', newTags);
+  // },
 
   updatePreview: function(src, el){
     el.src = src;
-    this.model.set('image', src);
+    this.set('image', src);
   },
 
   actions: {
-    onCreate: function(){
-      if(this.get('isValid')){
-        if(this.get('textTags').length > 0){
-          this.unformatTags();
-        }
+    onCreate() {
+      let props = this.getProperties('image', 'name', 'movie')
+      let newTags = this.get('tags').map(function(tag){ return tag.get('tag'); })
 
-        this.sendAction('create', this.tags);
-      } else {
-        this.set('errorMessage', 'You have to fill all required fields');
-      }
+      this.sendAction('create', newTags, props);
     },
 
     onCancel: function(){
       this.sendAction('cancel');
+    },
+
+    searchTags(value) {
+      this.set('tagQuery', value);
+
+      return this.get('store').query('tag', { query: value }).then((tags) => {
+        let newTags = tags.toArray();
+
+        if (!newTags[0]) {
+          let newTag = this.get('store').createRecord('tag', { tag: value });
+          newTags.unshiftObject(newTag);
+        }
+
+        return newTags;
+      });
+    },
+
+    addTag(value) {
+      this.set('tags', value);
     },
 
     fileInputChange: function(){

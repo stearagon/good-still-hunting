@@ -1,10 +1,13 @@
-<form>
   {{errorMessage}}
 
   <label>Movie:
     {{#power-select
       options=movies
-      onchange=(action (mut title))
+      onchange=(action (mut movie))
+      searchField="title"
+      allowClear=true
+      selected=movie
+      renderInPlace=true
       searchPlaceholder="Type Movie Name"
       as |movie|
     }}
@@ -16,19 +19,31 @@
     {{input
       type="text"
       placeholder="name..."
-      value=model.name}}
+      onchange=(action (mut name))
+      value=name}}
   </label>
 
   <label>Image:<input type="file" {{action  'fileInputChange' on='change'}}></label>
   <img src="">
 
   <label>Tags:
-    {{textarea
-      value=textTags
-      cols="50"
-      rows="10"}}
+    {{#power-select
+      multiple=true
+      onchange=(action "addTag")
+      options=createdTags
+      renderInPlace=true
+      search=(action "searchTags")
+      searchPlaceholder="Type tags"
+      selected=tags as |tag|}}
+      {{#if tag.createTag}}
+        <span> Create {{tagQuery}}? </span>
+      {{else}}
+        <span> {{tag.tag}} </span>
+      {{/if}}
+    {{else}}
+      Sorry, No Tags Found.
+    {{/power-select}}
   </label>
 
   <button {{action 'onCreate'}}>Submit</button>
   <button {{action 'onCancel'}}>Cancel</button>
-</form>

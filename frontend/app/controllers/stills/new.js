@@ -5,11 +5,12 @@ export default Ember.Controller.extend({
   still: null,
 
   actions: {
-    create: function(tags){
+    create: function(tags, props){
       var that = this;
+      let still = that.get('still');
+      still.setProperties(props);
 
-      that.get('still').save().then(function(){
-
+      still.save().then(function(){
         tags.forEach(function(tag){
           var newTag = that.store.createRecord('tag', {
             tag: tag
@@ -25,7 +26,7 @@ export default Ember.Controller.extend({
             stillsTagPromises.push(stillsTag.save());
 
             Ember.RSVP.all(stillsTagPromises).then(function() {
-              that.transitionTo('stills.still', that.get('still.id'));
+              that.transitionToRoute('stills.still', that.get('still.id'));
             });
           });
         });
@@ -35,7 +36,7 @@ export default Ember.Controller.extend({
     },
 
     cancel: function(){
-      this.transitionTo('stills');
+      this.transitionToRoute('stills');
       return false;
     }
   }

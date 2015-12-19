@@ -1,4 +1,14 @@
 class Api::TagsController < ApplicationController
+  def index
+    if params[:still_id]
+      @tags = Still.find(params[:still_id]).tags
+    else
+       @tags = Tag.tag_search(params[:query]).limit(100).sort_by { |tag| tag.tag_length }
+     end
+
+    render json: @tags
+  end
+
   def show
     @tag = Tag.find(params[:id])
     render json: @tag
@@ -14,11 +24,6 @@ class Api::TagsController < ApplicationController
     else
       render json: @tag.errors.full_messages
     end
-  end
-
-  def index
-    @tags = Still.find(params[:still_id]).tags
-    render json: @tags
   end
 
   private

@@ -20,4 +20,8 @@ class Tag < ActiveRecord::Base
 
   has_many :stills_tags, dependent: :destroy
   has_many :stills, through: :stills_tags
+
+  def tag_length
+    tag.length
+  end
 end
