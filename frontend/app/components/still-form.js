@@ -51,8 +51,8 @@ export default Ember.Component.extend(EmberValidations, {
 
   actions: {
     onCreate() {
-      let props = this.getProperties('image', 'name', 'movie')
-      let newTags = this.get('tags').map(function(tag){ return tag.get('tag'); })
+      let props = this.getProperties('image', 'name', 'movie');
+      let newTags = this.get('tags').map(function(tag){ return tag.get('tag'); });
 
       this.sendAction('create', newTags, props);
     },
