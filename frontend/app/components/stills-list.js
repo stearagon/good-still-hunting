@@ -7,6 +7,9 @@ export default Ember.Component.extend({
   perPage: null,
   stills: null,
   filmId: null,
+  endOfList: Ember.computed('meta', 'page', function() {
+    return this.get('meta').total_pages === this.get('page');
+  }),
 
   actions: {
     onLoadNext() {

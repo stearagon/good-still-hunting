@@ -4,6 +4,10 @@
   {{/link-to}}
 {{/each}}
 
+{{#if endOfList}}
+  <div>End of stills</div>
+{{/if}}
+
 <span {{action 'onLoadNext'}} class='load-button'></span>
 
 {{#if isLoading}}
