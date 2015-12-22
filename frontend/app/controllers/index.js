@@ -17,13 +17,13 @@ export default Ember.Controller.extend({
 
   actions: {
     loadNext() {
-      this.set('isLoading', this.get('isLoading') + 1);
       var that = this;
       var metaData = this.get('model.meta');
 
       var params = {};
 
       if (metaData.total_pages > this.get('page')) {
+        this.set('isLoading', this.get('isLoading') + 1);
         this.set('page', parseInt(this.get('page')) + 1);
 
         if (this.get('page')) {
