@@ -13,11 +13,11 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    $('body').height($(document).height() + 1);
+    $('body').height($(document).height() + .01);
     $(window).scroll(function() {
       if($(window).height() + $(window).scrollTop() === $(document).height()) {
         if($('.load-button')){
-            $('.load-button').click();
+          $('.load-button').click();
         }
       }
     });
