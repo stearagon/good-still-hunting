@@ -4,6 +4,7 @@ class Api::StillsController < ApplicationController
       @stills = Still.all
     elsif (params[:search_input].nil? || params[:search_input] == '') && params[:movie_id].nil?
       @stills = Tag.find(params[:tag_id]).stills
+      @stills = Kaminari.paginate_array(@stills)
     elsif (params[:search_input].nil? || params[:search_input] == '')
       @stills = Movie.find(params[:movie_id]).stills
     else
@@ -13,7 +14,7 @@ class Api::StillsController < ApplicationController
       @tags.to_a.each {|tag| @stills.concat(tag.stills) }
       @stills = Kaminari.paginate_array(@stills)
     end
-    
+
     session[:seed] = params[:seed] if !params[:seed].nil?
     srand session[:seed].to_i
 

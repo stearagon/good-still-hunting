@@ -16,6 +16,11 @@ export default Ember.Route.extend({
     return this.store.query('still', params);
   },
 
+  setupController(controller, model) {
+    controller.set('meta', model.meta);
+    controller.set('stills', model);
+  },
+
   resetController: function(controller, isExiting) {
       this._super.apply(this, arguments);
 

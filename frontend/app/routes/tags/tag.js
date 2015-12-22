@@ -20,6 +20,12 @@ export default Ember.Route.extend({
     });
   },
 
+  setupController(controller, model) {
+    controller.set('stills', model.stills);
+    controller.set('meta', model.stills.meta);
+    controller.set('tag', model.tag);
+  },
+
   resetController: function(controller, isExiting) {
       this._super.apply(this, arguments);
 

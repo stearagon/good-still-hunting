@@ -1,2 +1,10 @@
   <h1>{{tag.tag}}</h1>
-  {{stills-list model=model.stills store=store loadNext=(action 'loadNext')}}
+  <div class="stills">
+    {{stills-list
+      meta=meta
+      page=page
+      perPage=perPage
+      stills=stills
+      store=store
+      tag=tag}}
+  </div>

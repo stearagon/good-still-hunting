@@ -1,8 +1,9 @@
 <div class="stills">
   {{stills-list
-    stills=model.stills
-    totalPages=model.meta.total_pages
-    store=store
+    meta=meta
     page=page
-    loadNext=(action 'loadNext')}}
+    perPage=perPage
+    searchInput=searchInput
+    stills=stills
+    store=store}}
 </div>
