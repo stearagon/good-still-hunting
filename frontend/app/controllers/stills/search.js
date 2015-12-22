@@ -39,7 +39,7 @@ export default Ember.Controller.extend({
           _.extend(params, { per_page: this.get('perPage') });
         }
 
-        this.store.findQuery('still', params).then(function(stills) {
+        this.store.query('still', params).then(function(stills) {
           let meta = that.get('model.meta');
           that.set('model', that.get('model').toArray().addObjects(stills.toArray()));
           that.set('model.meta', meta);

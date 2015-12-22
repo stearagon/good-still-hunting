@@ -35,7 +35,7 @@ export default Ember.Controller.extend({
           _.extend(params, { movie_id: this.get('filmId') });
         }
 
-        this.store.findQuery('still', params).then(function(stills) {
+        this.store.query('still', params).then(function(stills) {
           let meta = stills.meta;
           that.set('stills', that.get('stills').toArray().addObjects(stills.toArray()));
           that.set('meta', meta);

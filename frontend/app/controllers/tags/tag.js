@@ -34,7 +34,7 @@ export default Ember.Controller.extend({
 
         _.extend(params, { tag_id: this.get('model.tag.id') });
 
-        this.store.findQuery('still', params).then(function(stills) {
+        this.store.query('still', params).then(function(stills) {
           let meta = that.get('model.stills.meta');
           that.set('model.stills', that.get('model.stills').toArray().addObjects(stills.toArray()));
           that.set('model.stills.meta', meta);
