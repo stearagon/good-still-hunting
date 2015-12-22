@@ -1,9 +1,8 @@
 <div class="stills-list">
-  {{stills-list model=model store=store loadNext=(action 'loadNext')}}
+  {{stills-list
+    stills=model
+    meta=model.meta
+    store=store
+    page=page
+    perPage=perPage}}
 </div>
-
-{{#if isLoading}}
-  <div class="modal">
-    {{ember-spinner lines=12 radius=10 width=5 rotate=0 speed='3.4' zIndex='5000' color='orange'}}
-  </div>
-{{/if}}

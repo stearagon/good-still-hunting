@@ -1,3 +1,8 @@
 <div class="stills">
-  {{stills-list model=model store=store loadNext=(action 'loadNext')}}
+  {{stills-list
+    stills=model.stills
+    totalPages=model.meta.total_pages
+    store=store
+    page=page
+    loadNext=(action 'loadNext')}}
 </div>

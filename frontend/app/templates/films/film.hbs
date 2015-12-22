@@ -1,1 +1,9 @@
-{{stills-list model=stills store=store loadNext=(action 'loadNext')}}
+<div class="stills-list">
+  {{stills-list
+    stills=stills
+    filmId=filmId
+    meta=meta
+    store=store
+    page=page
+    perPage=perPage}}
+</div>

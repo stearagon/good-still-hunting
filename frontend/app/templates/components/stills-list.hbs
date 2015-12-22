@@ -1,7 +1,13 @@
-{{#each model as |still|}}
+{{#each stills as |still|}}
   {{#link-to 'stills.still' still.id}}
     <img src="{{still.medium_image_url}}"/>
   {{/link-to}}
 {{/each}}
 
 <span {{action 'onLoadNext'}} class='load-button'></span>
+
+{{#if isLoading}}
+  <div class="modal">
+    {{ember-spinner lines=12 radius=10 width=5 rotate=0 speed='3.4' zIndex='5000' color='orange'}}
+  </div>
+{{/if}}
