@@ -1,5 +1,29 @@
 <%= render_ember_app ember_app do |head| %>
   <% head.append do %>
+    <style>
+      .still-show {
+        height: auto;
+        width: 100%;
+      }
+
+      .modal {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+      }
+
+      .modal .spinner {
+          left: 50%;
+          transform: translateX(-50%);
+          position: fixed;
+      }
+
+      .still-form img {
+        max-width: 30vw;
+        height: auto;
+      }
+    </style>
     <%= csrf_meta_tags %>
   <% end %>
 <% end %>
