@@ -6,6 +6,9 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('sign-up');
+  this.route('sign-in');
+
   this.route('films', function(){
     this.route('new',function(){});
     this.route('film', { path: '/:film_id'}, function(){});

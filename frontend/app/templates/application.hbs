@@ -1,28 +1,33 @@
 <header>
-  {{#link-to 'index'}}<h1 id="title">Good Still Hunting</h1>{{/link-to}}
-  {{#link-to 'films'}}Films{{/link-to}}
-  {{#link-to 'stills'}}Stills{{/link-to}}
-  {{#link-to 'films.new'}}Add Film{{/link-to}}
-  {{#link-to 'stills.new'}}Add Still{{/link-to}}
+    {{#link-to 'index'}}<h1 id="title">Good Still Hunting</h1>{{/link-to}}
+  {{#if currentUser}}
+    {{#link-to 'films'}}Films{{/link-to}}
+    {{#link-to 'stills'}}Stills{{/link-to}}
+    {{#link-to 'films.new'}}Add Film{{/link-to}}
+    {{#link-to 'stills.new'}}Add Still{{/link-to}}
 
-  {{search-form search=(action 'searchStills')}}
+    {{search-form search=(action 'searchStills')}}
+  {{else}}
+    {{#link-to "sign-up"}}Sign Up{{/link-to}}
+    {{#link-to "sign-in"}}Sign In{{/link-to}}
+  {{/if}}
 
 </header>
 
-{{outlet}}
+  {{outlet}}
 
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('body').height($(document).height() + 1);
-    $(window).scroll(function() {
-      if($(window).height() + $(window).scrollTop() === $(document).height()) {
-        if($('.load-button')){
-          $('.load-button').click();
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('body').height($(document).height() + 1);
+      $(window).scroll(function() {
+        if($(window).height() + $(window).scrollTop() === $(document).height()) {
+          if($('.load-button')){
+            $('.load-button').click();
+          }
         }
-      }
+      });
     });
-  });
-</script>
+  </script>
 
 <footer>
   <p>
