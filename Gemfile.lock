@@ -56,7 +56,6 @@ GEM
     barber (0.11.1)
       ember-source (>= 1.0, < 3)
       execjs (>= 1.2, < 3)
-    bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -134,12 +133,6 @@ GEM
     mimemagic (0.3.0)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
-    monban (0.2.1)
-      bcrypt
-      rails
-      warden
-    monban-generators (0.0.4)
-      monban (>= 0.0.12)
     multi_json (1.11.2)
     newrelic_rpm (3.14.3.313)
     nokogiri (1.6.7.2)
@@ -227,8 +220,6 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    warden (1.2.6)
-      rack (>= 1.0)
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -252,8 +243,6 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
-  monban
-  monban-generators
   newrelic_rpm
   paperclip
   pg

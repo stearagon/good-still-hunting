@@ -1,10 +1,8 @@
-class SessionsController < ApplicationController
+class Api::SessionsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
 
-  def new
-  end
-
   def create
+    debugger
     user = authenticate_session(session_params)
 
     if sign_in(user)
@@ -25,4 +23,3 @@ class SessionsController < ApplicationController
     params.require(:session).permit(:email, :password)
   end
 end
-

@@ -1,17 +1,11 @@
 <header>
     {{#link-to 'index'}}<h1 id="title">Good Still Hunting</h1>{{/link-to}}
-  {{#if currentUser}}
     {{#link-to 'films'}}Films{{/link-to}}
     {{#link-to 'stills'}}Stills{{/link-to}}
     {{#link-to 'films.new'}}Add Film{{/link-to}}
     {{#link-to 'stills.new'}}Add Still{{/link-to}}
 
     {{search-form search=(action 'searchStills')}}
-  {{else}}
-    {{#link-to "sign-up"}}Sign Up{{/link-to}}
-    {{#link-to "sign-in"}}Sign In{{/link-to}}
-  {{/if}}
-
 </header>
 
   {{outlet}}

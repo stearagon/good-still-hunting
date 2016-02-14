@@ -23,8 +23,6 @@ gem 'kaminari'
 gem "ember-cli-rails"
 gem 'ember-rails'
 gem 'puma'
-gem 'monban'
-gem 'monban-generators'
 
 group :development, :test do
   gem 'io-console'
