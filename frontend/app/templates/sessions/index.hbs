@@ -1,0 +1,5 @@
+<form onsubmit={{action "signIn"}}>
+  <input type="text" placeholder="email" value="" onchange={{action (mut email) value="target.value"}}>
+  <input type="password" placeholder="password" value="" onchange={{action (mut password) value="target.value"}}>
+  <button>Sign In</button>
+</form>

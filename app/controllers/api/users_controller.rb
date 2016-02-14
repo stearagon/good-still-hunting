@@ -1,18 +1,12 @@
 class Api::UsersController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create]
-
-  def new
-    @user = User.new
-  end
-
   def create
-    @user = sign_up(user_params)
+    @user = User.new(user_params)
 
-    if @user.valid?
-      sign_in(@user)
-      redirect_to root_path
+    if @user.save
+      login!(@user)
+      render json: @user
     else
-      render :new
+      render json: @user.errors.full_messages, status: :unprocessable_entity
     end
   end
 
