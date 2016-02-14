@@ -113,7 +113,6 @@ GEM
       activesupport (>= 4.1.0)
     html_page (0.1.0)
     i18n (0.7.0)
-    io-console (0.4.5)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -134,12 +133,6 @@ GEM
     mimemagic (0.3.0)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
-    monban (0.2.1)
-      bcrypt
-      rails
-      warden
-    monban-generators (0.0.4)
-      monban (>= 0.0.12)
     multi_json (1.11.2)
     newrelic_rpm (3.14.3.313)
     nokogiri (1.6.7.2)
@@ -227,8 +220,6 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    warden (1.2.6)
-      rack (>= 1.0)
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -242,18 +233,16 @@ DEPENDENCIES
   active_model_serializers
   annotate
   aws-sdk (~> 1.61.0)
+  bcrypt
   better_errors
   byebug
   coffee-rails (~> 4.1.0)
   ember-cli-rails
   ember-rails
   figaro
-  io-console
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
-  monban
-  monban-generators
   newrelic_rpm
   paperclip
   pg

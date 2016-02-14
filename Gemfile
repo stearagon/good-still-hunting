@@ -23,11 +23,9 @@ gem 'kaminari'
 gem "ember-cli-rails"
 gem 'ember-rails'
 gem 'puma'
-gem 'monban'
-gem 'monban-generators'
+gem 'bcrypt'
 
 group :development, :test do
-  gem 'io-console'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
