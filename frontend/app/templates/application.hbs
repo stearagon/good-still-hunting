@@ -1,13 +1,17 @@
 <header>
-  {{#link-to 'dashboard.index'}}<h1 id="title">Good Still Hunting</h1>{{/link-to}}
-  {{#link-to 'dashboard.films'}}Films{{/link-to}}
-  {{#link-to 'dashboard.stills'}}Stills{{/link-to}}
-  {{#link-to 'dashboard.films.new'}}Add Film{{/link-to}}
-  {{#link-to 'dashboard.stills.new'}}Add Still{{/link-to}}
+  {{#if session.isAuthenticated}}
+    {{#link-to 'dashboard.index'}}<h1 id="title">Good Still Hunting</h1>{{/link-to}}
+    {{#link-to 'dashboard.films'}}Films{{/link-to}}
+    {{#link-to 'dashboard.stills'}}Stills{{/link-to}}
+    {{#link-to 'dashboard.films.new'}}Add Film{{/link-to}}
+    {{#link-to 'dashboard.stills.new'}}Add Still{{/link-to}}
 
-  {{search-form}}
+    {{search-form}}
 
-  <a href="#" {{action 'logout'}}>Logout</a>
+    <a href="#" {{action 'logout'}}>Logout</a>
+  {{else}}
+    {{#link-to 'login'}}Log In{{/link-to}}
+  {{/if}}
 </header>
 
 {{outlet}}

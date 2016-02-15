@@ -26,7 +26,7 @@ export default Ember.Controller.extend({
             stillsTagPromises.push(stillsTag.save());
 
             Ember.RSVP.all(stillsTagPromises).then(function() {
-              that.transitionToRoute('stills.still', that.get('still.id'));
+              that.transitionToRoute('dashboard.stills.still', that.get('still.id'));
             });
           });
         });
