@@ -1,6 +1,4 @@
 class Api::StillsController < ApplicationController
-  before_filter :authenticate_user_from_token!
-  
   def index
     if (params[:search_input].nil? || params[:search_input] == '') && params[:tag_id].nil? && params[:movie_id].nil?
       @stills = Still.all
