@@ -10,11 +10,9 @@ class Api::StillsController < ApplicationController
     elsif (params[:search_input].nil? || params[:search_input] == '')
       @stills = Movie.find(params[:movie_id]).stills
     else
-      @tags = Tag.tag_search(params[:search_input])
-      @stills = []
-
-      @tags.to_a.each {|tag| @stills.concat(tag.stills) }
-      @stills = Kaminari.paginate_array(@stills)
+      @stills = PgSearch
+        .multisearch(params[:search_input])
+        .includes(:searchable).map(&:searchable)
     end
 
     session[:seed] = params[:seed] if !params[:seed].nil?

@@ -12,7 +12,7 @@ class Api::MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
+    @movies = Movie.all.order(:title)
     render json: @movies
   end
 
