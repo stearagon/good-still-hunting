@@ -1,4 +1,6 @@
 class Api::TagsController < ApplicationController
+  before_filter :authenticate_user_from_token!
+  
   def index
     if params[:still_id]
       @tags = Still.find(params[:still_id]).tags

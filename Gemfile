@@ -24,6 +24,7 @@ gem "ember-cli-rails"
 gem 'ember-rails'
 gem 'puma'
 gem 'bcrypt'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug'

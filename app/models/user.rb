@@ -2,49 +2,37 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  email           :string           not null
-#  password_digest :string           not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                     :integer          not null, primary key
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :inet
+#  last_sign_in_ip        :inet
+#  authentication_token   :string           default(""), not null
 #
 
 class User < ActiveRecord::Base
-  validates :email, :password_digest, :session_token, presence: true
-  validates :email, :session_token, uniqueness: true
-  validates :password, presence: { length: 8, allow_nil: true }
+  before_save :set_auth_token
 
-  attr_reader :password
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
-  after_initialize :ensure_session_token
-
-  def self.generate_session_token
-    SecureRandom::urlsafe_base64(16)
+  private
+  def set_auth_token
+    if self.authentication_token.blank?
+      self.authentication_token = generate_authentication_token
+    end
   end
 
-  def self.find_by_user_credentials(email, password)
-    user = User.find_by_email(email)
-    return nil if user.nil?
-
-    user.is_password?(password) ? user : nil
-  end
-
-  def reset_session_token!
-    self.session_token = self.class.generate_session_token
-    self.save!
-    return self.session_token
-  end
-
-  def is_password?(password)
-    BCrypt::Password.new(self.password_digest).is_password?(password)
-  end
-
-  def password=(password)
-    @password = password
-    self.password_digest = BCrypt::Password.create(password)
-  end
-
-  def ensure_session_token
-    self.session_token ||= self.class.generate_session_token
+  def generate_authentication_token
+    loop do
+      token = Devise.friendly_token
+      break token unless User.where(authentication_token: token).first
+    end
   end
 end

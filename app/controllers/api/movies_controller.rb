@@ -1,4 +1,6 @@
 class Api::MoviesController < ApplicationController
+  before_filter :authenticate_user_from_token!
+  
   def create
     @movie = Movie.new(movie_params)
 

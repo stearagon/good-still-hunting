@@ -1,23 +1,25 @@
 class ApplicationController < ActionController::Base
-  # protect_from_forgery with: :exception
-  helper_method :current_user
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :null_session
 
-  def login!(user)
-    session[:session_token] = user.session_token
-  end
+  protected
 
-  def logout!
-    current_user.reset_session_token!
-    session[:session_token] = nil
-  end
+  def authenticate_user_from_token!
+    authenticated = authenticate_with_http_token do |user_token, options|
+        debugger
+        user_email = options[:user_email].presence
+        user       = user_email && User.find_by_email(user_email)
 
-  def current_user
-    return nil if session[:session_token].nil?
+        if user && Devise.secure_compare(user.authentication_token, user_token)
+          sign_in user, store: false
+        else
+          render json: 'Invalid authorization.'
+        end
+      end
 
-    @current_user ||= User.find_by_session_token(session[:session_token])
-  end
-
-  def logged_in?
-    !!current_user
+    if !authenticated
+      render json: 'No authorization provided.'
+    end
   end
 end

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
+  devise_for :users, controllers: { sessions: 'sessions' }
+
   namespace :api do
-    resource :session, only: [:create, :destroy]
-    resources :users, only: [:create]
     resources :stills
     resources :movies
     resources :stills_tags
