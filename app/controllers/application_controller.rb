@@ -3,23 +3,22 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session
 
-  protected
+  # before_action :authenticate!
 
-  def authenticate_user_from_token!
-    authenticated = authenticate_with_http_token do |user_token, options|
-        debugger
-        user_email = options[:user_email].presence
-        user       = user_email && User.find_by_email(user_email)
-
-        if user && Devise.secure_compare(user.authentication_token, user_token)
-          sign_in user, store: false
-        else
-          render json: 'Invalid authorization.'
-        end
-      end
-
-    if !authenticated
-      render json: 'No authorization provided.'
+  private
+    def authenticate!
+      authenticate_token || render_unauthorized
     end
-  end
+
+    def authenticate_token
+      authenticate_with_http_token do |token, options|
+         User.find_by(authentication_token: token)
+       end
+    end
+
+    def render_unauthorized
+      render json: {
+        errors: ['Bad credentials']
+      }, status: 401
+    end
 end
