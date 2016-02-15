@@ -5,8 +5,7 @@ export default Ember.Component.extend({
 
   actions: {
     submitSearch: function(){
-      this.sendAction('search', this.get('searchInput'));
-      this.set('searchInput', '');
+      this.transitionTo('dashboard.stills.search', { queryParams: { searchInput: this.get('searchInput') }});
     }
   }
 });

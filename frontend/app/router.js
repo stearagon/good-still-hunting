@@ -6,20 +6,24 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('films', function(){
-    this.route('new',function(){});
-    this.route('film', { path: '/:film_id'}, function(){});
-  });
+  this.route('dashboard', function() {
+    this.route('films', function(){
+      this.route('new',function(){});
+      this.route('film', { path: '/:film_id'}, function(){});
+    });
 
-  this.route('stills', function(){
-    this.route('search', { path: '/search' }, function(){});
-    this.route('still', { path: '/:still_id' }, function(){});
-    this.route('new', { path: '/new' }, function(){});
-  });
+    this.route('stills', function(){
+      this.route('search', { path: '/search' }, function(){});
+      this.route('still', { path: '/:still_id' }, function(){});
+      this.route('new', { path: '/new' }, function(){});
+    });
 
-  this.route('tags', function() {
-    this.route('tag', { path: '/:tag_id' }, function(){});
+    this.route('tags', function() {
+      this.route('tag', { path: '/:tag_id' }, function(){});
+    });
   });
+  
+  this.route('login');
 });
 
 export default Router;

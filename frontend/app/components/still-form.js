@@ -32,18 +32,6 @@ export default Ember.Component.extend(EmberValidations, {
     }
   },
 
-  // unformatTags: function(){
-  //   var splitTags = this.get('textTags').split('#');
-  //   var newTags = [];
-  //   Array.prototype.forEach.call(splitTags, function(tag){
-  //     if(tag.length > 0){
-  //       newTags.push(tag.trim());
-  //     }
-  //   }.bind(this));
-  //
-  //   this.set('tags', newTags);
-  // },
-
   updatePreview: function(src, el){
     el.src = src;
     this.set('image', src);
