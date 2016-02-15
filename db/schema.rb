@@ -84,6 +84,8 @@ ActiveRecord::Schema.define(version: 20160214235654) do
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.string   "authentication_token",   default: "", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
