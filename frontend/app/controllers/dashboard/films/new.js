@@ -32,7 +32,7 @@ export default Ember.Controller.extend(EmberValidations, {
         let props = this.getProperties('genre', 'title', 'year', 'director');
         let movie = this.store.createRecord('movie', props);
         movie.save().then(()=> {
-          this.transitionToRoute('films.index');
+          this.transitionToRoute('dashboard.films.index');
         });
       }).catch(() => {
         this.set('errorMessage', 'Please check inputs again.');

@@ -1,6 +1,6 @@
 class Api::StillsTagsController < ApplicationController
-  before_filter :authenticate_user_from_token!
-  
+  before_action :authenticate!
+
   def index
     if params[:still_id]
       @stills_tags = StillsTag.where(still_id: params[:still_id])

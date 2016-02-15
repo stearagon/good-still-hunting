@@ -3,5 +3,5 @@
 <img class="still-show" src="{{model.still.large_image_url}}"/>
 
   {{#each model.tags as |tag|}}
-    {{#link-to 'tags.tag' tag.id}}{{tag.tag}}{{/link-to}}
+    {{#link-to 'dashboard.tags.tag' tag.id}}{{tag.tag}}{{/link-to}}
   {{/each}}
