@@ -1,0 +1,44 @@
+<form>
+  <div class="errors">
+    {{errorMessage}}
+  </div>
+
+  <div class="title">
+    {{input
+      type="text"
+      placeholder="title..."
+      allowClear=true
+      onchange=(action (mut title))
+      value=title}}
+  </div>
+
+  <div class="director">
+    {{input
+      type="text"
+      onchange=(action (mut director))
+      placeholder="director..."
+      value=director}}
+  </div>
+
+  <div class="year">
+    {{input
+      type="number"
+      onchange=(action (mut year))
+      placeholder="year"
+      value=year}}
+  </div>
+
+  <div class="genres">
+    {{#power-select
+      options=genres
+      onchange=(action (mut genre))
+      selected=genre
+      placeholder="Please Select Genre"
+      searchEnabled=false as |genre|}}
+      {{genre}}
+    {{/power-select}}
+  </div>
+
+  <button {{action 'create'}}>Submit</button>
+  <button {{action 'cancel'}}>Cancel</button>
+</form>

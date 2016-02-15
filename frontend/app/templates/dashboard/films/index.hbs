@@ -1,0 +1,9 @@
+<h2>All Films</h2>
+
+{{#each model as |movie|}}
+  <li>
+    {{#link-to 'dashboard.films.film' movie.id}}
+      {{movie.title}}
+    {{/link-to}}
+  </li>
+{{/each}}
