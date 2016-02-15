@@ -1,6 +1,5 @@
 {
   "name": "frontend",
-
   "dependencies": {
     "ember": "2.2.0",
     "ember-cli-shims": "ember-cli/ember-cli-shims#0.1.0",
@@ -12,15 +11,14 @@
     "qunit": "~1.20.0",
     "lodash": "~3.10.1",
     "underscore": "~1.8.3",
-    "spin.js": "~2.3.2"
+    "spin.js": "~2.3.2",
+    "bootstrap": "~3.3.5"
   },
-
   "devDependencies": {
     "lodash": "~3.10.1",
     "underscore": "~1.8.3",
     "ember": "2.2.0"
   },
-
   "resolutions": {
     "ember": "2.2.0"
   }

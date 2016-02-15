@@ -5,10 +5,10 @@
     {{#link-to 'dashboard.stills'}}Stills{{/link-to}}
     {{#link-to 'dashboard.films.new'}}Add Film{{/link-to}}
     {{#link-to 'dashboard.stills.new'}}Add Still{{/link-to}}
+    <a href="#" {{action 'logout'}}>Logout</a>
 
     {{search-form search=(action "searchStills")}}
 
-    <a href="#" {{action 'logout'}}>Logout</a>
   {{else}}
     {{#link-to 'login'}}Log In{{/link-to}}
   {{/if}}
@@ -26,7 +26,7 @@
         }
       }
     });
-    
+
     $(window).on('touchstart', function(event) {
       if($(window).height() + $(window).scrollTop() === $(document).height()) {
         if($('.load-button')){

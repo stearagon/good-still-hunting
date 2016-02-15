@@ -1,51 +1,59 @@
-<div class="still-form">
+{{#bs-form}}
   {{errorMessage}}
 
-  <label>Movie:
-    {{#power-select
-      options=movies
-      onchange=(action (mut movie))
-      searchField="title"
-      allowClear=true
-      selected=movie
-      renderInPlace=true
-      searchPlaceholder="Type Movie Name"
-      as |movie|
-    }}
-      {{movie.title}}
-    {{/power-select}}
-  </label>
+  {{#bs-form-group class="movie"}}
+    <label>Movie:
+      {{#power-select
+        options=movies
+        onchange=(action (mut movie))
+        searchField="title"
+        allowClear=true
+        selected=movie
+        renderInPlace=true
+        searchPlaceholder="Type Movie Name"
+        as |movie|
+      }}
+        {{movie.title}}
+      {{/power-select}}
+    </label>
+  {{/bs-form-group}}
 
-  <label>Name:
-    {{input
-      type="text"
-      placeholder="name..."
-      onchange=(action (mut name))
-      value=name}}
-  </label>
+  {{#bs-form-group class="name"}}
+    <label>Name:
+      {{input
+        type="text"
+        placeholder="name..."
+        onchange=(action (mut name))
+        value=name}}
+    </label>
+  {{/bs-form-group}}
 
-  <label>Image:<input type="file" {{action  'fileInputChange' on='change'}}></label>
-  <img src="">
+    {{#bs-form-group class="image"}}
+      <label>Image:<input type="file" {{action  'fileInputChange' on='change'}}></label>
+      <img src="">
+    {{/bs-form-group}}
 
-  <label>Tags:
-    {{#power-select
-      multiple=true
-      onchange=(action "addTag")
-      options=createdTags
-      renderInPlace=true
-      search=(action "searchTags")
-      searchPlaceholder="Type tags"
-      selected=tags as |tag|}}
-      {{#if tag.createTag}}
-        <span> Create {{tagQuery}}? </span>
-      {{else}}
-        <span> {{tag.tag}} </span>
-      {{/if}}
-    {{else}}
-      Sorry, No Tags Found.
-    {{/power-select}}
-  </label>
+    {{#bs-form-group class="tags"}}
+      <label>Tags:
+        {{#power-select
+          multiple=true
+          onchange=(action "addTag")
+          options=createdTags
+          renderInPlace=true
+          search=(action "searchTags")
+          searchPlaceholder="Type tags"
+          selected=tags as |tag|}}
+          {{#if tag.createTag}}
+            <span> Create {{tagQuery}}? </span>
+          {{else}}
+            <span> {{tag.tag}} </span>
+          {{/if}}
+        {{else}}
+          Sorry, No Tags Found.
+        {{/power-select}}
+      </label>
+    {{/bs-form-group}}
 
   <button {{action 'onCreate'}}>Submit</button>
   <button {{action 'onCancel'}}>Cancel</button>
-</div>
+{{/bs-form}}

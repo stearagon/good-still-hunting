@@ -1,44 +1,44 @@
-<form>
-  <div class="errors">
-    {{errorMessage}}
-  </div>
+{{#bs-form}}
+    <div class="errors">
+      {{errorMessage}}
+    </div>
 
-  <div class="title">
-    {{input
-      type="text"
-      placeholder="title..."
-      allowClear=true
-      onchange=(action (mut title))
-      value=title}}
-  </div>
+    {{#bs-form-group class="title"}}
+        {{input
+          type="text"
+          placeholder="title..."
+          allowClear=true
+          onchange=(action (mut title))
+          value=title}}
+    {{/bs-form-group}}
 
-  <div class="director">
-    {{input
-      type="text"
-      onchange=(action (mut director))
-      placeholder="director..."
-      value=director}}
-  </div>
+    {{#bs-form-group class="director"}}
+      {{input
+        type="text"
+        onchange=(action (mut director))
+        placeholder="director..."
+        value=director}}
+    {{/bs-form-group}}
 
-  <div class="year">
-    {{input
-      type="number"
-      onchange=(action (mut year))
-      placeholder="year"
-      value=year}}
-  </div>
+    {{#bs-form-group class="year"}}
+      {{input
+        type="number"
+        onchange=(action (mut year))
+        placeholder="year"
+        value=year}}
+    {{/bs-form-group}}
 
-  <div class="genres">
-    {{#power-select
-      options=genres
-      onchange=(action (mut genre))
-      selected=genre
-      placeholder="Please Select Genre"
-      searchEnabled=false as |genre|}}
-      {{genre}}
-    {{/power-select}}
-  </div>
+    {{#bs-form-group class="genres"}}
+      {{#power-select
+        options=genres
+        onchange=(action (mut genre))
+        selected=genre
+        placeholder="Please Select Genre"
+        searchEnabled=false as |genre|}}
+        {{genre}}
+      {{/power-select}}
+    {{/bs-form-group}}
 
-  <button {{action 'create'}}>Submit</button>
-  <button {{action 'cancel'}}>Cancel</button>
-</form>
+    <button {{action 'create'}}>Submit</button>
+    <button {{action 'cancel'}}>Cancel</button>
+{{/bs-form}}
