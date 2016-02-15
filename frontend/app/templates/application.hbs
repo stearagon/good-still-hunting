@@ -26,6 +26,14 @@
         }
       }
     });
+    
+    $(window).on('touchstart', function(event) {
+      if($(window).height() + $(window).scrollTop() === $(document).height()) {
+        if($('.load-button')){
+          $('.load-button').click();
+        }
+      }
+    });
   });
 </script>
 
