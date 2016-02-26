@@ -2,11 +2,11 @@ import Ember from 'ember';
 import config from './config/environment';
 
 var Router = Ember.Router.extend({
-  location: config.locationType
+  location: config.locationType,
 });
 
 Router.map(function() {
-  this.route('dashboard', function() {
+  this.route('dashboard', { path: '/' }, function() {
     this.route('films', function(){
       this.route('new',function(){});
       this.route('film', { path: '/:film_id'}, function(){});
@@ -22,7 +22,7 @@ Router.map(function() {
       this.route('tag', { path: '/:tag_id' }, function(){});
     });
   });
-  
+
   this.route('login');
 });
 

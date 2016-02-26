@@ -71,7 +71,7 @@ export default Ember.Component.extend(EmberValidations, {
     fileInputChange: function(){
       var file = window.event.target.files[0];
       var reader = new FileReader();
-      var previewWindow = $('img')[0];
+      var previewWindow = Ember.$('img')[0];
 
       reader.onloadend = function(){
         this.updatePreview(reader.result, previewWindow);
