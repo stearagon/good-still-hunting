@@ -3,7 +3,7 @@ class Api::StillsController < ApplicationController
 
   def index
     if (params[:search_input].nil? || params[:search_input] == '') && params[:tag_id].nil? && params[:movie_id].nil?
-      @stills = Still.includes(:stills_tags, :tags).all
+      @stills = Still.all
     elsif (params[:search_input].nil? || params[:search_input] == '') && params[:movie_id].nil?
       @stills = Tag.find(params[:tag_id]).stills
       @stills = Kaminari.paginate_array(@stills)

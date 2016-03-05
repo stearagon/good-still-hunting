@@ -15,27 +15,6 @@
 
 {{outlet}}
 
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('body').height($(document).height() + 1);
-    $(window).scroll(function() {
-      if($(window).height() + $(window).scrollTop() === $(document).height()) {
-        if($('.load-button')){
-          $('.load-button').click();
-        }
-      }
-    });
-
-    $(window).on('touchstart', function(event) {
-      if($(window).height() + $(window).scrollTop() === $(document).height()) {
-        if($('.load-button')){
-          $('.load-button').click();
-        }
-      }
-    });
-  });
-</script>
-
 <footer>
   <p>
     Good Still Hunting &#169;2015

@@ -14,6 +14,32 @@ export default Ember.Component.extend({
     return this.get('meta').total_pages === this.get('page');
   }),
 
+  didInsertElement() {
+    this._super(...arguments);
+    this.$().attr('autoLoadInstalled', true);
+
+    if(this.$().attr('autoLoadInstalled') === null) {
+      Ember.$(document).ready(function(){
+        Ember.$('body').height(Ember.$(document).height() + 1);
+        Ember.$(window).scroll(function() {
+          if(Ember.$(window).height() + Ember.$(window).scrollTop() === Ember.$(document).height()) {
+            if(Ember.$('.load-button')){
+              Ember.$('.load-button').click();
+            }
+          }
+        });
+
+        Ember.$(window).on('touchstart', function() {
+          if(Ember.$(window).height() + Ember.$(window).scrollTop() === Ember.$(document).height()) {
+            if(Ember.$('.load-button')){
+              Ember.$('.load-button').click();
+            }
+          }
+        });
+      });
+    }
+  },
+
   actions: {
     onLoadNext() {
       var params = {};

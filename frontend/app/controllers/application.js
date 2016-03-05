@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  searchController: Ember.inject.controller('dashboard.stills.search'),
   session: Ember.inject.service('session'),
 
   actions: {
@@ -10,14 +9,9 @@ export default Ember.Controller.extend({
     },
 
     searchStills(searchInput) {
-      let searchController = this.get('searchController');
+      let queryParams = { page: 1, searchInput: searchInput };
 
-      if(searchController) {
-        searchController.set('page', 1);
-        searchController.set('searchInput', searchInput);
-      }
-
-      this.transitionToRoute('dashboard.stills.search');
+      this.transitionToRoute('dashboard.stills.search', { queryParams: queryParams });
     },
   },
 });
