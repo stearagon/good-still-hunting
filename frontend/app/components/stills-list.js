@@ -16,9 +16,8 @@ export default Ember.Component.extend({
 
   didInsertElement() {
     this._super(...arguments);
-    this.$().attr('autoLoadInstalled', true);
 
-    if(this.$().attr('autoLoadInstalled') === null) {
+    if (Ember.$(document).attr('loaded') === undefined) {
       Ember.$(document).ready(function(){
         Ember.$('body').height(Ember.$(document).height() + 1);
         Ember.$(window).scroll(function() {
@@ -38,6 +37,8 @@ export default Ember.Component.extend({
         });
       });
     }
+
+    Ember.$(document).attr('loaded', true);
   },
 
   actions: {
