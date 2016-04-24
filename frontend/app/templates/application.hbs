@@ -1,22 +1,48 @@
-<header>
-  {{#if session.isAuthenticated}}
-    {{#link-to 'dashboard.index'}}<h1 id="title">Good Still Hunting</h1>{{/link-to}}
-    {{#link-to 'dashboard.films'}}Films{{/link-to}}
-    {{#link-to 'dashboard.stills'}}Stills{{/link-to}}
-    {{#link-to 'dashboard.films.new'}}Add Film{{/link-to}}
-    {{#link-to 'dashboard.stills.new'}}Add Still{{/link-to}}
-    <a href="#" {{action 'logout'}}>Logout</a>
+<div class="main-div">
+  <header class="main-div__header">
+    <div class="main-div-header__navigation">
+      {{#if session.isAuthenticated}}
+        <i class="fa fa-bars"></i>
+        {{#link-to "dashboard.index" class="main-div-header-navigation__link"}}
+          Good Still Hunting
+        {{/link-to}}
+        {{#link-to 'dashboard.films' class="main-div-header-navigation__link"}}
+          Films
+        {{/link-to}}
 
-    {{search-form search=(action "searchStills")}}
-  {{else}}
-    {{#link-to 'login'}}Log In{{/link-to}}
-  {{/if}}
-</header>
+        {{#link-to 'dashboard.stills' class="main-div-header-navigation__link"}}
+          Stills
+        {{/link-to}}
 
-{{outlet}}
+        {{#link-to 'dashboard.films.new' class="main-div-header-navigation__link"}}
+          Add Film
+        {{/link-to}}
 
-<footer>
-  <p>
-    Good Still Hunting &#169;2015
-  </p>
-</footer>
+        {{#link-to 'dashboard.stills.new' class="main-div-header-navigation__link"}}
+          Add Still
+        {{/link-to}}
+
+        <a class="main-div-header-navigation__link" {{action 'logout'}}>
+          Logout
+        </a>
+      {{else}}
+        {{#link-to 'login'}}Log In{{/link-to}}
+      {{/if}}
+    </div>
+
+    <div class="main-div-header__search">
+      <i class="fa fa-search"></i>
+      {{search-form
+        class="main-div-header-search__input"
+        search=(action "searchStills")}}
+    </div>
+  </header>
+
+  {{outlet}}
+
+  <footer>
+    <p>
+      Good Still Hunting &#169;2015
+    </p>
+  </footer>
+</div>

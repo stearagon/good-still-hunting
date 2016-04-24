@@ -1,7 +1,3 @@
-<form>
-  <label>
-    {{input type="text" placeholder="input search text..." value=searchInput}}
-  </label>
-
-  <button {{action 'submitSearch'}}>Search Stills</button>
+<form {{action 'submitSearch' on="submit"}}>
+  {{input type="text" placeholder="input search text..." value=searchInput}}
 </form>
