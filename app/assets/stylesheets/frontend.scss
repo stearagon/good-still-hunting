@@ -25,9 +25,9 @@ button {
 }
 
 img {
-  display: block;
+//   display: block;
   width: 100%;
-  height: auto;
+//   height: auto;
 }
 
 .group:after {
@@ -56,7 +56,6 @@ body {
 .main-div {
   width: 900px;
   margin: 0 auto;
-
 }
 
 .main-div-header {
@@ -84,10 +83,20 @@ body {
 .main-div-header-search {
   &__input {
     display: inline-block;
+    font-weight: 100;
 
     form input {
       border: 0px;
+      margin-left: 5px;
     }
+  }
+}
+
+/* stills list */
+.stills-list {
+  &__still {
+    width: 225px;
+    float: left;
   }
 }
 

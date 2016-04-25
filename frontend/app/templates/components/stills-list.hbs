@@ -1,7 +1,9 @@
 {{#each stills as |still|}}
-  {{#link-to 'dashboard.stills.still' still.id}}
-    <img src="{{still.medium_image_url}}"/>
-  {{/link-to}}
+  <div class="stills-list__still">
+    {{#link-to 'dashboard.stills.still' still.id}}
+      <img src="{{still.medium_image_url}}"/>
+    {{/link-to}}
+  </div>
 {{/each}}
 
 {{#if endOfList}}

@@ -2,6 +2,8 @@ import Ember from 'ember';
 import _ from 'lodash/lodash';
 
 export default Ember.Component.extend({
+  classNames: ['stills-list'],
+
   filmId: null,
   isLoading: 0,
   meta: null,
