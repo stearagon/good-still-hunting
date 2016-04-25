@@ -1,5 +1,127 @@
 <%= render_ember_app ember_app do |head| %>
   <% head.append do %>
+    <style media="screen">
+      /* RESET */
+      body, header, div, section,
+      li, p, a, ul, h1, h2, h3,
+      article {
+        border: 0;
+        padding: 0;
+        margin: 0;
+        outline: 0;
+
+        box-sizing: inherit;
+        font: inherit;
+        text-decoration: inherit;
+        text-align: inherit;
+        color: inherit;
+
+        background: transparent;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .group:after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+
+      .display-none {
+        display: none;
+      }
+
+      body {
+        position: relative;
+        background: #fff;
+        font-family: Helvetica;
+      }
+
+      /* MAIN DIV */
+
+      .main-div {
+        width: 900px;
+        margin: 0 auto;
+      }
+
+      .main-div-header {
+        &__navigation, &__search {
+          padding-left: 5px;
+        }
+
+        &__navigation {
+          background: black;
+          color: white;
+        }
+
+        &__search {
+
+        }
+      }
+
+      .main-div-header-navigation {
+        &__link {
+          font-size: 12px;
+          margin-left: 5px;
+        }
+      }
+
+      .main-div-header-search {
+        &__input {
+          display: inline-block;
+          font-weight: 100;
+
+          form input {
+            border: 0px;
+            margin-left: 5px;
+          }
+        }
+      }
+
+      /* stills list */
+      .stills-list {
+        &__still {
+          width: 225px;
+          float: left;
+        }
+      }
+
+      /* OLD STYLES */
+      .still-show {
+        height: auto;
+        width: 100%;
+      }
+
+      .modal {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+      }
+
+      .modal .spinner {
+          left: 50%;
+          transform: translateX(-50%);
+          position: fixed;
+      }
+
+      .still-form img {
+        max-width: 30vw;
+        height: auto;
+      }
+    </style>
     <%= csrf_meta_tags %>
   <% end %>
 <% end %>
