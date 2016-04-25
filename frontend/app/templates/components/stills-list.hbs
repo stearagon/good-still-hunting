@@ -1,13 +1,15 @@
-{{#each stills as |still|}}
-  <div class="stills-list__still">
+<section class="stills-list__items group">
+  {{#each stills as |still|}}
+  <div class="stills-list-items__still">
     {{#link-to 'dashboard.stills.still' still.id}}
       <img src="{{still.medium_image_url}}"/>
     {{/link-to}}
   </div>
-{{/each}}
+  {{/each}}
+</section>
 
 {{#if endOfList}}
-  <div>End of stills</div>
+  <div class="stills-list__end">End of stills</div>
 {{/if}}
 
 <span {{action 'onLoadNext'}} class='load-button'></span>

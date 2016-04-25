@@ -26,8 +26,6 @@ gem 'puma'
 gem 'bcrypt'
 gem 'devise'
 
-gem 'font-awesome-sass'
-
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
