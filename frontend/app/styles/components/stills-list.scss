@@ -1,0 +1,27 @@
+.stills-list {
+  &__items {
+    background: black;
+    overflow: hidden;
+  }
+
+  &__end {
+    text-align: center;
+  }
+}
+
+.stills-list-items {
+  &__still {
+    overflow: hidden;
+    width: 300px;
+    height: 188px;
+    float: left;
+    position: relative;
+
+    img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

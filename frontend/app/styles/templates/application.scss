@@ -1,0 +1,49 @@
+.main-header {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+
+  &__navigation, &__search {
+    padding: $column-gutter / 2;
+  }
+
+  &__navigation {
+    background: black;
+    color: white;
+  }
+
+  &__search {
+    background: white;
+  }
+}
+
+.main-header-navigation {
+  &__link {
+    font-size: 12px;
+    margin-left: 5px;
+  }
+}
+
+.main-header-search {
+  &__input {
+    display: inline-block;
+    font-weight: 100;
+
+    form input {
+      border: 0px;
+      margin-left: 5px;
+    }
+  }
+}
+
+.main-content {
+  margin: 0 auto;
+  max-width: $main-content-width;
+  padding-top: $header-height;
+}
+
+.main-footer {
+  &__copyright {
+    text-align: center;
+  }
+}
