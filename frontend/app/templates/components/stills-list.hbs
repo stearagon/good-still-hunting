@@ -6,18 +6,23 @@
     {{/link-to}}
   </div>
   {{/each}}
+
+  {{#if endOfList}}
+    <div class="
+      stills-list-items__still
+      stills-list-items__still--end">
+
+      <article>No More Stills, Bro...</article>
+    </div>
+  {{/if}}
 </section>
 
-{{#if endOfList}}
-  <div class="stills-list-items__end">
-    <article>No More Stills, Bro...</article>
-  </div>
-{{/if}}
+
 
 <span {{action 'onLoadNext'}} class='load-button'></span>
 
 {{#if isLoading}}
-  <div class="modal">
+  <div class="spinner-modal">
     {{ember-spinner
       lines=12
       radius=10

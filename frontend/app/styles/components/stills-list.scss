@@ -1,13 +1,7 @@
-.stills {
-  // background: black;
-}
-
 .stills-list {
   margin-top: $header-height;
 
   &__items {
-    // background: black;
-    // background: rgba(0, 0, 0, 0.4);
     overflow: hidden;
   }
 
@@ -17,15 +11,13 @@
 }
 
 .stills-list-items {
-  position: relative;
-
   &__still {
     background: black;
     float: left;
     height: $still-height;
     overflow: hidden;
-    position: relative;
     width: $still-width;
+    position: relative;
 
     img {
       position: absolute;
@@ -33,27 +25,26 @@
       top: 50%;
       transform: translate(-50%, -50%);
     }
-  }
 
-  &__end {
-    display: block;
-    height: $still-height / 2;
-    position: relative;
+    &--end {
+      background: white;
+      width: 100%;
 
-    article {
-      border: 1px solid black;
-      color: gray;
-      left: 50%;
-      padding: $column-gutter / 2 $column-gutter * 2;
-      position: absolute;
-      top: 50%;
-      transform: translate(-50%, -50%);
+      article {
+        border: 1px solid black;
+        color: gray;
+        left: 50%;
+        padding: $column-gutter / 2 $column-gutter * 2;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
   }
 }
 
-
-.modal {
+.spinner-modal {
   position: fixed;
   top: 50%;
   left: 50%;
