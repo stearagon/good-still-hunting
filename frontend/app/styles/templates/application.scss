@@ -19,8 +19,8 @@
 
 .main-header-navigation {
   &__link {
-    font-size: 12px;
-    margin-left: 5px;
+    font-size: $base-font-size;
+    margin-left: $column-gutter / 2;
   }
 }
 
@@ -67,6 +67,9 @@
 
 .main-footer {
   &__copyright {
+    background: lighten(black, 20%);
+    color: white;
+    font-size: $base-font-size;
     text-align: center;
   }
 }
