@@ -2,4 +2,8 @@ body {
   background: white;
   font-family: $font-family;
   position: relative;
+
+  > .ember-view {
+    height: 100%;
+  }
 }

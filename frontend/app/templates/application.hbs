@@ -1,47 +1,49 @@
-<header class="main-header">
-  <div class="main-header__navigation">
-    {{#if session.isAuthenticated}}
-      <i class="fa fa-bars"></i>
-      {{#link-to "dashboard.index" class="main-header-navigation__link"}}
-        Good Still Hunting
-      {{/link-to}}
-      {{#link-to 'dashboard.films' class="main-header-navigation__link"}}
-        Films
-      {{/link-to}}
+<div class="page-wrapper">
+  <header class="main-header">
+    <div class="main-header__navigation">
+      {{#if session.isAuthenticated}}
+        <i class="fa fa-bars"></i>
+        {{#link-to "dashboard.index" class="main-header-navigation__link"}}
+          Good Still Hunting
+        {{/link-to}}
+        {{#link-to 'dashboard.films' class="main-header-navigation__link"}}
+          Films
+        {{/link-to}}
 
-      {{#link-to 'dashboard.stills' class="main-header-navigation__link"}}
-        Stills
-      {{/link-to}}
+        {{#link-to 'dashboard.stills' class="main-header-navigation__link"}}
+          Stills
+        {{/link-to}}
 
-      {{#link-to 'dashboard.films.new' class="main-header-navigation__link"}}
-        Add Film
-      {{/link-to}}
+        {{#link-to 'dashboard.films.new' class="main-header-navigation__link"}}
+          Add Film
+        {{/link-to}}
 
-      {{#link-to 'dashboard.stills.new' class="main-header-navigation__link"}}
-        Add Still
-      {{/link-to}}
+        {{#link-to 'dashboard.stills.new' class="main-header-navigation__link"}}
+          Add Still
+        {{/link-to}}
 
-      <a class="main-header-navigation__link" {{action 'logout'}}>
-        Logout
-      </a>
-    {{else}}
-      {{#link-to 'login'}}Log In{{/link-to}}
-    {{/if}}
+        <a class="main-header-navigation__link" {{action 'logout'}}>
+          Logout
+        </a>
+      {{else}}
+        {{#link-to 'login'}}Log In{{/link-to}}
+      {{/if}}
+    </div>
+
+    <div class="main-header__search">
+      {{search-form
+        class="main-header-search__input"
+        search=(action "searchStills")}}
+    </div>
+  </header>
+
+  <div class="main-content">
+    {{outlet}}
   </div>
 
-  <div class="main-header__search">
-    {{search-form
-      class="main-header-search__input"
-      search=(action "searchStills")}}
-  </div>
-</header>
-
-<div class="main-content">
-  {{outlet}}
+  <footer class="main-footer">
+    <p class="main-footer__copyright">
+      Good Still Hunting &#169;2015
+    </p>
+  </footer>
 </div>
-
-<footer class="main-footer">
-  <p class="main-footer__copyright">
-    Good Still Hunting &#169;2015
-  </p>
-</footer>

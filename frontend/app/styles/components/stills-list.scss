@@ -1,4 +1,10 @@
+.stills {
+  background: black;
+}
+
 .stills-list {
+  margin-top: $header-height;
+
   &__items {
     background: black;
     overflow: hidden;
@@ -10,10 +16,12 @@
 }
 
 .stills-list-items {
+  position: relative;
+
   &__still {
     overflow: hidden;
-    width: 300px;
-    height: 188px;
+    width: $still-width;
+    height: $still-height;
     float: left;
     position: relative;
 
@@ -23,8 +31,14 @@
       top: 50%;
       transform: translate(-50%, -50%);
     }
+  }
 
-    &--end span {
+  &__end {
+    display: block;
+    height: $still-height / 2;
+    position: relative;
+
+    article {
       top: 50%;
       left: 50%;
       position: absolute;
@@ -33,6 +47,7 @@
     }
   }
 }
+
 
 .modal {
   position: fixed;

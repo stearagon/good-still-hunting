@@ -6,15 +6,13 @@
     {{/link-to}}
   </div>
   {{/each}}
-  {{#if endOfList}}
-    <div class="
-      stills-list-items__still
-      stills-list-items__still--end">
-
-      <span>No More Stills, Bro.</span>
-    </div>
-  {{/if}}
 </section>
+
+{{#if endOfList}}
+  <div class="stills-list-items__end">
+    <article>No More Stills, Bro...</article>
+  </div>
+{{/if}}
 
 <span {{action 'onLoadNext'}} class='load-button'></span>
 

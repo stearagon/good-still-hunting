@@ -1,3 +1,8 @@
+.page-wrapper {
+  position: relative;
+  height: 100%;
+}
+
 .main-header {
   position: fixed;
   width: 100%;
@@ -48,9 +53,12 @@
 }
 
 .main-content {
+  background: rgba(0, 0, 0, 0.98);
+  height: 100%;
   margin: 0 auto;
   max-width: $max-content-width;
   padding-top: $header-height;
+  padding-bottom: $footer-height;
 
   @media #{$small-computer} {
     max-width: $main-content-width;
@@ -66,8 +74,13 @@
 }
 
 .main-footer {
+  background: lighten(black, 20%);
+  bottom: 0;
+  height: $footer-height;
+  position: fixed;
+  width: 100%;
+
   &__copyright {
-    background: lighten(black, 20%);
     color: white;
     font-size: $base-font-size;
     text-align: center;
