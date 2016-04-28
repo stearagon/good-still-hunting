@@ -28,18 +28,41 @@
   &__input {
     display: inline-block;
     font-weight: 100;
+    width: 100%;
 
-    form input {
-      border: 0px;
-      margin-left: 5px;
+    span {
+      display: table-cell;
+    }
+
+    .search-wrapper {
+      display: table-cell;
+      width: 100%;
+
+      input {
+        background: lighten(gray, 50%);
+        border: 0;
+        width: 100%;
+      }
     }
   }
 }
 
 .main-content {
   margin: 0 auto;
-  max-width: $main-content-width;
+  max-width: $max-content-width;
   padding-top: $header-height;
+
+  @media #{$small-computer} {
+    max-width: $main-content-width;
+  }
+
+  @media #{$media-phone} {
+    max-width: $max-media-phone-width;
+  }
+
+  @media #{$small-phone} {
+    max-width: $max-phone-width;
+  }
 }
 
 .main-footer {

@@ -1,4 +1,7 @@
+$max-phone-width: 300px;
+$max-media-phone-width: 600px;
 $main-content-width: 900px;
+$max-content-width: 1200px;
 
 $column-gutter: 10px;
 
@@ -11,3 +14,7 @@ $font-weight-bold: 400;
 $font-weight-extrabold: 700;
 
 $font-family: Gill Sans Extrabold, sans-serif;
+
+$small-phone: "only screen and (max-width : 599px)";
+$media-phone: "only screen and (max-width : 899px)";
+$small-computer: "only screen and (max-width : 1199px)";
