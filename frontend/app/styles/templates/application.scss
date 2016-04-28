@@ -53,8 +53,8 @@
 }
 
 .main-content {
-  background: rgba(0, 0, 0, 0.98);
-  height: 100%;
+  // background: rgba(0, 0, 0, 0.98);
+  height: calc(100% - #{$header-height} - #{$footer-height});
   margin: 0 auto;
   max-width: $max-content-width;
   padding-top: $header-height;

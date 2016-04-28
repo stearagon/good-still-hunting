@@ -1,12 +1,13 @@
 .stills {
-  background: black;
+  // background: black;
 }
 
 .stills-list {
   margin-top: $header-height;
 
   &__items {
-    background: black;
+    // background: black;
+    // background: rgba(0, 0, 0, 0.4);
     overflow: hidden;
   }
 
@@ -19,11 +20,12 @@
   position: relative;
 
   &__still {
-    overflow: hidden;
-    width: $still-width;
-    height: $still-height;
+    background: black;
     float: left;
+    height: $still-height;
+    overflow: hidden;
     position: relative;
+    width: $still-width;
 
     img {
       position: absolute;
@@ -39,10 +41,12 @@
     position: relative;
 
     article {
-      top: 50%;
+      border: 1px solid black;
+      color: gray;
       left: 50%;
+      padding: $column-gutter / 2 $column-gutter * 2;
       position: absolute;
-      color: white;
+      top: 50%;
       transform: translate(-50%, -50%);
     }
   }
