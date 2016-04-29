@@ -6,6 +6,5 @@ export default DS.Model.extend({
   large_image_url: DS.attr('string'),
   image: DS.attr('string'),
   tags: DS.hasMany('tag', { async: true }),
-
-  movie: DS.belongsTo('movie')
+  movie: DS.belongsTo('movie', { async: true }),
 });

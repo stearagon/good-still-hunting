@@ -11,5 +11,5 @@ export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin,{
     };
 
     return json;
-  }
+  },
 });
