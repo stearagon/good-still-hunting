@@ -38,10 +38,10 @@
 
     <div class="still-solo-modal__info">
       <div class="still-solo-modal__wrapper">
-        <h2 class='still-solo-modal-info__title'>{{stillSoloSelectedMovie.title}} {{stillSoloSelected.name}}</h2>
+        <h2 class='still-solo-modal-info__title'>{{stillSoloSelected.movie.title}} {{stillSoloSelected.name}}</h2>
 
         <div class="still-solo-modal-info__tags">
-          {{#each stillSoloSelectedTags as |tag|}}
+          {{#each stillSoloSelected.tags as |tag|}}
             {{#link-to 'dashboard.tags.tag' tag.id}}{{tag.tag}}{{/link-to}}
           {{/each}}
         </div>

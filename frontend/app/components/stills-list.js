@@ -49,22 +49,11 @@ export default Ember.Component.extend({
 
   actions: {
     toggleStillSoloModal(still) {
-      this.store.findRecord('still', still.id).then((still) => {
-        this.set('stillSoloSelected', still);
-
-        still.get('movie').then((movie) => {
-          debugger;
-          this.set('stillSoloSelectedMovie', movie);
-        });
-      });
-
-      this.store.query('tag', { still_id: still.id}).then((tags) => {
-        this.set('stillSoloSelectedTags', tags);
-      });
-
       if(still.id === this.get('stillSoloSelected.id') || (still.id !== this.get('stillSoloSelected.id') && !this.get('stillFormOpen'))) {
         this.toggleProperty('stillFormOpen');
       }
+
+      this.set('stillSoloSelected', still);
     },
 
     onLoadNext() {
