@@ -48,12 +48,16 @@ export default Ember.Component.extend({
   },
 
   actions: {
-    toggleStillSoloModal(still) {
-      if(still.id === this.get('stillSoloSelected.id') || (still.id !== this.get('stillSoloSelected.id') && !this.get('stillFormOpen'))) {
+    openStillSoloModal(still) {
+      if(!this.get('stillFormOpen')) {
         this.toggleProperty('stillFormOpen');
       }
 
       this.set('stillSoloSelected', still);
+    },
+
+    closeStillSoloModal() {
+      this.toggleProperty('stillFormOpen');
     },
 
     onLoadNext() {

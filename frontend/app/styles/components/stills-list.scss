@@ -145,9 +145,17 @@
       width: $still-width;
     }
   }
+
+  &__exit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: red;
+  }
 }
 
 .still-solo-modal-info {
+
   &__title {
     // text-align: center;
   }

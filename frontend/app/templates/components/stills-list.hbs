@@ -1,6 +1,6 @@
 <section class="stills-list__items group">
   {{#each stills as |still|}}
-    <div class="stills-list-items__still" {{action "toggleStillSoloModal" still}}>
+    <div class="stills-list-items__still" {{action "openStillSoloModal" still}}>
         <img src="{{still.medium_image_url}}"/>
     </div>
   {{/each}}
@@ -34,10 +34,14 @@
 
 {{#if stillFormOpen}}
   <div class="still-solo-modal group">
-    <img class="still-solo-modal__image" src="{{stillSoloSelected.large_image_url}}"/>
+    {{#link-to 'dashboard.stills.still' stillSoloSelected.id}}
+      <img class="still-solo-modal__image" src="{{stillSoloSelected.large_image_url}}"/>
+    {{/link-to}}
 
     <div class="still-solo-modal__info">
+      <span class="still-solo-modal__exit" {{action "closeStillSoloModal"}}>X</span>
       <div class="still-solo-modal__wrapper">
+
         <h2 class='still-solo-modal-info__title'>{{stillSoloSelected.movie.title}} {{stillSoloSelected.name}}</h2>
 
         <div class="still-solo-modal-info__tags">
