@@ -44,9 +44,115 @@
   }
 }
 
-.spinner-modal {
+.spinner-modal, .still-solo-modal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.still-solo-modal {
+  background: black;
+  position: fixed;
+  overflow: hidden;
+  height: $still-height * 2;
+  width: $still-width * 4;
+  z-index: 1001;
+
+  @media #{$small-computer} {
+    height: $still-height * 2;
+    width: $still-width * 3;
+  }
+
+  @media #{$media-phone} {
+    height: $still-height;
+    width: $still-width * 2;
+  }
+
+  @media #{$small-phone} {
+    height: $still-height * 2;
+    width: $still-width;
+  }
+
+  &__image {
+    float: left;
+    // position: absolute;
+    // left: 50%;
+    // top: 50%;
+    // transform: translate(-50%, -50%);
+    height: $still-height * 2;
+    width: $still-width * 2;
+
+    @media #{$small-computer} {
+      height: $still-height * 2;
+      width: $still-width * 2;
+    }
+
+    @media #{$media-phone} {
+      height: $still-height;
+      width: $still-width;
+    }
+
+    @media #{$small-phone} {
+      height: $still-height;
+      width: $still-width;
+    }
+  }
+
+  &__info {
+    float: right;
+    background: white;
+    height: $still-height * 2;
+    width: $still-width * 2;
+    position: relative;
+
+    @media #{$small-computer} {
+      height: $still-height * 2;
+      width: $still-width;
+    }
+
+    @media #{$media-phone} {
+      height: $still-height;
+      width: $still-width;
+    }
+
+    @media #{$small-phone} {
+      height: $still-height;
+      width: $still-width;
+    }
+  }
+
+  &__wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: $still-height 1.5;
+    width: $still-width * 1.5;
+
+    @media #{$small-computer} {
+      height: $still-height * 1.5;
+      width: $still-width * .5;
+    }
+
+    @media #{$media-phone} {
+      height: $still-height * .5;
+      width: $still-width * .5;
+    }
+
+    @media #{$small-phone} {
+      height: $still-height;
+      width: $still-width;
+    }
+  }
+}
+
+.still-solo-modal-info {
+  &__title {
+    // text-align: center;
+  }
+
+  &__tags {
+
+  }
 }

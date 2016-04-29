@@ -1,10 +1,8 @@
 <section class="stills-list__items group">
   {{#each stills as |still|}}
-  <div class="stills-list-items__still">
-    {{#link-to 'dashboard.stills.still' still.id}}
-      <img src="{{still.medium_image_url}}"/>
-    {{/link-to}}
-  </div>
+    <div class="stills-list-items__still" {{action "toggleStillSoloModal" still}}>
+        <img src="{{still.medium_image_url}}"/>
+    </div>
   {{/each}}
 
   {{#if endOfList}}
@@ -31,5 +29,23 @@
       speed='3.4'
       zIndex='5000'
       color='orange'}}
+  </div>
+{{/if}}
+
+{{#if stillFormOpen}}
+  <div class="still-solo-modal group">
+    <img class="still-solo-modal__image" src="{{stillSoloSelected.large_image_url}}"/>
+
+    <div class="still-solo-modal__info">
+      <div class="still-solo-modal__wrapper">
+        <h2 class='still-solo-modal-info__title'>{{stillSoloSelectedMovie.title}} {{stillSoloSelected.name}}</h2>
+
+        <div class="still-solo-modal-info__tags">
+          {{#each stillSoloSelectedTags as |tag|}}
+            {{#link-to 'dashboard.tags.tag' tag.id}}{{tag.tag}}{{/link-to}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
   </div>
 {{/if}}

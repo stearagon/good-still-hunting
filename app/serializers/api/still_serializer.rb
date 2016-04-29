@@ -8,5 +8,4 @@ class Api::StillSerializer < ActiveModel::Serializer
   def large_image_url
     object.image.url
   end
-
 end

@@ -10,6 +10,12 @@ export default Ember.Component.extend({
   stills: null,
   tag: null,
 
+  stillSoloSelected: null,
+  stillSoloSelectedMovie: null,
+  stillSoloSelectedTags: null,
+
+  stillFormOpen: false,
+
   endOfList: Ember.computed('meta', 'page', function() {
     return this.get('meta').total_pages === this.get('page');
   }),
@@ -42,6 +48,25 @@ export default Ember.Component.extend({
   },
 
   actions: {
+    toggleStillSoloModal(still) {
+      this.store.findRecord('still', still.id).then((still) => {
+        this.set('stillSoloSelected', still);
+
+        still.get('movie').then((movie) => {
+          debugger;
+          this.set('stillSoloSelectedMovie', movie);
+        });
+      });
+
+      this.store.query('tag', { still_id: still.id}).then((tags) => {
+        this.set('stillSoloSelectedTags', tags);
+      });
+
+      if(still.id === this.get('stillSoloSelected.id') || (still.id !== this.get('stillSoloSelected.id') && !this.get('stillFormOpen'))) {
+        this.toggleProperty('stillFormOpen');
+      }
+    },
+
     onLoadNext() {
       var params = {};
 
