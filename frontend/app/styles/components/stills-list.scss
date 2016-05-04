@@ -51,13 +51,17 @@
   transform: translate(-50%, -50%);
 }
 
+.spinner-modal {
+  z-index: 11;
+}
+
 .still-solo-modal {
   background: black;
   position: fixed;
   overflow: hidden;
   height: $still-height * 2;
   width: $still-width * 4;
-  z-index: 1001;
+  z-index: 10;
 
   @media #{$small-computer} {
     height: $still-height * 2;
@@ -76,26 +80,29 @@
 
   &__image {
     float: left;
-    // position: absolute;
-    // left: 50%;
-    // top: 50%;
-    // transform: translate(-50%, -50%);
-    height: $still-height * 2;
-    width: $still-width * 2;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: auto;
+    width: 50%;
 
     @media #{$small-computer} {
-      height: $still-height * 2;
-      width: $still-width * 2;
+      height: auto;
+      width: 66.6%;
     }
 
     @media #{$media-phone} {
-      height: $still-height;
-      width: $still-width;
+      height: auto;
+      width: 50%;
     }
 
     @media #{$small-phone} {
-      height: $still-height;
-      width: $still-width;
+      top: 0%;
+      left: 25%;
+      transform: translate(-25%, 0%);
+      // position: relative;
+      height: 50%;
+      width: 100%;
     }
   }
 
@@ -104,6 +111,8 @@
     background: white;
     height: $still-height * 2;
     width: $still-width * 2;
+    overflow: scroll;
+    // padding: $column-gutter / 2;
     position: relative;
 
     @media #{$small-computer} {
@@ -117,50 +126,57 @@
     }
 
     @media #{$small-phone} {
-      height: $still-height;
-      width: $still-width;
+      // display: none;
+      bottom: 0%;
+      left: 25%;
+      transform: translate(-25%, 0%);
+      position: absolute;
+      height: 50%;
+      width: 100%;
     }
   }
 
   &__wrapper {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    height: $still-height 1.5;
-    width: $still-width * 1.5;
-
-    @media #{$small-computer} {
-      height: $still-height * 1.5;
-      width: $still-width * .5;
-    }
-
-    @media #{$media-phone} {
-      height: $still-height * .5;
-      width: $still-width * .5;
-    }
-
-    @media #{$small-phone} {
-      height: $still-height;
-      width: $still-width;
-    }
+    height: inherit;
   }
 
   &__exit {
-    position: absolute;
-    top: 0;
-    right: 0;
     color: red;
+    position: fixed;
+    padding: $column-gutter / 4;
+    right: 0;
+    top: 0;
+
+    &:hover {
+      color: darken(red, 30%);
+    }
   }
 }
 
 .still-solo-modal-info {
+  &__title, &__tags, &__name {
+    text-align: center;
+  }
 
   &__title {
-    // text-align: center;
+    font-size: $base-font-size * 1.5;
+    padding-top: $column-gutter / 2;
+
+    a:hover {
+      color: gray;
+    }
   }
 
   &__tags {
+    color: lighten(blue, 20%);
+    padding-bottom: $column-gutter;
+  }
 
+  &__tag {
+    margin: $column-gutter / 2;
+
+    &:hover {
+      color: darken(blue, 30%);
+    }
   }
 }

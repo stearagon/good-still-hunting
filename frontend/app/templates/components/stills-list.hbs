@@ -39,14 +39,19 @@
     {{/link-to}}
 
     <div class="still-solo-modal__info">
-      <span class="still-solo-modal__exit" {{action "closeStillSoloModal"}}>X</span>
+      <i class="fa fa-times still-solo-modal__exit" {{action "closeStillSoloModal"}}></i>
       <div class="still-solo-modal__wrapper">
+        <div class="still-solo-modal-info__title">
+          {{#link-to 'dashboard.films.film' stillSoloSelected.movie.id}}
+            {{stillSoloSelected.movie.title}}
+          {{/link-to}}
+        </div>
 
-        <h2 class='still-solo-modal-info__title'>{{stillSoloSelected.movie.title}} {{stillSoloSelected.name}}</h2>
+        <div class="still-solo-modal-info__name">{{stillSoloSelected.name}}</div>
 
         <div class="still-solo-modal-info__tags">
           {{#each stillSoloSelected.tags as |tag|}}
-            {{#link-to 'dashboard.tags.tag' tag.id}}{{tag.tag}}{{/link-to}}
+            {{#link-to 'dashboard.tags.tag' tag.id class="still-solo-modal-info__tag"}}#{{tag.tag}}{{/link-to}}
           {{/each}}
         </div>
       </div>
