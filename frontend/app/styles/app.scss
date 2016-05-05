@@ -8,15 +8,11 @@
 
 @import 'templates/application';
 @import 'templates/stills/still';
+@import 'templates/stills/new';
 @import 'templates/films/index';
 @import 'templates/films/new';
 
 .still-show {
   height: auto;
   width: 100%;
-}
-
-.still-form img {
-  max-width: 30vw;
-  height: auto;
 }

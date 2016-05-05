@@ -1,2 +1,12 @@
-<h2>Add Still</h2>
-{{still-form create=(action 'create') cancel=(action 'cancel') model=still movies=movies store=store}}
+<div class="still-add">
+  <h2 class="still-add__title">
+    Add Still
+  </h2>
+
+  {{still-form
+    create=(action 'create')
+    cancel=(action 'cancel')
+    model=still
+    movies=movies
+    store=store}}
+</div>

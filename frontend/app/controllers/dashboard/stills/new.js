@@ -36,8 +36,8 @@ export default Ember.Controller.extend({
     },
 
     cancel: function(){
-      this.transitionToRoute('stills');
+      this.transitionToRoute('dashboard');
       return false;
-    }
+    },
   },
 });

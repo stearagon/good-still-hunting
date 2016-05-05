@@ -12,6 +12,8 @@ export default Ember.Component.extend(EmberValidations, {
 
   tagsQuery: null,
 
+  showPreview: false,
+
   validations: {
     image: {
       presence: true
@@ -71,7 +73,7 @@ export default Ember.Component.extend(EmberValidations, {
     fileInputChange: function(){
       var file = window.event.target.files[0];
       var reader = new FileReader();
-      var previewWindow = Ember.$('img')[0];
+      var previewWindow = Ember.$('.still-add-form__image')[0];
 
       reader.onloadend = function(){
         this.updatePreview(reader.result, previewWindow);
@@ -79,9 +81,14 @@ export default Ember.Component.extend(EmberValidations, {
 
       if (file) {
         reader.readAsDataURL(file);
+        this.set('showPreview', true);
       } else {
         this.updatePreview("");
       }
-    }
+    },
+
+    getFile() {
+      document.getElementById("upfile").click();
+    },
   }
 });

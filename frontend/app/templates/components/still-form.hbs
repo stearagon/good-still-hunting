@@ -1,7 +1,10 @@
-<div class="still-form">
-  {{errorMessage}}
+<div class="still-add-form">
+  <div class="still-add-form__errors">
+    {{errorMessage}}
+  </div>
 
-  <label>Movie:
+  <div class="still-add-form__input">
+    <!-- <label>Movie: -->
     {{#power-select
       options=movies
       onchange=(action (mut movie))
@@ -9,25 +12,39 @@
       allowClear=true
       selected=movie
       renderInPlace=true
-      searchPlaceholder="Type Movie Name"
-      as |movie|
-    }}
+      placeholder="add movie..."
+      searchPlaceholder="type movie name..." as |movie|}}
+
       {{movie.title}}
     {{/power-select}}
-  </label>
+    <!-- </label> -->
+  </div>
 
-  <label>Name:
-    {{input
-      type="text"
-      placeholder="name..."
+  <div class="still-add-form__input">
+    {{input type="text"
+      placeholder="add name..."
       onchange=(action (mut name))
       value=name}}
-  </label>
+  </div>
 
-  <label>Image:<input type="file" {{action  'fileInputChange' on='change'}}></label>
-  <img src="">
+  <div class="still-add-form__add-file">
+    <div {{action "getFile"}}>
+      upload image...
+    </div>
 
-  <label>Tags:
+    <div class="still-add-form__upfile">
+      <input id="upfile" type="file" value="upload" {{action  'fileInputChange' on='change'}}/>
+    </div>
+  </div>
+
+  <div class="
+    still-add-form__preview
+    {{if showPreview "still-add-form__preview--show"}}">
+
+    <img class="still-add-form__image" src="">
+  </div>
+
+  <div class="still-add-form__input">
     {{#power-select
       multiple=true
       onchange=(action "addTag")
@@ -44,8 +61,10 @@
     {{else}}
       Sorry, No Tags Found.
     {{/power-select}}
-  </label>
+  </div>
 
-  <button {{action 'onCreate'}}>Submit</button>
-  <button {{action 'onCancel'}}>Cancel</button>
+  <div class="still-add-form__actions">
+    <button class="still-add-form-actions__create" {{action 'onCreate'}}>Submit</button>
+    <button class="still-add-form-actions__cancel" {{action 'onCancel'}}>Cancel</button>
+  </div>
 </div>
