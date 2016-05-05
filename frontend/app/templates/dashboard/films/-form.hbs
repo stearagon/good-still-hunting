@@ -1,9 +1,9 @@
-<form>
-  <div class="errors">
+<form class="film-add__form">
+  <div class="film-add-form__errors">
     {{errorMessage}}
   </div>
 
-  <div class="title">
+  <div class="film-add-form__input">
     {{input
       type="text"
       placeholder="title..."
@@ -12,7 +12,7 @@
       value=title}}
   </div>
 
-  <div class="director">
+  <div class="film-add-form__input">
     {{input
       type="text"
       onchange=(action (mut director))
@@ -20,7 +20,7 @@
       value=director}}
   </div>
 
-  <div class="year">
+  <div class="film-add-form__input">
     {{input
       type="number"
       onchange=(action (mut year))
@@ -28,7 +28,7 @@
       value=year}}
   </div>
 
-  <div class="genres">
+  <div class="film-add-form__input">
     {{#power-select
       options=genres
       onchange=(action (mut genre))
@@ -39,6 +39,8 @@
     {{/power-select}}
   </div>
 
-  <button {{action 'create'}}>Submit</button>
-  <button {{action 'cancel'}}>Cancel</button>
+  <div class="film-add-form__actions">
+    <button class="film-add-form-actions__create" {{action 'create'}}>Submit</button>
+    <button class="film-add-form-actions__cancel" {{action 'cancel'}}>Cancel</button>
+  </div>
 </form>

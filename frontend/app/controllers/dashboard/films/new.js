@@ -42,7 +42,7 @@ export default Ember.Controller.extend(EmberValidations, {
     },
 
     cancel: function(){
-      this.transitionToRoute('films');
+      this.transitionToRoute('dashboard.films');
       return false;
     }
   },
