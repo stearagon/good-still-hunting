@@ -160,7 +160,7 @@
 
   &__title {
     font-size: $base-font-size * 1.5;
-    padding-top: $column-gutter / 2;
+    padding: $column-gutter / 2 0;
 
     a:hover {
       color: gray;
@@ -169,7 +169,7 @@
 
   &__tags {
     color: lighten(blue, 20%);
-    padding-bottom: $column-gutter;
+    padding: $column-gutter / 2 0;
   }
 
   &__tag {

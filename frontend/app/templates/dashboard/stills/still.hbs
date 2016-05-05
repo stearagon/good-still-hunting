@@ -1,7 +1,17 @@
-<h2 class='still-title'>{{model.name}}</h2>
+<h2 class="still-show__title">
+  {{#link-to "dashboard.films.film" model.still.movie.id}}
+    {{model.still.movie.title}}
+  {{/link-to}}
+</h2>
+<span class="still-show__name">{{model.still.name}}</span>
 
-<img class="still-show" src="{{model.still.large_image_url}}"/>
+<img class="still-show__image" src="{{model.still.large_image_url}}"/>
 
+<div class="still-show__tags">
   {{#each model.tags as |tag|}}
-    {{#link-to 'dashboard.tags.tag' tag.id}}{{tag.tag}}{{/link-to}}
+    {{#link-to 'dashboard.tags.tag' tag.id
+      class="still-show__tag"}}
+      #{{tag.tag}}
+    {{/link-to}}
   {{/each}}
+</div>

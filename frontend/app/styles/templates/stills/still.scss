@@ -1,0 +1,24 @@
+.still-show {
+  &__title {
+    font-size: $base-font-size * 1.5;
+    margin: $column-gutter / 2 0;
+
+    &:hover {
+      color: gray;
+    }
+  }
+
+  &__tags {
+    margin: $column-gutter / 2 0;
+    text-align: center;
+  }
+
+  &__tag {
+    color: blue;
+    margin: $column-gutter;
+
+    &:hover {
+      color: darken(blue, 30%);
+    }
+  }
+}
