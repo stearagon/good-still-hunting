@@ -1,0 +1,22 @@
+.films-list {
+  &__title {
+    font-size: $base-font-size * 1.5;
+    padding-bottom: $column-gutter / 2;
+  }
+
+  &__items {
+    padding-left: $column-gutter / 2;
+  }
+
+  &__item {
+    padding-bottom: $column-gutter / 2;
+  }
+}
+
+.films-list-item {
+  &__title {
+    &:hover {
+      color: lighten(black, 50%);
+    }
+  }
+}
