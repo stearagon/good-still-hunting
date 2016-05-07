@@ -34,12 +34,13 @@
 
 {{#if stillFormOpen}}
   <div class="still-solo-modal group">
+    <i class="fa fa-times still-solo-modal__exit" {{action "closeStillSoloModal"}}></i>
+
     {{#link-to 'dashboard.stills.still' stillSoloSelected.id}}
       <img class="still-solo-modal__image" src="{{stillSoloSelected.large_image_url}}"/>
     {{/link-to}}
 
     <div class="still-solo-modal__info">
-      <i class="fa fa-times still-solo-modal__exit" {{action "closeStillSoloModal"}}></i>
       <div class="still-solo-modal__wrapper">
         <div class="still-solo-modal-info__title">
           {{#link-to 'dashboard.films.film' stillSoloSelected.movie.id}}

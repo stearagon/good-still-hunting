@@ -57,6 +57,7 @@
 
 .still-solo-modal {
   background: black;
+  border: $column-gutter / 2 solid lighten(black, 15%);
   position: fixed;
   overflow: hidden;
   height: $still-height * 2;
@@ -142,10 +143,11 @@
 
   &__exit {
     color: red;
-    position: fixed;
+    position: absolute;
     padding: $column-gutter / 4;
     right: 0;
     top: 0;
+    z-index: 12;
 
     &:hover {
       color: darken(red, 30%);
