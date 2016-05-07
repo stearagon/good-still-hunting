@@ -26,11 +26,13 @@
       {{/if}}
     </div>
 
-    <div class="main-header__search">
-      {{search-form
-        class="main-header-search__input"
-        search=(action "searchStills")}}
-    </div>
+    {{#if session.isAuthenticated}}
+      <div class="main-header__search">
+        {{search-form
+          class="main-header-search__input"
+          search=(action "searchStills")}}
+      </div>
+    {{/if}}
   </header>
 
   <div class="main-content">
