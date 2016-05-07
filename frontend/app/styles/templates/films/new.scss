@@ -1,16 +1,12 @@
-.still-add {
+.film-add {
   text-align: center;
 
   &__title {
     font-size: $base-font-size * 1.5;
   }
-
-  &__form {
-    // padding: $column-gutter;
-  }
 }
 
-.still-add-form {
+.film-add-form {
   &__errors {
 
   }
@@ -22,52 +18,20 @@
     width: 80%;
   }
 
-  &__add-file {
-    height: $base-font-size * 3;
-    width: $column-gutter * 10;
-    border: 1px dashed #BBB;
-    cursor: pointer;
-    display: inline-block;
-    padding: $column-gutter;
-  }
-
-  &__upfile {
-    height: 0px;
-    width: 0px;
-    overflow:hidden;
-  }
-
-  &__preview {
-    height: 0px;
-    visibility: hidden;
-
-    &--show {
-      height: auto;
-      padding: $column-gutter $column-gutter 0;
-      margin: 0 auto;
-      visibility: visible;
-    }
-  }
-
-  &__image {
-    display: inline;
-    max-width: 30vw;
-    height: auto;
-  }
-
   &__input {
     > input, .ember-power-select {
+      // border: none;
       display: inline-block;
       padding: 0;
       font-size: $base-font-size;
-      margin: $column-gutter 0;
+      margin: $column-gutter / 2 0;
       text-align: center;
       width: 80%;
     }
   }
 }
 
-.still-add-form-actions {
+.film-add-form-actions {
   &__create {
     background: lighten(green, 10%);
     color: white;
