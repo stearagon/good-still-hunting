@@ -56,12 +56,25 @@
 
   &__input {
     > input, .ember-power-select {
+      border: 1px solid black;
       display: inline-block;
       padding: 0;
       font-size: $base-font-size;
       margin: $column-gutter 0;
       text-align: center;
       width: 80%;
+    }
+
+    .ember-power-select > div {
+      border: none;
+    }
+
+    .ember-power-select-trigger-multiple-input {
+      text-align: center;
+    }
+
+    .ember-power-select-options {
+      border: 1px solid black;
     }
   }
 }

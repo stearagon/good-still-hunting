@@ -20,13 +20,17 @@
 
   &__input {
     > input, .ember-power-select {
-      // border: none;
+      border: 1px solid black;
       display: inline-block;
       padding: 0;
       font-size: $base-font-size;
       margin: $column-gutter / 2 0;
       text-align: center;
       width: 80%;
+    }
+
+    .ember-power-select > div {
+      border: none;
     }
   }
 }
