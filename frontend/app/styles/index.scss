@@ -1,6 +1,7 @@
 body {
   background: white;
   font-family: $font-family;
+  max-height: 100vh !important;
   position: relative;
 
   > .ember-view {
