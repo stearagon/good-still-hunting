@@ -16,6 +16,10 @@
 
       {{movie.title}}
     {{/power-select}}
+
+    <div class="still-add-form__error">
+      {{if validated errors.movie}}
+    </div>
   </div>
 
   <div class="still-add-form__input">
@@ -23,6 +27,10 @@
       placeholder="add name..."
       onchange=(action (mut name))
       value=name}}
+
+    <div class="still-add-form__error">
+      {{if validated errors.name}}
+    </div>
   </div>
 
   <div class="still-add-form__add-file">
@@ -32,6 +40,10 @@
 
     <div class="still-add-form__upfile">
       <input id="upfile" type="file" value="upload" {{action  'fileInputChange' on='change'}}/>
+    </div>
+
+    <div class="still-add-form__error">
+      {{if validated errors.image}}
     </div>
   </div>
 
@@ -62,6 +74,9 @@
     {{else}}
       Sorry, No Tags Found.
     {{/power-select}}
+    <div class="still-add-form__error">
+      {{if validated errors.tags}}
+    </div>
   </div>
 
   <div class="still-add-form__actions">

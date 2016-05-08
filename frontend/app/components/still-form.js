@@ -12,6 +12,7 @@ export default Ember.Component.extend(EmberValidations, {
 
   tagsQuery: null,
 
+  isValidated: false,
   showPreview: false,
 
   validations: {
@@ -44,7 +45,11 @@ export default Ember.Component.extend(EmberValidations, {
       let props = this.getProperties('image', 'name', 'movie');
       let newTags = this.get('tags').map(function(tag){ return tag.get('tag'); });
 
-      this.sendAction('create', newTags, props);
+      this.set('validated', true);
+
+      if(this.get('isValid')) {
+        this.sendAction('create', newTags, props);
+      }
     },
 
     onCancel: function(){

@@ -7,8 +7,11 @@
 }
 
 .still-add-form {
-  &__errors {
-
+  &__error {
+    color: red;
+    display: block;
+    font-size: $base-font-size;
+    height: $base-font-size;
   }
 
   &__actions {
@@ -19,13 +22,6 @@
   }
 
   &__upload-button {
-    // height: $base-font-size * 3;
-    // width: $column-gutter * 10;
-    // border: 1px solid #BBB;
-    // background: lighten(gray, 5%);
-    // cursor: pointer;
-    // display: inline-block;
-    // padding: $column-gutter;
     background: lighten(gray, 20%);
     font-size: $base-font-size;
   }
@@ -55,14 +51,19 @@
   }
 
   &__input {
+      margin: $column-gutter 0;
+
     > input, .ember-power-select {
       border: 1px solid black;
       display: inline-block;
       padding: 0;
       font-size: $base-font-size;
-      margin: $column-gutter 0;
       text-align: center;
       width: 80%;
+    }
+
+    .ember-power-select {
+      margin: 0;
     }
 
     .ember-power-select > div {
