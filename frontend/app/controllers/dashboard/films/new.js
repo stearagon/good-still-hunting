@@ -7,6 +7,8 @@ export default Ember.Controller.extend(EmberValidations, {
   year: null,
   genre: null,
 
+  isValidated: false,
+
   validations: {
     'title': {
       presence: true
@@ -28,15 +30,15 @@ export default Ember.Controller.extend(EmberValidations, {
 
   actions: {
     create: function(){
+      this.set('isValidated', true);
+
       this.validate().then(() => {
         let props = this.getProperties('genre', 'title', 'year', 'director');
         let movie = this.store.createRecord('movie', props);
         movie.save().then(()=> {
           this.transitionToRoute('dashboard.films.index');
         });
-      }).catch(() => {
-        this.set('errorMessage', 'Please check inputs again.');
-      });
+      })
 
       return false;
     },

@@ -7,8 +7,11 @@
 }
 
 .film-add-form {
-  &__errors {
-
+  &__error {
+    color: red;
+    display: block;
+    font-size: $base-font-size;
+    height: $base-font-size;
   }
 
   &__actions {

@@ -1,8 +1,4 @@
 <form class="film-add__form">
-  <div class="film-add-form__errors">
-    {{errorMessage}}
-  </div>
-
   <div class="film-add-form__input">
     {{input
       type="text"
@@ -10,6 +6,10 @@
       allowClear=true
       onchange=(action (mut title))
       value=title}}
+
+    <div class="film-add-form__error">
+      {{if isValidated errors.title}}
+    </div>
   </div>
 
   <div class="film-add-form__input">
@@ -18,6 +18,10 @@
       onchange=(action (mut director))
       placeholder="director..."
       value=director}}
+
+      <div class="film-add-form__error">
+        {{if isValidated errors.director}}
+      </div>
   </div>
 
   <div class="film-add-form__input">
@@ -26,6 +30,10 @@
       onchange=(action (mut year))
       placeholder="year"
       value=year}}
+
+    <div class="film-add-form__error">
+      {{if isValidated errors.year}}
+    </div>
   </div>
 
   <div class="film-add-form__input">
@@ -37,6 +45,10 @@
       searchEnabled=false as |genre|}}
       {{genre}}
     {{/power-select}}
+
+    <div class="film-add-form__error">
+      {{if isValidated errors.genre}}
+    </div>
   </div>
 
   <div class="film-add-form__actions">

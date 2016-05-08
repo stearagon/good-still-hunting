@@ -18,7 +18,7 @@
     {{/power-select}}
 
     <div class="still-add-form__error">
-      {{if validated errors.movie}}
+      {{if isValidated errors.movie}}
     </div>
   </div>
 
@@ -29,7 +29,7 @@
       value=name}}
 
     <div class="still-add-form__error">
-      {{if validated errors.name}}
+      {{if isValidated errors.name}}
     </div>
   </div>
 
@@ -43,7 +43,7 @@
     </div>
 
     <div class="still-add-form__error">
-      {{if validated errors.image}}
+      {{if isValidated errors.image}}
     </div>
   </div>
 
@@ -75,7 +75,7 @@
       Sorry, No Tags Found.
     {{/power-select}}
     <div class="still-add-form__error">
-      {{if validated errors.tags}}
+      {{if isValidated errors.tags}}
     </div>
   </div>
 
