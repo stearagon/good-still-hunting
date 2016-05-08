@@ -15,7 +15,9 @@ class Api::StillsTagsController < ApplicationController
     @stills_tag = StillsTag.new(stills_tag_params)
 
     if @stills_tag.save
-      # @still.update_tags(params[:tags])
+      still = Still.find(stills_tag_params[:still_id])
+      still.update_pg_search_document
+
       render json: @stills_tag
     else
       render json: @stills_tag.errors.full_messages
