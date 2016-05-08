@@ -16,8 +16,8 @@ export default Ember.Component.extend({
 
   stillFormOpen: false,
 
-  endOfList: Ember.computed('meta', 'page', function() {
-    return this.get('meta').total_pages === this.get('page');
+  endOfList: Ember.computed('meta', 'page', 'isLoading', function() {
+    return this.get('meta').total_pages === this.get('page') && this.get('isLoading') === 0;
   }),
 
   didInsertElement() {
@@ -62,6 +62,8 @@ export default Ember.Component.extend({
 
     onLoadNext() {
       var params = {};
+
+      this.set('loading', true);
 
       if (this.get('meta').total_pages > this.get('page')) {
         this.set('isLoading', this.get('isLoading') + 1);
