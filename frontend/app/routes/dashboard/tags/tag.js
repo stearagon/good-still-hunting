@@ -1,10 +1,11 @@
 import Ember from 'ember';
 import _ from 'lodash/lodash';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
+import ResetScroll from 'frontend/mixins/reset-scroll';
 
 const { service } = Ember.inject;
 
-export default Ember.Route.extend(AuthenticatedRouteMixin, {
+export default Ember.Route.extend(AuthenticatedRouteMixin, ResetScroll, {
   session: service('session'),
   queryParams: {
     tagId: { refreshModel: true },
@@ -25,6 +26,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   },
 
   setupController(controller, model) {
+    window.scrollTo(0,0);
+
     controller.set('stills', model.stills);
     controller.set('meta', model.stills.meta);
     controller.set('tag', model.tag);
