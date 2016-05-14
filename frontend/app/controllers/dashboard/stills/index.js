@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
   ],
 
   page: 1,
-  perPage: 12,
+  perPage: 24,
 
   resetData: function() {
     this.set('page', 1);

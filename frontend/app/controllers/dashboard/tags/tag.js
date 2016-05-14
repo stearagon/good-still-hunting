@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
   ],
 
   page: 1,
-  perPage: 12,
+  perPage: 24,
   meta: null,
   tag: null,
 
