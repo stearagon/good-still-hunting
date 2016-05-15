@@ -28,7 +28,7 @@ class Api::StillsController < ApplicationController
     if @still.save
       render json: @still
     else
-      render json: @still.errors.full_messages
+      render json: { errors: @still.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -38,7 +38,7 @@ class Api::StillsController < ApplicationController
     if @still.update(still_params)
       render json: @still
     else
-      render json: @still.errors.full_messages
+      render :json => { :errors => @still.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
