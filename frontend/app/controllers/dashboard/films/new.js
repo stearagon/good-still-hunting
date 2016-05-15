@@ -2,6 +2,8 @@ import Ember from 'ember';
 import EmberValidations from "ember-validations";
 
 export default Ember.Controller.extend(EmberValidations, {
+  session: Ember.inject.service('session'),
+
   title: null,
   director: null,
   year: null,
@@ -44,24 +46,25 @@ export default Ember.Controller.extend(EmberValidations, {
 
   actions: {
     create: function(){
-      this.set('isValidated', true);
+      if(!this.get('session.isAuthenticated')) {
+        this.set('isValidated', true);
+        this.set('submissionDisplayErrors', [{ detail: 'Must be logged in to add films' }])
+      } else {
+        this.set('isValidated', true);
 
-      this.validate().then(() => {
-        let props = this.getProperties('genre', 'title', 'year', 'director');
-        let movie = this.store.createRecord('movie', props);
-        movie.save().then(()=> {
-          this.reset();
-          this.transitionToRoute('dashboard.films.index');
-        }, (errors) => {
-          if(errors.errors) {
+        this.validate().then(() => {
+          let props = this.getProperties('genre', 'title', 'year', 'director');
+          let movie = this.store.createRecord('movie', props);
+          movie.save().then(()=> {
+            this.reset();
+            this.transitionToRoute('dashboard.films.index');
+          }, (errors) => {
             this.set('submissionDisplayErrors', errors.errors);
-          } else {
-            this.set('submissionDisplayErrors', [{ detail: 'Must be logged in to add films' }]);
-          }
-        });
-      })
+          });
+        })
 
-      return false;
+        return false;
+      }
     },
 
     cancel: function(){

@@ -2,6 +2,8 @@ import Ember from 'ember';
 import EmberValidations from "ember-validations";
 
 export default Ember.Component.extend(EmberValidations, {
+  session: Ember.inject.service('session'),
+
   createdTags: null,
 
   errorMessage: null,
@@ -49,13 +51,18 @@ export default Ember.Component.extend(EmberValidations, {
 
   actions: {
     onCreate() {
-      let props = this.getProperties('image', 'name', 'movie');
-      let newTags = this.get('tags').map(function(tag){ return tag.get('tag'); });
+      if(!this.get('session.isAuthenticated')) {
+        this.set('isValidated', true);
+        this.set('submissionDisplayErrors', [{ detail: 'Must be logged in to add stills' }])
+      } else {
+        let props = this.getProperties('image', 'name', 'movie');
+        let newTags = this.get('tags').map(function(tag){ return tag.get('tag'); });
 
-      this.set('isValidated', true);
+        this.set('isValidated', true);
 
-      if(this.get('isValid')) {
-        this.sendAction('create', newTags, props);
+        if(this.get('isValid')) {
+          this.sendAction('create', newTags, props);
+        }
       }
     },
 

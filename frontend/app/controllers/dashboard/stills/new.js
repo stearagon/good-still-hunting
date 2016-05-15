@@ -32,11 +32,7 @@ export default Ember.Controller.extend({
           });
         });
       }, (errors) => {
-        if(errors.errors) {
-          this.set('submissionError', errors.errors);
-        } else {
-          this.set('submissionError', [{ detail: 'Must be logged in to add stills' }]);
-        }
+        this.set('submissionError', errors.errors);
       });
 
 
