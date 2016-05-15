@@ -1,5 +1,5 @@
 class Api::StillsTagsController < ApplicationController
-  before_action :authenticate!
+  before_action :authenticate!, only: [:create, :update, :destroy]
 
   def index
     if params[:still_id]

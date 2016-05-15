@@ -1,5 +1,5 @@
 class Api::TagsController < ApplicationController
-  before_action :authenticate!
+  before_action :authenticate!, only: [:create]
 
   def index
     if params[:still_id]

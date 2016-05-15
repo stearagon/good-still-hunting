@@ -1,6 +1,6 @@
 class Api::MoviesController < ApplicationController
-  before_action :authenticate!
-  
+  before_action :authenticate!, only: [:create]
+
   def create
     @movie = Movie.new(movie_params)
 

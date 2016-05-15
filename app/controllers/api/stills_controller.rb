@@ -1,5 +1,5 @@
 class Api::StillsController < ApplicationController
-  before_action :authenticate!
+  before_action :authenticate!, only: [:create, :update]
 
   def index
     if (params[:search_input].nil? || params[:search_input] == '') && params[:tag_id].nil? && params[:movie_id].nil?
