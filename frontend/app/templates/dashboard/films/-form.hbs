@@ -1,4 +1,12 @@
 <form class="film-add__form">
+  <div class="film-add-form__errors">
+    <div class="film-add-form__error">
+      {{#each submissionDisplayErrors as |error|}}
+        <span>{{if isValidated error.detail}}</span>
+      {{/each}}
+    </div>
+  </div>
+
   <div class="film-add-form__input">
     {{input
       type="text"

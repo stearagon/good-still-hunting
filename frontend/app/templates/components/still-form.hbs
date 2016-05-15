@@ -1,6 +1,10 @@
 <div class="still-add-form">
   <div class="still-add-form__errors">
-    {{errorMessage}}
+    <div class="still-add-form__error">
+      {{#each submissionDisplayErrors as |error|}}
+        <span>{{if isValidated error.detail}}</span>
+      {{/each}}
+    </div>
   </div>
 
   <div class="still-add-form__input">

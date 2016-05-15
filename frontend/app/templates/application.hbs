@@ -1,7 +1,6 @@
 <div class="page-wrapper">
   <header class="main-header">
     <div class="main-header__navigation">
-      {{#if session.isAuthenticated}}
         <i class="fa fa-bars"></i>
         {{#link-to "dashboard.index" class="main-header-navigation__link"}}
           Good Still Hunting
@@ -18,21 +17,22 @@
           Add Still
         {{/link-to}}
 
-        <a class="main-header-navigation__link" {{action 'logout'}}>
-          Logout
-        </a>
-      {{else}}
-        {{#link-to 'login'}}Log In{{/link-to}}
-      {{/if}}
+        {{#if session.isAuthenticated}}
+          <a class="main-header-navigation__link" {{action 'logout'}}>
+            Logout
+          </a>
+        {{else}}
+          <a class="main-header-navigation__link" href="/login">
+            Log In
+          </a>
+        {{/if}}
     </div>
 
-    {{#if session.isAuthenticated}}
-      <div class="main-header__search">
-        {{search-form
-          class="main-header-search__input"
-          search=(action "searchStills")}}
-      </div>
-    {{/if}}
+    <div class="main-header__search">
+      {{search-form
+        class="main-header-search__input"
+        search=(action "searchStills")}}
+    </div>
   </header>
 
   <div class="main-content">
