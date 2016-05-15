@@ -9,6 +9,13 @@ export default Ember.Component.extend(EmberValidations, {
   movie: null,
   name: null,
   tags: [],
+  submissionError: null,
+
+  submissionDisplayErrors: Ember.computed('submissionError', function() {
+    if(this.get('submissionError')) {
+      return this.get('submissionError');
+    }
+  }),
 
   tagsQuery: null,
 

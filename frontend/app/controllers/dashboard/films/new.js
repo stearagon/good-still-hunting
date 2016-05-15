@@ -6,6 +6,7 @@ export default Ember.Controller.extend(EmberValidations, {
   director: null,
   year: null,
   genre: null,
+  submissionDisplayErrors: null,
 
   isValidated: false,
 
@@ -28,6 +29,19 @@ export default Ember.Controller.extend(EmberValidations, {
     }
   },
 
+  reset() {
+    let properties = {
+      title: null,
+      director: null,
+      year: null,
+      genre: null,
+      submissionDisplayErrors: null,
+      isValidated: false,
+    }
+
+    this.setProperties(properties);
+  },
+
   actions: {
     create: function(){
       this.set('isValidated', true);
@@ -36,7 +50,14 @@ export default Ember.Controller.extend(EmberValidations, {
         let props = this.getProperties('genre', 'title', 'year', 'director');
         let movie = this.store.createRecord('movie', props);
         movie.save().then(()=> {
+          this.reset();
           this.transitionToRoute('dashboard.films.index');
+        }, (errors) => {
+          if(errors.errors) {
+            this.set('submissionDisplayErrors', errors.errors);
+          } else {
+            this.set('submissionDisplayErrors', [{ detail: 'Must be logged in to add films' }]);
+          }
         });
       })
 
