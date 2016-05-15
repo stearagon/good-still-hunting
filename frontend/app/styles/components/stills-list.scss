@@ -2,6 +2,10 @@
   margin-top: $header-height;
 
   &__items {
+    background: black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     overflow: hidden;
   }
 
@@ -13,7 +17,7 @@
 .stills-list-items {
   &__still {
     background: black;
-    float: left;
+    // float: left;
     height: $still-height;
     overflow: hidden;
     width: $still-width;
