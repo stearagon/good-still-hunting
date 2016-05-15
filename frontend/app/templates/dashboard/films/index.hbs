@@ -1,10 +1,10 @@
 <h2 class="films-list__title">All Films</h2>
 
 <ul class="films-list__items">
-  {{#each model as |movie|}}
+  {{#each films as |film|}}
     <li class="films-list__item">
-      {{#link-to 'dashboard.films.film' movie.id class="films-list-item__title"}}
-        {{movie.title}}
+      {{#link-to 'dashboard.films.film' film.id class="films-list-item__title"}}
+        {{film.title}}
       {{/link-to}}
     </li>
   {{/each}}
