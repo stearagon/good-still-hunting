@@ -1,5 +1,6 @@
 # Good Still Hunting
   A web app to store and tag stills from movies.
+  [live link](http://www.goodstillhunting.com)
   
 ## Languages
 - Ruby
@@ -10,12 +11,3 @@
 ## Frameworks
 - Rails
 - Ember
-
-## Plugins/Other
-
-
-## Features
-
-
-
-## Future Todos
