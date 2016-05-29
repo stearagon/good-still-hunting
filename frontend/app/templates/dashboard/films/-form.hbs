@@ -34,6 +34,18 @@
 
   <div class="film-add-form__input">
     {{input
+      type="text"
+      onchange=(action (mut directorOfPhotography))
+      placeholder="director of photography..."
+      value=directorOfPhotography}}
+
+      <div class="film-add-form__error">
+        {{if isValidated errors.directorOfPhotography}}
+      </div>
+  </div>
+
+  <div class="film-add-form__input">
+    {{input
       type="number"
       onchange=(action (mut year))
       placeholder="year"
@@ -42,6 +54,30 @@
     <div class="film-add-form__error">
       {{if isValidated errors.year}}
     </div>
+  </div>
+
+  <div class="film-add-form__input">
+    {{input
+      type="text"
+      onchange=(action (mut decade))
+      placeholder="decade..."
+      value=decade}}
+
+      <div class="film-add-form__error">
+        {{if isValidated errors.decade}}
+      </div>
+  </div>
+
+  <div class="film-add-form__input">
+    {{input
+      type="text"
+      onchange=(action (mut aspectRatio))
+      placeholder="aspect ratio..."
+      value=aspectRatio}}
+
+      <div class="film-add-form__error">
+        {{if isValidated errors.aspectRatio}}
+      </div>
   </div>
 
   <div class="film-add-form__input">
