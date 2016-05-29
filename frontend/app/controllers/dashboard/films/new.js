@@ -4,15 +4,31 @@ import EmberValidations from "ember-validations";
 export default Ember.Controller.extend(EmberValidations, {
   session: Ember.inject.service('session'),
 
-  title: null,
-  director: null,
-  year: null,
-  genre: null,
   submissionDisplayErrors: null,
+
+  aspectRatio: null,
+  decade: null,
+  director: null,
+  directorOfPhotography: null,
+  genre: null,
+  title: null,
+  year: null,
 
   isValidated: false,
 
   validations: {
+    'aspectRatio': {
+      presence: true
+    },
+
+    'decade': {
+      presence: true
+    },
+
+    'directorOfPhotography': {
+      presence: true
+    },
+
     'title': {
       presence: true
     },
@@ -35,11 +51,14 @@ export default Ember.Controller.extend(EmberValidations, {
     let properties = {
       title: null,
       director: null,
+      directorOfPhotography: null,
+      apsectRatio: null,
+      decade: null,
       year: null,
       genre: null,
       submissionDisplayErrors: null,
       isValidated: false,
-    }
+    };
 
     this.setProperties(properties);
   },
@@ -48,12 +67,12 @@ export default Ember.Controller.extend(EmberValidations, {
     create: function(){
       if(!this.get('session.isAuthenticated')) {
         this.set('isValidated', true);
-        this.set('submissionDisplayErrors', [{ detail: 'Must be logged in to add films' }])
+        this.set('submissionDisplayErrors', [{ detail: 'Must be logged in to add films' }]);
       } else {
         this.set('isValidated', true);
 
         this.validate().then(() => {
-          let props = this.getProperties('genre', 'title', 'year', 'director');
+          let props = this.getProperties('genre', 'title', 'year', 'director', 'directorOfPhotography', 'aspectRatio', 'decade');
           let movie = this.store.createRecord('movie', props);
           movie.save().then(()=> {
             this.reset();
@@ -61,7 +80,7 @@ export default Ember.Controller.extend(EmberValidations, {
           }, (errors) => {
             this.set('submissionDisplayErrors', errors.errors);
           });
-        })
+        });
 
         return false;
       }

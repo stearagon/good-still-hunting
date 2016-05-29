@@ -53,7 +53,7 @@ export default Ember.Component.extend(EmberValidations, {
     onCreate() {
       if(!this.get('session.isAuthenticated')) {
         this.set('isValidated', true);
-        this.set('submissionDisplayErrors', [{ detail: 'Must be logged in to add stills' }])
+        this.set('submissionDisplayErrors', [{ detail: 'Must be logged in to add stills' }]);
       } else {
         let props = this.getProperties('image', 'name', 'movie');
         let newTags = this.get('tags').map(function(tag){ return tag.get('tag'); });

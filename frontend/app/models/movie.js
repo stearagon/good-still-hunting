@@ -1,10 +1,13 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  title: DS.attr('string'),
+  aspectRatio: DS.attr('string'),
+  decade: DS.attr('string'),
   director: DS.attr('string'),
-  year: DS.attr('number'),
+  directorOfPhotography: DS.attr('string'),
   genre: DS.attr('string'),
+  title: DS.attr('string'),
+  year: DS.attr('number'),
 
   stills: DS.hasMany('still', { async: true })
 });
