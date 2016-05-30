@@ -9,7 +9,6 @@ export default Ember.Component.extend(EmberValidations, {
   errorMessage: null,
   image: null,
   movie: null,
-  name: null,
   submissionError: null,
 
   tags: Ember.computed.oneWay('startTags.[]'),
@@ -28,10 +27,6 @@ export default Ember.Component.extend(EmberValidations, {
 
   validations: {
     image: {
-      presence: true
-    },
-
-    name: {
       presence: true
     },
 
@@ -57,7 +52,7 @@ export default Ember.Component.extend(EmberValidations, {
         this.set('isValidated', true);
         this.set('submissionDisplayErrors', [{ detail: 'Must be logged in to add stills' }]);
       } else {
-        let props = this.getProperties('image', 'name', 'movie');
+        let props = this.getProperties('image', 'movie');
         let newTags = this.get('tags').map(function(tag){ return tag.get('tag'); });
 
         this.set('isValidated', true);

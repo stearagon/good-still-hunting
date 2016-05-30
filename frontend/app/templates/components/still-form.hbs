@@ -26,17 +26,6 @@
     </div>
   </div>
 
-  <div class="still-add-form__input">
-    {{input type="text"
-      placeholder="add name..."
-      onchange=(action (mut name))
-      value=name}}
-
-    <div class="still-add-form__error">
-      {{if isValidated errors.name}}
-    </div>
-  </div>
-
   <div class="still-add-form__add-file">
     <button class="still-add-form__upload-button" {{action "getFile"}}>
       upload image

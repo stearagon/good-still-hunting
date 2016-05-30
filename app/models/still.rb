@@ -16,10 +16,9 @@
 class Still < ActiveRecord::Base
   include PgSearch
 
-  multisearchable :against => [:tags_tags, :name]
+  multisearchable :against => [:tags_tags]
 
   attr_accessor :image
-  validates :name, presence: true, uniqueness: true
 
   validates :image, presence: true
   validates :movie_id, presence: true

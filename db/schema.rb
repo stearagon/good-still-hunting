@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160529213023) do
+ActiveRecord::Schema.define(version: 20160530005111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 20160529213023) do
   add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
 
   create_table "stills", force: :cascade do |t|
-    t.string   "name",               null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
@@ -54,8 +53,6 @@ ActiveRecord::Schema.define(version: 20160529213023) do
     t.datetime "image_updated_at"
     t.integer  "movie_id",           null: false
   end
-
-  add_index "stills", ["name"], name: "index_stills_on_name", unique: true, using: :btree
 
   create_table "stills_tags", force: :cascade do |t|
     t.integer  "still_id",   null: false

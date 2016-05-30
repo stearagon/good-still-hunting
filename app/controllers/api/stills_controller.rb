@@ -58,6 +58,6 @@ class Api::StillsController < ApplicationController
   private
 
   def still_params
-    params.require(:still).permit(:name, :image, :movie_id)
+    params.require(:still).permit(:image, :movie_id)
   end
 end
