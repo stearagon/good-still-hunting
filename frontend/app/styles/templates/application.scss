@@ -69,6 +69,7 @@
   max-width: $max-content-width;
   padding-top: $header-height;
   padding-bottom: $footer-height;
+  text-align: center;
 
   @media #{$small-computer} {
     max-width: $main-content-width;
