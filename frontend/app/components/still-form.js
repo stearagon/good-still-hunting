@@ -73,7 +73,7 @@ export default Ember.Component.extend(EmberValidations, {
       return this.get('store').query('tag', { query: value }).then((tags) => {
         let newTags = tags.toArray();
 
-        if (!newTags[0]) {
+        if (Ember.isEmpty(newTags) || newTags[0].get('tag') !== value) {
           let newTag = this.get('store').createRecord('tag', { tag: value });
           newTags.unshiftObject(newTag);
         }
