@@ -1,0 +1,13 @@
+<div class="page-side-panel__links">
+  {{#link-to 'dashboard.films' class="page-side-panel__link"}}
+    <span {{action "toggleSidePanel"}}>See All Films</span>
+  {{/link-to}}
+
+  {{#link-to 'dashboard.films.new' class="page-side-panel__link"}}
+    <span {{action "toggleSidePanel"}}>Add a Film</span>
+  {{/link-to}}
+
+  {{#link-to 'dashboard.stills.new' class="page-side-panel__link"}}
+    <span {{action "toggleSidePanel"}}>Add a Still</span>
+  {{/link-to}}
+</div>

@@ -1,20 +1,14 @@
+  <div class="page-side-panel group {{displaySidePanel}}">
+    {{component "side-panel-navigation"
+      toggleSidePanel=(action "openSidePanel")}}
+  </div>
+
 <div class="page-wrapper">
   <header class="main-header">
-    <div class="main-header__navigation">
-        <i class="fa fa-bars"></i>
+    <div class="main-header__navigation group">
+        <i class="fa fa-bars" {{action "openSidePanel"}}></i>
         {{#link-to "dashboard.index" class="main-header-navigation__link"}}
           Good Still Hunting
-        {{/link-to}}
-        {{#link-to 'dashboard.films' class="main-header-navigation__link"}}
-          Films
-        {{/link-to}}
-
-        {{#link-to 'dashboard.films.new' class="main-header-navigation__link"}}
-          Add Film
-        {{/link-to}}
-
-        {{#link-to 'dashboard.stills.new' class="main-header-navigation__link"}}
-          Add Still
         {{/link-to}}
 
         {{#if session.isAuthenticated}}
