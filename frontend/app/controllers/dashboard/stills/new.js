@@ -4,6 +4,7 @@ export default Ember.Controller.extend({
   movies: null,
   still: null,
   submissionError: null,
+  tags: null,
 
   actions: {
     create: function(tags, props){
@@ -28,6 +29,7 @@ export default Ember.Controller.extend({
 
             Ember.RSVP.all(stillsTagPromises).then(function() {
               that.transitionToRoute('dashboard.stills.still', that.get('still.id'));
+              window.setInterval(function(){ that.set('tags', null) }, 1000);
             });
           });
         });
@@ -35,13 +37,17 @@ export default Ember.Controller.extend({
         this.set('submissionError', errors.errors);
       });
 
-
       return false;
     },
 
     cancel: function(){
       this.transitionToRoute('dashboard');
       return false;
+    },
+
+    getDefaultTags: function(movie) {
+      let tags = this.store.query('tag', { movie_id: movie.get('id') });
+      this.set('tags', tags);
     },
   },
 });

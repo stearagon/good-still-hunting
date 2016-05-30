@@ -52,7 +52,7 @@ export default Ember.Controller.extend(EmberValidations, {
       title: null,
       director: null,
       directorOfPhotography: null,
-      apsectRatio: null,
+      aspectRatio: null,
       decade: null,
       year: null,
       genre: null,

@@ -14,6 +14,8 @@
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
 #  authentication_token   :string           default(""), not null
+#  created_at             :datetime
+#  updated_at             :datetime
 #
 
 class User < ActiveRecord::Base

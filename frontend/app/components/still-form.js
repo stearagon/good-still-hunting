@@ -10,8 +10,10 @@ export default Ember.Component.extend(EmberValidations, {
   image: null,
   movie: null,
   name: null,
-  tags: [],
   submissionError: null,
+
+  tags: Ember.computed.oneWay('startTags.[]'),
+
 
   submissionDisplayErrors: Ember.computed('submissionError', function() {
     if(this.get('submissionError')) {
@@ -61,7 +63,7 @@ export default Ember.Component.extend(EmberValidations, {
         this.set('isValidated', true);
 
         if(this.get('isValid')) {
-          this.sendAction('create', newTags, props);
+          this.attrs.create(newTags, props);
         }
       }
     },
@@ -109,5 +111,10 @@ export default Ember.Component.extend(EmberValidations, {
     getFile() {
       document.getElementById("upfile").click();
     },
-  }
+
+    filmChange(movie) {
+      this.set('movie', movie);
+      this.attrs.onFilmChange(movie);
+    },
+  },
 });

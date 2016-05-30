@@ -2,13 +2,16 @@
 #
 # Table name: movies
 #
-#  id         :integer          not null, primary key
-#  title      :string           not null
-#  director   :string           not null
-#  year       :integer          not null
-#  genre      :string           not null
-#  created_at :datetime
-#  updated_at :datetime
+#  id                      :integer          not null, primary key
+#  title                   :string           not null
+#  director                :string           not null
+#  year                    :integer          not null
+#  genre                   :string           not null
+#  created_at              :datetime
+#  updated_at              :datetime
+#  director_of_photography :string
+#  decade                  :string
+#  aspect_ratio            :string
 #
 
 class Movie < ActiveRecord::Base

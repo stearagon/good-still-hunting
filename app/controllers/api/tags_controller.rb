@@ -4,6 +4,13 @@ class Api::TagsController < ApplicationController
   def index
     if params[:still_id]
       @tags = Still.find(params[:still_id]).tags
+    elsif params[:movie_id]
+      @tags = []
+      movie = Movie.find(params[:movie_id])
+      %w{director_of_photography aspect_ratio director decade title year genre}.each do |tag_name|
+        tag = Tag.find_by(tag: movie.send(tag_name))
+        @tags.push(tag) if tag.present?
+      end
     else
        @tags = Tag.tag_search(params[:query]).limit(100).sort_by { |tag| tag.tag_length }
      end

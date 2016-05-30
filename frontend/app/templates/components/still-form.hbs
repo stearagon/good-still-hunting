@@ -10,11 +10,11 @@
   <div class="still-add-form__input">
     {{#power-select
       options=movies
-      onchange=(action (mut movie))
       searchField="title"
       allowClear=true
       selected=movie
       renderInPlace=true
+      onchange=(action 'filmChange')
       placeholder="add movie..."
       searchPlaceholder="type movie name..." as |movie|}}
 
