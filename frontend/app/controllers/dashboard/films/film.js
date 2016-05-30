@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
 
   page: 1,
   perPage: 24,
-  filmId: null,
+  movieTitle: null,
 
   resetData: function() {
     this.set('page', 1);

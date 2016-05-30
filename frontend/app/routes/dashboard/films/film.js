@@ -17,16 +17,16 @@ export default Ember.Route.extend(ResetScroll, {
     const params = this.buildQueryParams(queryParams);
 
     return Ember.RSVP.hash({
-      movie: this.store.query('movie', { movie_title: params.movie_title }),
+      movie: this.store.queryRecord('movie', { movie_title: params.movie_title }),
       stills: this.store.query('still', params)
     });
   },
 
   setupController(controller,model) {
-    controller.set('filmId', model.movie.id);
     controller.set('meta', model.stills.meta);
     controller.set('stills', model.stills);
     controller.set('movie', model.movie);
+    controller.set('movieTitle', model.movie.get('title'));
   },
 
   resetController: function(controller, isExiting) {

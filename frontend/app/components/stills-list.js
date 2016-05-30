@@ -2,7 +2,7 @@ import Ember from 'ember';
 import _ from 'lodash/lodash';
 
 export default Ember.Component.extend({
-  filmId: null,
+  movieTitle: null,
   isLoading: 0,
   meta: null,
   page: null,
@@ -81,8 +81,8 @@ export default Ember.Component.extend({
           _.extend(params, { per_page: this.get('perPage') });
         }
 
-        if (this.get('filmId')) {
-          _.extend(params, { movie_id: this.get('filmId') });
+        if (this.get('movieTitle')) {
+          _.extend(params, { movie_title: this.get('movieTitle') });
         }
 
         if (this.get('tag')) {

@@ -16,16 +16,17 @@ class Api::MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all.order(:title)
+    if params[:movie_title]
+      @movies = Movie.find_by_title(params[:movie_title])
+    else
+      @movies = Movie.all.order(:title)
+    end
+
     render json: @movies
   end
 
   def show
-    if params[:title]
-      @movie = Movie.find_by_title(params[:movie_title])
-    else
-      @movie = Movie.find(params[:id])
-    end
+    @movie = Movie.find(params[:id])
 
     render json: @movie
   end
