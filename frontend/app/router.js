@@ -9,7 +9,7 @@ Router.map(function() {
   this.route('dashboard', { path: '/' }, function() {
     this.route('films', function(){
       this.route('new',function(){});
-      this.route('film', { path: '/:film_id'}, function(){});
+      this.route('film', { path: '/:movie_title'}, function(){});
     });
 
     this.route('stills', function(){

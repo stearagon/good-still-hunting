@@ -21,7 +21,12 @@ class Api::MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find(params[:id])
+    if params[:title]
+      @movie = Movie.find_by_title(params[:movie_title])
+    else
+      @movie = Movie.find(params[:id])
+    end
+
     render json: @movie
   end
 

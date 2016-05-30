@@ -2,12 +2,12 @@ class Api::StillsController < ApplicationController
   before_action :authenticate!, only: [:create, :update]
 
   def index
-    if (params[:search_input].nil? || params[:search_input] == '') && params[:tag_id].nil? && params[:movie_id].nil?
+    if (params[:search_input].nil? || params[:search_input] == '') && params[:tag_id].nil? && params[:movie_title].nil?
       @stills = Still.all
-    elsif (params[:search_input].nil? || params[:search_input] == '') && params[:movie_id].nil?
+    elsif (params[:search_input].nil? || params[:search_input] == '') && params[:movie_title].nil?
       @stills = Tag.find(params[:tag_id]).stills
     elsif (params[:search_input].nil? || params[:search_input] == '')
-      @stills = Movie.find(params[:movie_id]).stills
+      @stills = Movie.find_by_title(params[:movie_title]).stills
     else
       @stills = PgSearch
         .multisearch(params[:search_input])

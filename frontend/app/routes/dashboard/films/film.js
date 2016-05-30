@@ -17,7 +17,7 @@ export default Ember.Route.extend(ResetScroll, {
     const params = this.buildQueryParams(queryParams);
 
     return Ember.RSVP.hash({
-      movie: this.store.findRecord('movie', params.movie_id),
+      movie: this.store.query('movie', { movie_title: params.movie_title }),
       stills: this.store.query('still', params)
     });
   },
@@ -48,8 +48,8 @@ export default Ember.Route.extend(ResetScroll, {
       _.extend(params, { per_page: queryParams.perPage });
     }
 
-    if (queryParams.film_id) {
-      _.extend(params, { movie_id: queryParams.film_id });
+    if (queryParams.movie_title) {
+      _.extend(params, { movie_title: queryParams.movie_title });
     }
 
     return params;
