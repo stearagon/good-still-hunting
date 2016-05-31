@@ -1,3 +1,19 @@
+.films {
+  margin: 0 $max-content-width / 4;
+
+  @media #{$small-computer} {
+    margin: 0 $main-content-width / 4;
+  }
+
+  @media #{$media-phone} {
+    margin: 0 $max-media-phone-width / 4;
+  }
+
+  @media #{$small-phone} {
+    margin: 0;
+  }
+}
+
 .films-list {
   &__title {
     font-size: $base-font-size * 2;
