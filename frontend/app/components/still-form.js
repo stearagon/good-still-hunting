@@ -11,7 +11,10 @@ export default Ember.Component.extend(EmberValidations, {
   movie: null,
   submissionError: null,
 
+  filmSort: ['title:asc'],
+
   tags: Ember.computed.oneWay('startTags.[]'),
+  sortedMovies: Ember.computed.sort('movies', 'filmSort'),
 
 
   submissionDisplayErrors: Ember.computed('submissionError', function() {
