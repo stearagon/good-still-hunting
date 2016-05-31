@@ -23,5 +23,9 @@ export default Ember.Controller.extend({
     openSidePanel() {
       this.toggleProperty('sidePanelOpen');
     },
+
+    closeSidePanel() {
+      this.set('sidePanelOpen', false);
+    },
   },
 });
