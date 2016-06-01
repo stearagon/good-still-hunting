@@ -13,7 +13,10 @@
         {{/link-to}}
 
         {{#if session.isAuthenticated}}
-          <a class="main-header-navigation__link" {{action 'logout'}}>
+          <a class="
+            main-header-navigation__link
+            main-header-navigation__link--logout" {{action 'logout'}}>
+
             Logout
           </a>
         {{else}}
