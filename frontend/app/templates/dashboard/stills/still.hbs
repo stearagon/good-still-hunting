@@ -8,9 +8,8 @@
 
 <div class="still-show__tags">
   {{#each model.tags as |tag|}}
-    {{#link-to 'dashboard.tags.tag' tag.id
-      class="still-show__tag"}}
-      #{{tag.tag}}
+    {{#link-to 'dashboard.tags.tag' tag.id class="still-show__tag"}}
+      <button>#{{tag.tag}}</button>
     {{/link-to}}
   {{/each}}
 </div>

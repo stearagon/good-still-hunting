@@ -50,7 +50,9 @@
 
         <div class="still-solo-modal-info__tags">
           {{#each stillSoloSelected.tags as |tag|}}
-            {{#link-to 'dashboard.tags.tag' tag.id class="still-solo-modal-info__tag" invokeAction=(action "closeStillSoloModal")}}#{{tag.tag}}{{/link-to}}
+            {{#link-to 'dashboard.tags.tag' tag.id class="still-solo-modal-info__tag" invokeAction=(action "closeStillSoloModal")}}
+              <button>#{{tag.tag}}</button>
+            {{/link-to}}
           {{/each}}
         </div>
       </div>
