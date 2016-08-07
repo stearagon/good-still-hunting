@@ -1,6 +1,13 @@
 import Ember from 'ember';
 import _ from 'lodash/lodash';
 
+const metaFields = [
+  'searchInput',
+  'page',
+  'perPage',
+  'movieTitle',
+];
+
 export default Ember.Component.extend({
   movieTitle: null,
   isLoading: 0,
@@ -72,21 +79,17 @@ export default Ember.Component.extend({
         this.set('isLoading', this.get('isLoading') + 1);
         this.set('page', parseInt(this.get('page')) + 1);
 
-        if (this.get('searchInput')) {
-          _.extend(params, { search_input: this.get('searchInput') });
-        }
+        metaFields.forEach((field) => {
+          let value = this.get(field);
+          let underscore = Ember.String.underscore(field);
+          let argumentObject = {};
 
-        if (this.get('page')) {
-          _.extend(params, { page: this.get('page')});
-        }
+          argumentObject[underscore] = value;
 
-        if (this.get('perPage')) {
-          _.extend(params, { per_page: this.get('perPage') });
-        }
-
-        if (this.get('movieTitle')) {
-          _.extend(params, { movie_title: this.get('movieTitle') });
-        }
+          if(value) {
+            _.extend(params, argumentObject);
+          }
+        });
 
         if (this.get('tag')) {
           _.extend(params, { tag_id: this.get('tag.id') });
