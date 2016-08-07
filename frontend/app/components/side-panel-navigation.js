@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  didInsertElement() {
+  didRender() {
     this._super(...arguments);
 
     if (Ember.$(document).attr('loadSidePanel') === undefined) {

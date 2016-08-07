@@ -1,8 +1,8 @@
 <section class="stills-list__items group">
   {{#each stills as |still|}}
-    <div class="stills-list-items__still" {{action "openStillSoloModal" still}}>
-        <img src="{{still.medium_image_url}}"/>
-    </div>
+    {{stills-list/still-item
+      still=still
+      openStillSoloModal=(action "openStillSoloModal")}}
   {{/each}}
 
   {{#if endOfList}}
