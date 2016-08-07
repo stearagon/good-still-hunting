@@ -23,28 +23,31 @@ export default Ember.Component.extend({
   didInsertElement() {
     this._super(...arguments);
 
-    if (Ember.$(document).attr('loaded') === undefined) {
-      Ember.$(document).ready(function(){
-        Ember.$('body').height(Ember.$(document).height() + 1);
-        Ember.$(window).scroll(function() {
-          if(Ember.$(window).height() + Ember.$(window).scrollTop() === Ember.$(document).height()) {
-            if(Ember.$('.load-button')){
-              Ember.$('.load-button').click();
-            }
+    Ember.$(document).ready(function(){
+      Ember.$('body').height(Ember.$(document).height() + 1);
+      Ember.$(window).scroll(function() {
+        if(Ember.$(window).height() + Ember.$(window).scrollTop() === Ember.$(document).height()) {
+          if(Ember.$('.load-button')){
+            Ember.$('.load-button').click();
           }
-        });
-
-        Ember.$(window).on('touchstart', function() {
-          if(Ember.$(window).height() + Ember.$(window).scrollTop() === Ember.$(document).height()) {
-            if(Ember.$('.load-button')){
-              Ember.$('.load-button').click();
-            }
-          }
-        });
+        }
       });
-    }
 
-    Ember.$(document).attr('loaded', true);
+      Ember.$(window).on('touchstart', function() {
+        if(Ember.$(window).height() + Ember.$(window).scrollTop() === Ember.$(document).height()) {
+          if(Ember.$('.load-button')){
+            Ember.$('.load-button').click();
+          }
+        }
+      });
+    });
+  },
+
+  willDestroyElement() {
+    this._super(...arguments);
+
+    Ember.$('body').height(Ember.$(document).height() - 1);
+    Ember.$(window).off();
   },
 
   actions: {
