@@ -9,14 +9,11 @@
     <div class="main-header__navigation group">
         <i class="fa fa-bars" {{action "openSidePanel"}}></i>
         {{#link-to "dashboard.index" class="main-header-navigation__link"}}
-          Good Still Hunting
+          <img src="https://dl.dropboxusercontent.com/u/22258339/GSH_logo.png">
         {{/link-to}}
 
         {{#if session.isAuthenticated}}
-          <a class="
-            main-header-navigation__link
-            main-header-navigation__link--logout" {{action 'logout'}}>
-
+          <a class="main-header-navigation__link" {{action 'logout'}}>
             Logout
           </a>
         {{else}}

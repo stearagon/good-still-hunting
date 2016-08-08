@@ -16,18 +16,23 @@
     background: black;
     color: white;
     padding: $column-gutter / 2 $column-gutter;
+    line-height: $logo-height;
   }
 
   &__search {
     background: white;
   }
+
+  i.fa.fa-bars {
+    vertical-align: middle;
+    font-size: $logo-height;
+  }
 }
 
 .main-header-navigation {
   &__link {
-    line-height: 34px;
-    font-size: $base-font-size;
-    margin-left: $column-gutter;
+    cursor: pointer;
+    line-height: $logo-height;
 
     &:hover {
       color: lighten(gray, 20%);
@@ -37,8 +42,11 @@
       float: right;
     }
 
-    &--logout {
-      cursor: pointer;
+    img {
+      width: auto;
+      height: $logo-height;
+      display: inline-block;
+      vertical-align: middle;
     }
   }
 }
@@ -106,8 +114,4 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.fa.fa-bars {
-  cursor: pointer;
 }
