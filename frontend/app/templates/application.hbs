@@ -1,9 +1,3 @@
-  <div class="page-side-panel group {{displaySidePanel}}">
-    {{component "side-panel-navigation"
-      toggleSidePanel=(action "openSidePanel")
-      closeSidePanel=(action "closeSidePanel")}}
-  </div>
-
 <div class="page-wrapper">
   <header class="main-header">
     <div class="main-header__navigation group">
@@ -21,6 +15,12 @@
             Log In
           </a>
         {{/if}}
+    </div>
+
+    <div class="page-side-panel group {{displaySidePanel}}">
+        {{component "side-panel-navigation"
+        toggleSidePanel=(action "openSidePanel")
+        closeSidePanel=(action "closeSidePanel")}}
     </div>
 
     <div class="main-header__search">

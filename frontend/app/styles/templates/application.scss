@@ -8,7 +8,7 @@
   width: 100%;
   z-index: 100;
 
-  &__navigation, &__search {
+  &__navigation {
     padding: $column-gutter / 2;
   }
 
@@ -16,11 +16,17 @@
     background: black;
     color: white;
     padding: $column-gutter / 2 $column-gutter;
+    position: relative;
     line-height: $logo-height;
+    z-index: 2;
   }
 
   &__search {
     background: white;
+    border-top: 1px solid black;
+    padding: 0px 5px;
+    position: relative;
+    z-index: 1;
   }
 
   i.fa.fa-bars {
@@ -33,6 +39,7 @@
   &__link {
     cursor: pointer;
     line-height: $logo-height;
+    margin-left: 5px;
 
     &:hover {
       color: lighten(gray, 20%);
@@ -68,8 +75,8 @@
       input {
         background: lighten(gray, 50%);
         border: 0;
-	font-size: 16px;
-        line-height: 43px;
+        font-size: 12px;
+        line-height: 34px;
         width: 100%;
       }
     }
