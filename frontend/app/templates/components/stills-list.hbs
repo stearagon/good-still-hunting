@@ -1,61 +1,66 @@
-<section class="stills-list__items group">
-  {{#each stills as |still|}}
-    {{stills-list/still-item
-      still=still
-      openStillSoloModal=(action "openStillSoloModal")}}
-  {{/each}}
+{{#if displayTitle}}
+    <h1 class="stills-list__title">{{displayTitle}}</h1>
+{{/if}}
 
-  {{#if endOfList}}
-    <div class="
-      stills-list-items__still
-      stills-list-items__still--end">
+<section class="
+    stills-list__items group
+    {{if displayTitle "" "still-list__items--no-title"}}">
 
-      <article>No More Stills, Bro...</article>
-    </div>
-  {{/if}}
+    {{#each stills as |still|}}
+        {{stills-list/still-item
+            still=still
+            openStillSoloModal=(action "openStillSoloModal")}}
+    {{/each}}
+
+    {{#if endOfList}}
+        <div class="
+            stills-list-items__still
+            stills-list-items__still--end">
+
+            <article>No More Stills, Bro...</article>
+        </div>
+    {{/if}}
 </section>
-
-
 
 <span {{action 'onLoadNext'}} class='load-button'></span>
 
 {{#if isLoading}}
-  <div class="spinner-modal">
+<div class="spinner-modal">
     {{ember-spinner
-      lines=12
-      radius=10
-      width=5
-      rotate=0
-      speed='3.4'
-      zIndex='5000'
-      color='orange'}}
-  </div>
+        lines=12
+        radius=10
+        width=5
+        rotate=0
+        speed='3.4'
+        zIndex='5000'
+        color='orange'}}
+    </div>
 {{/if}}
 
 {{#if stillFormOpen}}
-  <div class="still-solo-modal group">
-    <i class="fa fa-times still-solo-modal__exit" {{action "closeStillSoloModal"}}></i>
+    <div class="still-solo-modal group">
+        <i class="fa fa-times still-solo-modal__exit" {{action "closeStillSoloModal"}}></i>
 
-    {{#link-to 'dashboard.stills.still' stillSoloSelected.id}}
-      <img class="still-solo-modal__image" src="{{stillSoloSelected.large_image_url}}"/>
-    {{/link-to}}
+        {{#link-to 'dashboard.stills.still' stillSoloSelected.id}}
+            <img class="still-solo-modal__image" src="{{stillSoloSelected.large_image_url}}"/>
+        {{/link-to}}
 
-    <div class="still-solo-modal__info">
-      <div class="still-solo-modal__wrapper">
-        <div class="still-solo-modal-info__title">
-          {{#link-to 'dashboard.films.film' stillSoloSelected.movie.title}}
-            {{stillSoloSelected.movie.title}}
-          {{/link-to}}
+        <div class="still-solo-modal__info">
+            <div class="still-solo-modal__wrapper">
+                <div class="still-solo-modal-info__title">
+                    {{#link-to 'dashboard.films.film' stillSoloSelected.movie.title}}
+                       {{stillSoloSelected.movie.title}}
+                    {{/link-to}}
+                </div>
+
+                <div class="still-solo-modal-info__tags">
+                    {{#each stillSoloSelected.tags as |tag|}}
+                       {{#link-to 'dashboard.tags.tag' tag.id class="still-solo-modal-info__tag" invokeAction=(action "closeStillSoloModal")}}
+                          <button>#{{tag.tag}}</button>
+                       {{/link-to}}
+                    {{/each}}
+                </div>
+            </div>
         </div>
-
-        <div class="still-solo-modal-info__tags">
-          {{#each stillSoloSelected.tags as |tag|}}
-            {{#link-to 'dashboard.tags.tag' tag.id class="still-solo-modal-info__tag" invokeAction=(action "closeStillSoloModal")}}
-              <button>#{{tag.tag}}</button>
-            {{/link-to}}
-          {{/each}}
-        </div>
-      </div>
     </div>
-  </div>
 {{/if}}
