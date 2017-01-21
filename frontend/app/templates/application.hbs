@@ -1,7 +1,9 @@
 <div class="page-wrapper">
   <header class="main-header">
     <div class="main-header__navigation group">
-        <i class="fa fa-bars" {{action "openSidePanel"}}></i>
+        <a {{action "openSidePanel"}}>
+            <i class="fa fa-bars"></i>
+        </a>
         {{#link-to "dashboard.index" class="main-header-navigation__link"}}
           <img src="https://dl.dropboxusercontent.com/u/22258339/GSH_logo.png">
         {{/link-to}}
