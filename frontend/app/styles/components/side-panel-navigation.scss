@@ -27,9 +27,11 @@
 
     &__link {
         align-self: center;
-        font-size: 12px;
-        padding: 5px 0px;
+        font-size: 18px;
+        line-height: 40px;
+        padding: 0;
         width: auto;
+        font-weight: 300;
 
         span {
             padding: 0px 5px;
@@ -43,5 +45,5 @@
 }
 
 .display-side-panel {
-    height: $logo-height;
+    height: $action-nav-height;
 }

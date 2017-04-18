@@ -6,11 +6,11 @@
     stills-list__items group
     {{if displayTitle "" "still-list__items--no-title"}}">
 
-    {{#each stills as |still|}}
+    {{#masonry-grid items=stills as |still|}}
         {{stills-list/still-item
             still=still
             openStillSoloModal=(action "openStillSoloModal")}}
-    {{/each}}
+    {{/masonry-grid}}
 
     {{#if endOfList}}
         <div class="

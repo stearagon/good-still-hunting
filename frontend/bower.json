@@ -11,7 +11,9 @@
     "lodash": "~3.10.1",
     "underscore": "~1.8.3",
     "spin.js": "~2.3.2",
-    "font-awesome": "~4.5.0"
+    "font-awesome": "~4.5.0",
+    "masonry": "^4.1.1",
+    "imagesloaded": "^4.1.1"
   },
   "devDependencies": {
     "lodash": "~3.10.1",

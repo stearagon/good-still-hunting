@@ -3,23 +3,25 @@
 
     &__title {
         background: white;
-        padding: 5px 0px;
+        font-size: 20px;
+        font-weight: 300;
+        padding: 10px 0;
         position: fixed;
-        top: $header-height;
+        top: $header-height - 1px;
         width: 100%;
         z-index: 1;
     }
 
-    &__items {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        overflow: hidden;
-
-        &--no-title {
-            margin-top: 28px;
-        }
-    }
+    // &__items {
+    //     display: flex;
+    //     flex-wrap: wrap;
+    //     justify-content: space-around;
+    //     overflow: hidden;
+    //
+    //     &--no-title {
+    //         margin-top: 28px;
+    //     }
+    // }
 
     &__end {
         text-align: center;
@@ -28,19 +30,22 @@
 
 .stills-list-items {
     &__still {
-        background: black;
+        // background: black;
         // float: left;
-        height: $still-height;
-        overflow: hidden;
-        width: $still-width;
-        position: relative;
+        // height: $still-height;
+        // overflow: hidden;
+        // width: $still-width;
+        // position: relative;
 
         img {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            visibility: hidden;
+            // position: absolute;
+            // left: 50%;
+            // top: 50%;
+            // transform: translate(-50%, -50%);
+            // visibility: hidden;
+            width: 296px;
+            height: auto;
+            padding: 2px;
         }
 
         &--on-page {
@@ -185,7 +190,7 @@
     }
 
     &__title {
-        font-size: $base-font-size * 1.5;
+        font-size: $base-font-size * 2;
         padding: $column-gutter / 2 0;
 
         a:hover {
@@ -200,6 +205,13 @@
 
     &__tag {
         margin: $column-gutter / 2;
+
+        button {
+          border: none;
+          border-radius: 2px;
+          margin: 5px;
+          background: #ededed;
+        }
 
         &:hover {
             color: darken(blue, 30%);
