@@ -12,7 +12,9 @@
         z-index: 1;
     }
 
-    // &__items {
+    &__items {
+      position: relative;
+      margin-top: 44px;
     //     display: flex;
     //     flex-wrap: wrap;
     //     justify-content: space-around;
@@ -21,7 +23,7 @@
     //     &--no-title {
     //         margin-top: 28px;
     //     }
-    // }
+    }
 
     &__end {
         text-align: center;
@@ -29,6 +31,7 @@
 }
 
 .stills-list-items {
+  position: relative;
     &__still {
         // background: black;
         // float: left;
@@ -56,6 +59,9 @@
 
         &--end {
             background: white;
+            bottom: -116px;
+            height: 120px;
+            position: absolute;
             width: 100%;
 
             article {

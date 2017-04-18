@@ -1,5 +1,5 @@
 .films {
-  margin: 0 $max-content-width / 4;
+  margin: 0 $max-content-width / 4 20px;
 
   @media #{$small-computer} {
     margin: 0 $main-content-width / 4;
