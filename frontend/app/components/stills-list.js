@@ -59,6 +59,7 @@ export default Ember.Component.extend({
     willDestroyElement() {
         this._super(...arguments);
 
+        Ember.$('body').css('overflow', 'scroll');
         Ember.$('body').height(Ember.$(document).height() - 1);
         Ember.$(window).off();
     },
@@ -66,6 +67,7 @@ export default Ember.Component.extend({
     actions: {
         openStillSoloModal(still) {
             if(!this.get('stillFormOpen')) {
+                Ember.$('body').css('overflow', 'hidden');
                 this.toggleProperty('stillFormOpen');
             }
 
@@ -73,6 +75,7 @@ export default Ember.Component.extend({
         },
 
         closeStillSoloModal() {
+            Ember.$('body').css('overflow', 'scroll');
             this.toggleProperty('stillFormOpen');
         },
 
