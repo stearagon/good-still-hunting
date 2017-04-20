@@ -27,6 +27,10 @@ export default Ember.Component.extend({
             null;
     }),
 
+    typeOfLoading: Ember.computed('isLoading', 'loading', function() {
+        return this.get('isLoading') || this.get('loading');
+    }),
+
     stillFormOpen: false,
 
     endOfList: Ember.computed('meta', 'page', 'isLoading', function() {
@@ -35,6 +39,8 @@ export default Ember.Component.extend({
 
     didInsertElement() {
         this._super(...arguments);
+        this.set('initialLoad', true);
+        this.set('isLoading', 1);
 
         Ember.$(document).ready(function(){
             Ember.$('body').height(Ember.$(document).height() + 1);
@@ -77,6 +83,15 @@ export default Ember.Component.extend({
         closeStillSoloModal() {
             Ember.$('body').css('overflow', 'scroll');
             this.toggleProperty('stillFormOpen');
+        },
+
+        completeInitialLayout() {
+          if(this.get('initialLoad')) {
+            this.set('initialLoad', false);
+            this.set('isLoading', this.get('isLoading') - 1);
+          } else {
+            this.set('loading', false);
+          }
         },
 
         onLoadNext() {

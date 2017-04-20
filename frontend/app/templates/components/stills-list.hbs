@@ -4,9 +4,11 @@
 
 <section class="
     stills-list__items group
-    {{if displayTitle "" "still-list__items--no-title"}}">
+    {{if displayTitle "" "stills-list__items--no-title"}}
+    {{if initialLoad "" "stills-list__items--show"}}">
 
-    {{#masonry-grid items=stills as |still|}}
+    {{#masonry-grid
+      items=stills onLayoutComplete=(action "completeInitialLayout") as |still|}}
         {{stills-list/still-item
             still=still
             openStillSoloModal=(action "openStillSoloModal")}}
@@ -24,7 +26,7 @@
 
 <span {{action 'onLoadNext'}} class='load-button'></span>
 
-{{#if isLoading}}
+{{#if typeOfLoading}}
 <div class="spinner-modal">
     {{ember-spinner
         lines=12

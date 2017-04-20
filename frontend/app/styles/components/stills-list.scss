@@ -15,6 +15,13 @@
     &__items {
       position: relative;
       margin-top: 44px;
+      left: -100%;
+
+      &--show {
+        left: 0%;
+        transition: left .2s;
+      }
+
     //     display: flex;
     //     flex-wrap: wrap;
     //     justify-content: space-around;
