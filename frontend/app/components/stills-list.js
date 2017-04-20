@@ -9,7 +9,8 @@ const metaFields = [
 ];
 
 export default Ember.Component.extend({
-    isLoading: 0,
+    isLoading: 1,
+    initialLoad: true,
     meta: null,
     page: null,
     perPage: null,
@@ -39,8 +40,6 @@ export default Ember.Component.extend({
 
     didInsertElement() {
         this._super(...arguments);
-        this.set('initialLoad', true);
-        this.set('isLoading', 1);
 
         Ember.$(document).ready(function(){
             Ember.$('body').height(Ember.$(document).height() + 1);
@@ -97,9 +96,8 @@ export default Ember.Component.extend({
         onLoadNext() {
             var params = {};
 
-            this.set('loading', true);
-
             if (this.get('meta').total_pages > this.get('page')) {
+                this.set('loading', true);
                 this.set('isLoading', this.get('isLoading') + 1);
                 this.set('page', parseInt(this.get('page')) + 1);
 

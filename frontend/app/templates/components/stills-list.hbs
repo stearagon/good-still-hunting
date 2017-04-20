@@ -28,15 +28,18 @@
 
 {{#if typeOfLoading}}
 <div class="spinner-modal">
-    {{ember-spinner
-        lines=12
-        radius=10
-        width=5
-        rotate=0
-        speed='3.4'
-        zIndex='5000'
-        color='orange'}}
-    </div>
+  <div class="
+    load
+    {{if initialLoad 'load--black' 'load--white'}}">
+    <div>G</div>
+    <div>N</div>
+    <div>I</div>
+    <div>D</div>
+    <div>A</div>
+    <div>O</div>
+    <div>L</div>
+  </div>
+</div>
 {{/if}}
 
 {{#if stillFormOpen}}
