@@ -5,31 +5,31 @@
         background: white;
         font-size: 20px;
         font-weight: 300;
-        padding: 10px 0;
+        padding: 10px 5%;
         position: fixed;
+        left: 0;
+        width: 90%;
         top: $header-height - 1px;
-        width: 100%;
+        text-align: center;
         z-index: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     &__items {
       position: relative;
-      margin-top: 44px;
-      left: -100%;
+      margin-top: 31px;
+      left: -125%;
 
       &--show {
         left: 0%;
         transition: left .2s;
       }
 
-    //     display: flex;
-    //     flex-wrap: wrap;
-    //     justify-content: space-around;
-    //     overflow: hidden;
-    //
-    //     &--no-title {
-    //         margin-top: 28px;
-    //     }
+      &--no-title {
+          margin-top: 0px;
+      }
     }
 
     &__end {
@@ -40,19 +40,7 @@
 .stills-list-items {
   position: relative;
     &__still {
-        // background: black;
-        // float: left;
-        // height: $still-height;
-        // overflow: hidden;
-        // width: $still-width;
-        // position: relative;
-
         img {
-            // position: absolute;
-            // left: 50%;
-            // top: 50%;
-            // transform: translate(-50%, -50%);
-            // visibility: hidden;
             width: 296px;
             height: auto;
             padding: 2px;
@@ -60,6 +48,7 @@
 
         &--on-page {
             img {
+                cursor: pointer;
                 visibility: visible;
             }
         }
@@ -96,13 +85,13 @@
     z-index: 11;
 
   & .load {
-    position:absolute;
+    position: fixed;
     font-size: 25px;
     width:600px;
     height:36px;
     left:50%;
-    top:40%;
-    margin-left:-300px;
+    top:50%;
+    transform: translate(-50%, -50%);
     overflow:visible;
     -webkit-user-select:none;
     -moz-user-select:none;
