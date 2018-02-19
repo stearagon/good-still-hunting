@@ -8,14 +8,14 @@ export default Ember.Route.extend(ResetScroll, {
 
   model: function(){
     return Ember.RSVP.hash({
-      still: this.store.createRecord('still'),
+      // still: this.store.createRecord('still'),
       movies: this.store.findAll('movie'),
     });
   },
 
   setupController: function(controller, models){
     controller.setProperties({
-      still: models.still,
+      // still: models.still,
       movies: models.movies,
     });
   }

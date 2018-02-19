@@ -60,9 +60,9 @@ export default Ember.Component.extend(EmberValidations, {
 
         this.set('isValidated', true);
 
-        if(this.get('isValid')) {
-          this.attrs.create(newTags, props);
-        }
+        // if(this.get('isValid')) {
+        this.attrs.create(newTags, props);
+        // }
       }
     },
 
@@ -109,10 +109,10 @@ export default Ember.Component.extend(EmberValidations, {
     getFile() {
       document.getElementById("upfile").click();
     },
-
-    filmChange(movie) {
-      this.set('movie', movie);
-      this.attrs.onFilmChange(movie);
-    },
+    //
+    // filmChange(movie) {
+    //   this.set('movie', movie);
+    //   this.attrs.onFilmChange(movie);
+    // },
   },
 });

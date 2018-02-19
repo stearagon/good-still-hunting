@@ -33,6 +33,7 @@ group :development, :test do
   gem 'annotate'
   gem 'better_errors'
   gem 'pry-rails'
+  gem 'rb-readline'
 end
 
 gem 'rails_12factor', group: [:staging, :production]

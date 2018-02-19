@@ -2,33 +2,51 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   movies: null,
-  still: null,
   submissionError: null,
   tags: null,
+  batch: true,
+  sortedMovies: Ember.computed.sort('movies', 'filmSort'),
+  filmSort: ['title:asc'],
+  movie: null,
+  store: null,
 
   actions: {
+    filmChange(movie) {
+      this.set('movie', movie);
+    },
+
     create: function(tags, props){
       var that = this;
-      let still = that.get('still');
+      let still = this.store.createRecord('still');
       still.setProperties(props);
 
       still.save().then((still) => {
         tags.forEach(function(tag){
-          var newTag = that.store.createRecord('tag', {
-            tag: tag
-          });
-
-          newTag.save().then(function(tag){
-            var stillsTag = that.store.createRecord('stillsTag', {
-              tag: tag,
-              still: that.get('still')
+          var tagPromises = [];
+          const tagRecord = that.store.peekAll('tag').findBy('tag', tag);
+          if (tagRecord.id) {
+            tagPromises.push(Promise.resolve(tagRecord));
+          } else {
+            var newTag = that.store.createRecord('tag', {
+              tag: tag
             });
 
-            var stillsTagPromises = [];
-            stillsTagPromises.push(stillsTag.save());
+            tagPromises.push(newTag.save());
+          }
 
-            Ember.RSVP.all(stillsTagPromises).then(function() {
-              that.transitionToRoute('dashboard.stills.still', that.get('still.id'));
+          Ember.RSVP.all(tagPromises).then(function(tagRecords) {
+            var stillsTagPromises = [];
+            tagRecords.forEach(function(record) {
+              var stillsTag = that.store.createRecord('stillsTag', {
+                tag: record,
+                still: still,
+              });
+
+              stillsTagPromises.push(stillsTag.save());
+            });
+
+            Ember.RSVP.all(stillsTagPromises).then(function(stillsTagRecords) {
+              that.transitionToRoute('dashboard.films.film', still.get('movie.title'));
               window.setInterval(function(){ that.set('tags', null) }, 1000);
             });
           });
@@ -43,6 +61,11 @@ export default Ember.Controller.extend({
     cancel: function(){
       this.transitionToRoute('dashboard');
       return false;
+    },
+
+    toggleBatch: function(){
+      const batchState = this.get('batch');
+      this.set('batch', !batchState);
     },
 
     getDefaultTags: function(movie) {

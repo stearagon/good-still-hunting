@@ -7,20 +7,6 @@
     </div>
   </div>
 
-  <div class="still-add-form__add-file">
-    <button class="still-add-form__upload-button" {{action "getFile"}}>
-      upload image
-    </button>
-
-    <div class="still-add-form__upfile">
-      <input id="upfile" type="file" value="upload" {{action  'fileInputChange' on='change'}}/>
-    </div>
-
-    <div class="still-add-form__error">
-      {{if isValidated errors.image}}
-    </div>
-  </div>
-
   <div class="stil-add-form__input">
     <div class="
       still-add-form__preview
@@ -51,10 +37,5 @@
     <div class="still-add-form__error">
       {{if isValidated errors.tags}}
     </div>
-  </div>
-
-  <div class="still-add-form__actions">
-    <button class="still-add-form-actions__create" {{action 'onCreate'}}>Submit</button>
-    <button class="still-add-form-actions__cancel" {{action 'onCancel'}}>Cancel</button>
   </div>
 </div>

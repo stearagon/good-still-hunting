@@ -99,3 +99,26 @@
     }
   }
 }
+
+form .add-files-header {
+  margin-bottom: 20px;
+}
+
+.still-batch-add-form__add-files {
+  border: 1px dashed black;
+  margin: 0 auto;
+  width: 80%;
+
+  .drop-zone-area {
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .upload-image {
+    display: block;
+    text-decoration: underline;
+    margin: 0 auto;
+    padding: 10px;
+  }
+}

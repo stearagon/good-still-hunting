@@ -1,15 +1,47 @@
 <div class="still-add">
   <h2 class="still-add__title">
-    Add Still
+    Add Still{{if batch 's'}}
   </h2>
 
-  {{still-form
-    create=(action 'create')
-    cancel=(action 'cancel')
-    model=still
-    movies=movies
-    onFilmChange=(action 'getDefaultTags')
-    startTags=tags
-    submissionError=submissionError
-    store=store}}
+  <div class="still-add-form__input">
+    {{#power-select
+      options=sortedMovies
+      searchField="title"
+      allowClear=true
+      selected=movie
+      renderInPlace=true
+      onchange=(action 'filmChange')
+      placeholder="add movie..."
+      searchPlaceholder="type movie name..." as |movie|}}
+
+      {{movie.title}}
+    {{/power-select}}
+
+    <div class="still-add-form__error">
+      {{if isValidated errors.movie}}
+    </div>
+  </div>
+
+  <button {{action 'toggleBatch'}}>
+    Switch to {{if batch 'Single' 'Batch'}} Upload
+  </button>
+
+  {{#if batch}}
+    {{still-batch-form
+      create=(action 'create')
+      cancel=(action 'cancel')
+      movie=movie
+      startTags=tags
+      submissionError=submissionError
+      store=store}}
+  {{else}}
+    {{still-form
+      create=(action 'create')
+      cancel=(action 'cancel')
+      model=still
+      movie=movie
+      startTags=tags
+      submissionError=submissionError
+      store=store}}
+  {{/if}}
 </div>
