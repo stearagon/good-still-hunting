@@ -109,10 +109,5 @@ export default Ember.Component.extend(EmberValidations, {
     getFile() {
       document.getElementById("upfile").click();
     },
-    //
-    // filmChange(movie) {
-    //   this.set('movie', movie);
-    //   this.attrs.onFilmChange(movie);
-    // },
   },
 });

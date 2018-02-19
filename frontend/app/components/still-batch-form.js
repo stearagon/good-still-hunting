@@ -101,7 +101,7 @@ export default Ember.Component.extend(EmberValidations, {
       const that = this;
       const stillData = this.get('stillData');
       file.readAsDataURL().then(function (url) {
-        const newStill = { file: url, tags: [], errors: [] };
+        const newStill = { file: url, tags: that.get('tags'), errors: [] };
         stillData.pushObject(newStill);
         if (stillData.length === 1) {
           that.set('currentStill', newStill);

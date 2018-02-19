@@ -19,12 +19,6 @@
         Uploading {{queue.files.length}} files. ({{queue.progress}}%)
       {{else}}
         <p>
-          {{#if dropzone.supported}}
-          <div class="drop-zone-area">
-            Drag and drop images onto this area to upload them
-          </div>
-          or
-          {{/if}}
           {{#file-upload name="photos"
             accept="image/*"
             multiple=true

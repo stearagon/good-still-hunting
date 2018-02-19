@@ -3,7 +3,6 @@ import EmberValidations from "ember-validations";
 
 export default Ember.Component.extend(EmberValidations, {
   session: Ember.inject.service('session'),
-  createdTags: null,
   errorMessage: null,
   image: null,
   submissionError: null,

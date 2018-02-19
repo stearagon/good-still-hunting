@@ -10,9 +10,15 @@ export default Ember.Controller.extend({
   movie: null,
   store: null,
 
+  getDefaultTags: function(movie) {
+    let tags = this.store.query('tag', { movie_id: movie.get('id') });
+    this.set('tags', tags);
+  },
+
   actions: {
     filmChange(movie) {
       this.set('movie', movie);
+      this.getDefaultTags(movie);
     },
 
     create: function(tags, props){
@@ -66,11 +72,6 @@ export default Ember.Controller.extend({
     toggleBatch: function(){
       const batchState = this.get('batch');
       this.set('batch', !batchState);
-    },
-
-    getDefaultTags: function(movie) {
-      let tags = this.store.query('tag', { movie_id: movie.get('id') });
-      this.set('tags', tags);
     },
   },
 });

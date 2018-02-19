@@ -46,7 +46,7 @@
 
   &__image {
     display: inline;
-    max-width: 30vw;
+    max-width: 75vw;
     height: auto;
   }
 
@@ -105,7 +105,6 @@ form .add-files-header {
 }
 
 .still-batch-add-form__add-files {
-  border: 1px dashed black;
   margin: 0 auto;
   width: 80%;
 
@@ -125,15 +124,16 @@ form .add-files-header {
 
 .still-batch-direction {
     position: relative;
-    margin-top: 20px;
 
     .still-batch-prev {
         position: absolute;
-        left: 0;
+        left: -5%;
+        top: 50%;
     }
 
     .still-batch-next {
         position: absolute;
-        right: 0;
+        right: -5%;
+        top: 50%;
     }
 }
