@@ -16,6 +16,9 @@ export default Ember.Component.extend(EmberValidations, {
   tags: Ember.computed.oneWay('startTags.[]'),
   sortedMovies: Ember.computed.sort('movies', 'filmSort'),
 
+  // didReceiveAttrs() {
+  //   Ember.set('tags', this.get('tags'));
+  // },
 
   submissionDisplayErrors: Ember.computed('submissionError', function() {
     if(this.get('submissionError')) {

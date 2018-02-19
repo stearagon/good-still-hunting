@@ -103,37 +103,40 @@
 form .add-files-header {
   margin-bottom: 20px;
 }
+.still-batch-add-form {
+    margin-bottom: 40px;
 
-.still-batch-add-form__add-files {
-  margin: 0 auto;
-  width: 80%;
-
-  .drop-zone-area {
+    .still-batch-add-form__add-files {
     margin: 0 auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
+    width: 80%;
 
-  .upload-image {
-    display: block;
-    text-decoration: underline;
-    margin: 0 auto;
-    padding: 10px;
-  }
-}
-
-.still-batch-direction {
-    position: relative;
-
-    .still-batch-prev {
-        position: absolute;
-        left: -5%;
-        top: 50%;
+    .drop-zone-area {
+        margin: 0 auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 
-    .still-batch-next {
-        position: absolute;
-        right: -5%;
-        top: 50%;
+    .upload-image {
+        display: block;
+        text-decoration: underline;
+        margin: 0 auto;
+        padding: 10px;
+    }
+    }
+
+    .still-batch-direction {
+        position: relative;
+
+        .still-batch-prev {
+            position: absolute;
+            left: 0;
+            top: 50%;
+        }
+
+        .still-batch-next {
+            position: absolute;
+            right: 0;
+            top: 50%;
+        }
     }
 }

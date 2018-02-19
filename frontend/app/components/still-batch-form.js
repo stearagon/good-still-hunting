@@ -7,7 +7,6 @@ export default Ember.Component.extend(EmberValidations, {
   createdTags: null,
   errorMessage: null,
   stillData: [],
-  tags: [],
   movie: null,
   submissionError: null,
   currentStill: null,
@@ -17,6 +16,16 @@ export default Ember.Component.extend(EmberValidations, {
     const stillData = this.get('stillData');
     return stillData.length;
   }),
+
+  didReceiveAttrs() {
+    this.stillData.forEach((still) => {
+      Ember.set(still, 'tags', this.get('tags'));
+    });
+
+    if(this.get('stillData').length > 0 && this.get('currentStill') === null) {
+      this.set('currentStill', this.get('stillData')[0]);
+    }
+  },
 
   currentStillIndex: Ember.computed(
     'stillData.[]',
