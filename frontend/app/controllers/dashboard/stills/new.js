@@ -9,10 +9,51 @@ export default Ember.Controller.extend({
   filmSort: ['title:asc'],
   movie: null,
   store: null,
+  loading: false,
 
   getDefaultTags: function(movie) {
     let tags = this.store.query('tag', { movie_id: movie.get('id') });
     this.set('tags', tags);
+  },
+
+  create: function(tags, props){
+    var that = this;
+    let still = this.store.createRecord('still');
+    still.setProperties(props);
+
+    return still.save().then((still) => {
+      var tagPromises = [];
+      tags.forEach(function(tag){
+        const tagRecord = that.store.peekAll('tag').findBy('tag', tag);
+        if (tagRecord.id) {
+          tagPromises.push(Promise.resolve(tagRecord));
+        } else {
+          var newTag = that.store.createRecord('tag', {
+            tag: tag
+          });
+
+          tagPromises.push(newTag.save());
+        }
+      })
+
+      return Ember.RSVP.all(tagPromises).then(function(tagRecords) {
+        var stillsTagPromises = [];
+        tagRecords.forEach(function(record) {
+          var stillsTag = that.store.createRecord('stillsTag', {
+            tag: record,
+            still: still,
+          });
+
+          stillsTagPromises.push(stillsTag.save());
+        });
+
+        return Ember.RSVP.all(stillsTagPromises).then(function(stillsTagRecords) {
+          window.setInterval(function(){ that.set('tags', null) }, 1000);
+        });
+      });
+    }, (errors) => {
+      this.set('submissionError', errors.errors);
+    });
   },
 
   actions: {
@@ -21,47 +62,34 @@ export default Ember.Controller.extend({
       this.getDefaultTags(movie);
     },
 
-    create: function(tags, props){
-      var that = this;
-      let still = this.store.createRecord('still');
-      still.setProperties(props);
+    createMultiple(arr) {
+      const that = this;
+      that.set('loading', true);
+      const stillsPromises = [];
+      arr.forEach((data) => {
+        const props = {
+          image: data.file,
+          movie: that.get('movie'),
+        };
 
-      still.save().then((still) => {
-        tags.forEach(function(tag){
-          var tagPromises = [];
-          const tagRecord = that.store.peekAll('tag').findBy('tag', tag);
-          if (tagRecord.id) {
-            tagPromises.push(Promise.resolve(tagRecord));
-          } else {
-            var newTag = that.store.createRecord('tag', {
-              tag: tag
-            });
+        let newTags = data.tags.map(function(tag){ return tag.get('tag'); });
 
-            tagPromises.push(newTag.save());
-          }
-
-          Ember.RSVP.all(tagPromises).then(function(tagRecords) {
-            var stillsTagPromises = [];
-            tagRecords.forEach(function(record) {
-              var stillsTag = that.store.createRecord('stillsTag', {
-                tag: record,
-                still: still,
-              });
-
-              stillsTagPromises.push(stillsTag.save());
-            });
-
-            Ember.RSVP.all(stillsTagPromises).then(function(stillsTagRecords) {
-              that.transitionToRoute('dashboard.films.film', still.get('movie.title'));
-              window.setInterval(function(){ that.set('tags', null) }, 1000);
-            });
-          });
-        });
-      }, (errors) => {
-        this.set('submissionError', errors.errors);
+        stillsPromises.push(that.create(newTags, props));
       });
 
-      return false;
+      return Ember.RSVP.all(stillsPromises).then(function(stillRecords) {
+        that.set('loading', false);
+        that.transitionToRoute('dashboard.films.film', that.get('movie.title'));
+      });
+    },
+
+    create(newTags, props) {
+      const that = this;
+      that.set('loading', true);
+      that.create(newTags, props).then(() => {
+        that.set('loading', false);
+        that.transitionToRoute('dashboard.films.film', that.get('movie.title'));
+      });
     },
 
     cancel: function(){

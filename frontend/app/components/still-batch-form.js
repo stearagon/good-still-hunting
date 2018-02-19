@@ -74,21 +74,7 @@ export default Ember.Component.extend(EmberValidations, {
         this.set('submissionDisplayErrors', [{ detail: 'Must be logged in to add stills' }]);
       } else {
         const stillData = this.get('stillData');
-        stillData.forEach((data) => {
-          debugger;
-          const props = {
-            image: data.file,
-            movie: that.get('movie'),
-          };
-
-          let newTags = data.tags.map(function(tag){ return tag.get('tag'); });
-
-          // this.set('isValidated', true);
-
-          // if(this.get('isValid')) {
-          this.attrs.create(newTags, props);
-          // }
-        });
+        this.attrs.create(stillData);
       }
     },
 

@@ -28,7 +28,7 @@
 
   {{#if batch}}
     {{still-batch-form
-      create=(action 'create')
+      create=(action 'createMultiple')
       cancel=(action 'cancel')
       movie=movie
       startTags=tags
@@ -44,4 +44,20 @@
       submissionError=submissionError
       store=store}}
   {{/if}}
+
+    {{#if loading}}
+        <div class="spinner-modal">
+            <div class="
+                load
+                {{if initialLoad 'load--black' 'load--white'}}">
+                <div>G</div>
+                <div>N</div>
+                <div>I</div>
+                <div>D</div>
+                <div>A</div>
+                <div>O</div>
+                <div>L</div>
+            </div>
+        </div>
+    {{/if}}
 </div>
