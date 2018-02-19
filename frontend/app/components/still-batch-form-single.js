@@ -32,22 +32,6 @@ export default Ember.Component.extend(EmberValidations, {
   },
 
   actions: {
-    // onCreate() {
-    //   if(!this.get('session.isAuthenticated')) {
-    //     this.set('isValidated', true);
-    //     this.set('submissionDisplayErrors', [{ detail: 'Must be logged in to add stills' }]);
-    //   } else {
-    //     let props = this.getProperties('image', 'movie');
-    //     let newTags = this.get('tags').map(function(tag){ return tag.get('tag'); });
-    //
-    //     this.set('isValidated', true);
-    //
-    //     if(this.get('isValid')) {
-    //       this.attrs.create(newTags, props);
-    //     }
-    //   }
-    // },
-
     searchTags(value) {
       this.set('tagQuery', value);
 
