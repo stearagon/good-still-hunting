@@ -122,3 +122,18 @@ form .add-files-header {
     padding: 10px;
   }
 }
+
+.still-batch-direction {
+    position: relative;
+    margin-top: 20px;
+
+    .still-batch-prev {
+        position: absolute;
+        left: 0;
+    }
+
+    .still-batch-next {
+        position: absolute;
+        right: 0;
+    }
+}

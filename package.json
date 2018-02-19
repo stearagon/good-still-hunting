@@ -1,4 +1,8 @@
 {
+  "engines": {
+    "npm": "4.4.1",
+    "node": "7.7.1"
+  },
   "scripts": {
     "postinstall": "./bin/heroku_install"
   },

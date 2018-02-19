@@ -43,18 +43,20 @@
   </div>
 
   {{#if stillData.length}}
-    {{#if showPreviousButton}}
-      <button {{action "selectImage" -1}}>Prev</button>
-    {{/if}}
-    {{#if showNextButton}}
-      <button {{action "selectImage" 1}}>Next</button>
-    {{/if}}
-    {{still-batch-form-single
-      image=currentStill.file
-      startTags=currentStill.tags
-      submissionError=submissionError
-      onTagAdd=(action 'addTag')
-      store=store}}
+    <div class="still-batch-direction">
+        {{#if showPreviousButton}}
+        <button class="still-batch-prev" {{action "selectImage" -1}}>Prev</button>
+        {{/if}}
+        {{#if showNextButton}}
+        <button class="still-batch-next" {{action "selectImage" 1}}>Next</button>
+        {{/if}}
+        {{still-batch-form-single
+        image=currentStill.file
+        startTags=currentStill.tags
+        submissionError=submissionError
+        onTagAdd=(action 'addTag')
+        store=store}}
+    </div>
   {{/if}}
 
   <div class="still-add-form__actions">
