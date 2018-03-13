@@ -4,6 +4,8 @@ class Api::MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
 
+    @movie.strip_whitespace
+
     %w{director_of_photography decade director aspect_ratio title year genre}.each do |new_tag|
       Tag.find_or_create_by(tag: movie_params[new_tag])
     end
