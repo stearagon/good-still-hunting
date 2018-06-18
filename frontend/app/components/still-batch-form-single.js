@@ -35,16 +35,16 @@ export default Ember.Component.extend(EmberValidations, {
     searchTags(value) {
       this.set('tagQuery', value);
 
-      return this.get('store').query('tag', { query: value }).then((tags) => {
-        let newTags = tags.toArray();
+      // return this.get('store').query('tag', { query: value }).then((tags) => {
+        let newTags = [];
 
-        if (Ember.isEmpty(newTags) || newTags[0].get('tag') !== value) {
+        // if (Ember.isEmpty(newTags) || newTags[0].get('tag') !== value) {
           let newTag = this.get('store').createRecord('tag', { tag: value });
           newTags.unshiftObject(newTag);
-        }
+        // }
 
         return newTags;
-      });
+      // });
     },
 
     addTag(value) {
